@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Paciente;
 
+use App\Http\Requests\PacienteFormRequest;
+
+use Carbon\Carbon;
+
 class PacienteController extends Controller
 {
     public function __construct()
@@ -23,7 +27,7 @@ class PacienteController extends Controller
         return view('pacientes.create');
     }
 
-    public function store(Request $request)
+    public function store(PacienteFormRequest $request)
     {
         $paciente = new Paciente;
 
@@ -37,6 +41,8 @@ class PacienteController extends Controller
         $paciente->telefonodomicilio=$request->get('telefonodomicilio');
         $paciente->telefonocelular=$request->get('telefonocelular');
         $paciente->email=$request->get('email');
+        $fecha = Carbon::now('America/La_Paz');
+        $paciente->created_at=$fecha->toDateTimeString();
 
         $paciente->save();
 
@@ -55,7 +61,7 @@ class PacienteController extends Controller
         return view('pacientes.edit')->with('paciente',$paciente);
     }
 
-    public function update(Request $request, $id)
+    public function update(PacienteFormRequest $request, $id)
     {
         $paciente = Paciente::findOrFail($id);
 
@@ -69,6 +75,9 @@ class PacienteController extends Controller
         $paciente->telefonodomicilio=$request->get('telefonodomicilio');
         $paciente->telefonocelular=$request->get('telefonocelular');
         $paciente->email=$request->get('email');
+        $fecha = Carbon::now('America/La_Paz');
+        $paciente->updated_at=$fecha->toDateTimeString();
+
         $paciente->update();
 
         return redirect()->route('pacientes.index');

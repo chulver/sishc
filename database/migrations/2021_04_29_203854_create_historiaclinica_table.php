@@ -14,8 +14,10 @@ class CreateHistoriaclinicaTable extends Migration
     public function up()
     {
         Schema::create('historiaclinica', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
             $table->id();
+            $table->foreignId('solicitud_consultamedica_id');
+            $table->foreign('solicitud_consultamedica_id')->references('id')->on('solicitud_consultamedica');
+            $table->integer('edad');
             $table->text('motivoconsulta');
             $table->text('examenfisico');
             $table->text('analisisclinico');

@@ -234,6 +234,42 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        ['header' => 'VENTAS'],
+        [
+            'text'        => 'Ventas',
+            'url'         => 'consultas',
+            'icon'        => 'far fa-fw fa-file',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Fichas',
+            'url'         => 'consultas/fichas',
+            'icon'        => 'far fa-fw fa-file',
+            'label_color' => 'success',
+        ],
+        ['header' => 'SIGNOS VITALES'],
+        [
+            'text' => 'Pendientes',
+            'url'  => 'signosvitales',
+            'icon' => 'far fa-fw fa-file',
+        ],
+        [
+            'text' => 'Completadas',
+            'url'  => 'signosvitales/completadas',
+            'icon' => 'far fa-fw fa-file',
+        ],
+        ['header' => 'CONSULTA MEDICA'],
+        [
+            'text' => 'Pendientes',
+            'url'  => 'historiaclinica',
+            'icon' => 'far fa-fw fa-file',
+        ],
+        [
+            'text' => 'Completadas',
+            'url'  => 'historiaclinica/completadas',
+            'icon' => 'far fa-fw fa-file',
+        ],
+        ['header' => 'PACIENTES'],
         [
             'text'        => 'Pacientes',
             'url'         => 'pacientes',

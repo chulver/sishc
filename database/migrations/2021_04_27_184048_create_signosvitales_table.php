@@ -14,17 +14,17 @@ class CreateSignosvitalesTable extends Migration
     public function up()
     {
         Schema::create('signosvitales', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
             $table->id();
-            $table->double('peso',3,2);
+            $table->foreignId('solicitud_consultamedica_id');
+            $table->foreign('solicitud_consultamedica_id')->references('id')->on('solicitud_consultamedica');
+            $table->integer('edad');
+            $table->decimal('peso',10,2);
             $table->integer('talla');
-            $table->integer('pasistolica');
-            $table->integer('padiastolica');
-            $table->integer('fcardiaca');
-            $table->integer('frespiratoria');
-            $table->double('temperatuta',2,1);
-            $table->date('fum');
-            $table->string('observaciones')->nullable();
+            $table->decimal('temperatura',10,1);
+            $table->integer('pasistolica')->nullable();
+            $table->integer('padiastolica')->nullable();
+            $table->integer('fcardiaca')->nullable();
+            $table->integer('frespiratoria')->nullable();
             $table->char('estado',1);
             $table->timestamps();
         });
