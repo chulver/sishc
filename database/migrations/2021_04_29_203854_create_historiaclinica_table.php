@@ -19,6 +19,7 @@ class CreateHistoriaclinicaTable extends Migration
             $table->foreign('solicitud_consultamedica_id')->references('id')->on('solicitud_consultamedica');
             $table->integer('edad');
             $table->text('motivoconsulta');
+            $table->text('enfermedadactual');
             $table->text('examenfisico');
             $table->text('analisisclinico');
             $table->text('planaccion');

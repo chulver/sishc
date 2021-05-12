@@ -37,20 +37,49 @@
                         <input type="hidden" name="solicitud_consultamedica_id" value="{{ $signosvitales->solicitud_consultamedica_id }}">
                         <input type="hidden" name="edad" id="edad">
                         <div class="form-group">
-                            <label for="apaterno">Motivo de Consulta</label>
-                            <textarea class="form-control" name="motivoconsulta" id="motivoconsulta"></textarea>
+                            <label for="motivoconsulta">Motivo de Consulta</label>
+                            <textarea class="form-control" name="motivoconsulta" id="motivoconsulta">{{ old('motivoconsulta') }}</textarea>
+                            @error('motivoconsulta')
+                            <br>
+                            <small>*{{$message}}</small>
+                            <br>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="apaterno">Examen Fisico</label>
-                            <textarea class="form-control" name="examenfisico" id="examenfisico"></textarea>
+                            <label for="enfermedadactual">Enfermedad Actual</label>
+                            <textarea class="form-control" name="enfermedadactual" id="enfermedadactual">{{ old('enfermedadactual') }}</textarea>
+                            @error('enfermedadactual')
+                            <br>
+                            <small>*{{$message}}</small>
+                            <br>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="apaterno">Analisis Clinico</label>
-                            <textarea class="form-control" name="analisisclinico" id="analisisclinico"></textarea>
+                            <label for="examenfisico">Examen Fisico</label>
+                            <textarea class="form-control" name="examenfisico" id="examenfisico">{{ old('examenfisico') }}</textarea>
+                            @error('examenfisico')
+                            <br>
+                            <small>*{{$message}}</small>
+                            <br>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="apaterno">Plan de Accion</label>
-                            <textarea class="form-control" name="planaccion" id="planaccion"></textarea>
+                            <label for="analisisclinico">Analisis Clinico</label>
+                            <textarea class="form-control" name="analisisclinico" id="analisisclinico">{{ old('analisisclinico') }}</textarea>
+                            @error('analisisclinico')
+                            <br>
+                            <small>*{{$message}}</small>
+                            <br>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="planaccion">Plan de Accion</label>
+                            <textarea class="form-control" name="planaccion" id="planaccion">{{ old('planaccion') }}</textarea>
+                            @error('planaccion')
+                            <br>
+                            <small>*{{$message}}</small>
+                            <br>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary" type="submit">Guardar</button>
@@ -128,6 +157,12 @@
 
         ClassicEditor
         .create( document.querySelector( '#motivoconsulta' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+        ClassicEditor
+        .create( document.querySelector( '#enfermedadactual' ) )
         .catch( error => {
             console.error( error );
         } );

@@ -17,6 +17,7 @@ class Historiaclinica extends Model
     protected $fillable =[
         'solicitud_consultamedica_id',
     	'motivoconsulta',
+        'enfermedadactual',
         'examenfisico',
         'analisisclinico',
         'planaccion',

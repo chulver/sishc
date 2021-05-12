@@ -3,7 +3,9 @@
 @section('title', 'Ventas')
 
 @section('content_header')
-    <a href="{{ route('consultas.create') }}" class="btn btn-secondary float-right">Registrar consulta medica</a>
+    @can('consultas.create')
+        <a href="{{ route('consultas.create') }}" class="btn btn-secondary float-right">Registrar consulta medica</a>
+    @endcan
     <h1>Consultas medicas</h1>
 @stop
 

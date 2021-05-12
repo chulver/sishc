@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Consultamedica;
+
+use App\Http\Requests\ConsultamedicaFormRequest;
+
 use DB;
 
 class ConsultamedicaController extends Controller
@@ -11,6 +14,11 @@ class ConsultamedicaController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        //$this->middleware('can:consultas.index')->only('index');
+        //$this->middleware('can:consultas.create')->only('create', 'store');
+        //$this->middleware('can:consultas.edit')->only('edit', 'update');
+        //$this->middleware('can:consultas.destroy')->only('destroy');
+        //$this->middleware('can:consultas.fichas')->only('fichas');
     }
 
     public function index()
@@ -37,7 +45,7 @@ class ConsultamedicaController extends Controller
         return view('consultas.create', compact('pacientes','servicios','users'));
     }
 
-    public function store(Request $request)
+    public function store(ConsultamedicaFormRequest $request)
     {
         $consulta = new Consultamedica;
 
@@ -84,6 +92,15 @@ class ConsultamedicaController extends Controller
         return redirect()->route('consultas.index');
     }
 
+    public function destroy($id)
+    {
+        $consulta = Consultamedica::find($id);
+        $consulta->estado='0';
+        $consulta->update();
+
+        return redirect()->route('consultas.index');
+    }
+
     public function fichas()
     {
         $consultas = DB::table('solicitud_consultamedica as c')
@@ -94,14 +111,5 @@ class ConsultamedicaController extends Controller
                     -> get();
 
         return view('consultas.fichas', compact('consultas'));
-    }
-
-    public function destroy($id)
-    {
-        $consulta = Consultamedica::find($id);
-        $consulta->estado='0';
-        $consulta->update();
-
-        return redirect()->route('consultas.index');
     }
 }

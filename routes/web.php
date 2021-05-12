@@ -6,6 +6,7 @@ use App\Http\Controllers\ConsultamedicaController;
 use App\Http\Controllers\SignosvitalesController;
 use App\Http\Controllers\HistoriaclinicaController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -23,6 +24,10 @@ Route::get('/', function () {
     return view('auth.login');
     //return view('welcome');
 });
+
+/**Paciente**/
+Route::resource('users', UserController::class)->only(['index', 'edit', 'update'])->names('users');
+/***********/
 
 /**Paciente**/
 Route::get('pdf/{consulta}',[PDFController::class, 'PDFHistoriaclinica'])->name('generarPDF');

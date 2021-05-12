@@ -20,6 +20,11 @@
                     <option value="{{$paciente->id}}">{{$paciente->paciente}}</option>
                     @endforeach
                 </select>
+                @error('paciente_id')
+                <br>
+                    <small>*{{$message}}</small>
+                <br>
+                @enderror
             </div>
         
             <div class="form-group">
@@ -30,6 +35,11 @@
                     <option value="{{$servicio->id}}">{{$servicio->serviciomedico}}</option>
                     @endforeach
                 </select>
+                @error('serviciomedico_id')
+                <br>
+                    <small>*{{$message}}</small>
+                <br>
+                @enderror
             </div>
 
             <div class="form-group">
@@ -40,6 +50,11 @@
                     <option value="{{$user->id}}">{{$user->name}}</option>
                     @endforeach
                 </select>
+                @error('medico')
+                <br>
+                    <small>*{{$message}}</small>
+                <br>
+                @enderror
             </div>
 
             <div class="form-group">

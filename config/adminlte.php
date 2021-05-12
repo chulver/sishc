@@ -45,12 +45,13 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>SIS</b>HC',
+    //'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'vendor/adminlte/dist/img/LasaludperfectaLogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'SISHC',
 
     /*
     |--------------------------------------------------------------------------
@@ -190,8 +191,10 @@ return [
     'dashboard_url' => 'home',
     'logout_url' => 'logout',
     'login_url' => 'login',
-    'register_url' => 'register',
-    'password_reset_url' => 'password/reset',
+    //'register_url' => 'register',
+    'register_url' => false,
+    //'password_reset_url' => 'password/reset',
+    'password_reset_url' => false,
     'password_email_url' => 'password/email',
     'profile_url' => false,
 
@@ -234,112 +237,67 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        ['header' => 'VENTAS'],
         [
             'text'        => 'Ventas',
             'url'         => 'consultas',
-            'icon'        => 'far fa-fw fa-file',
-            'label_color' => 'success',
+            'icon'        => 'fas fa-fw fa-cart-arrow-down',
+            'can'         => 'consultas.index',
         ],
         [
             'text'        => 'Fichas',
             'url'         => 'consultas/fichas',
-            'icon'        => 'far fa-fw fa-file',
-            'label_color' => 'success',
-        ],
-        ['header' => 'SIGNOS VITALES'],
-        [
-            'text' => 'Pendientes',
-            'url'  => 'signosvitales',
-            'icon' => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-fw fa-clipboard-list',
+            'can'         => 'consultas.fichas',
         ],
         [
-            'text' => 'Completadas',
-            'url'  => 'signosvitales/completadas',
-            'icon' => 'far fa-fw fa-file',
-        ],
-        ['header' => 'CONSULTA MEDICA'],
-        [
-            'text' => 'Pendientes',
-            'url'  => 'historiaclinica',
-            'icon' => 'far fa-fw fa-file',
-        ],
-        [
-            'text' => 'Completadas',
-            'url'  => 'historiaclinica/completadas',
-            'icon' => 'far fa-fw fa-file',
-        ],
-        ['header' => 'PACIENTES'],
-        [
-            'text'        => 'Pacientes',
-            'url'         => 'pacientes',
-            'icon'        => 'far fa-fw fa-file',
-            'label_color' => 'success',
-        ],
-        ['header' => 'Configuracion de la cuenta'],
-        [
-            'text' => 'Perfil de Usuario',
-            'url'  => 'user/profile',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Signos Vitales',
+            'icon'    => 'fas fa-fw fa-user-nurse',
+            'can'  => 'signosvitales.index',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Pendientes',
+                    'url'  => 'signosvitales',
+                    'icon' => 'fas fa-fw fa-notes-medical',
+                    'can'  => 'signosvitales.index',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Completadas',
+                    'url'  => 'signosvitales/completadas',
+                    'icon' => 'fas fa-fw fa-notes-medical',
+                    'can'  => 'signosvitales.completadas',
                 ],
             ],
         ],
-        ['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'    => 'Consulta Medica',
+            'icon'    => 'fas fa-fw fa-user-md',
+            'can'     => 'historiaclinica.index',
+            'submenu' => [
+                [
+                    'text' => 'Pendientes',
+                    'url'  => 'historiaclinica',
+                    'icon' => 'far fa-fw fa-file',
+                    'can'  => 'historiaclinica.index',
+                ],
+                [
+                    'text' => 'Completadas',
+                    'url'  => 'historiaclinica/completadas',
+                    'icon' => 'far fa-fw fa-file',
+                    'can'  => 'historiaclinica.completadas',
+                ],
+            ],
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text'        => 'Pacientes',
+            'url'         => 'pacientes',
+            'icon'        => 'fas fa-fw fa-user-friends',
+            'can'         => 'pacientes.index',
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text'        => 'Usuarios',
+            'url'         => 'users',
+            'icon'        => 'fas fa-fw fa-users',
+            'can'         => 'users.index',
         ],
     ],
 
@@ -461,5 +419,5 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Signosvitales;
 use App\Models\Consultamedica;
 
+use App\Http\Requests\SignosvitalesFormRequest;
+
 use DB;
 use Carbon\Carbon;
 
@@ -14,6 +16,11 @@ class SignosvitalesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:signosvitales.index')->only('index');
+        $this->middleware('can:signosvitales.create')->only('create', 'store');
+        $this->middleware('can:signosvitales.edit')->only('edit', 'update');
+        $this->middleware('can:signosvitales.completadas')->only('completadas');
+        $this->middleware('can:signosvitales.show')->only('show');
     }
 
     public function index()
@@ -42,7 +49,7 @@ class SignosvitalesController extends Controller
         return view('signosvitales.create', compact('consulta'));
     }
 
-    public function store(Request $request)
+    public function store(SignosvitalesFormRequest $request)
     {
         $signosvitales = new Signosvitales;
         $signosvitales->solicitud_consultamedica_id=$request->get('solicitud_consultamedica_id');
@@ -87,7 +94,7 @@ class SignosvitalesController extends Controller
                     -> join('paciente as p','c.paciente_id','=','p.id')
                     -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
                     -> join('users as u','c.medico','=','u.id')
-                    -> select('*')
+                    -> select('sv.id as cod','sv.edad','sv.peso','sv.talla','sv.temperatura','sv.pasistolica','sv.padiastolica','sv.fcardiaca','sv.frespiratoria','s.*','p.*','u.*')
                     -> where('sv.id', '=', $id)
                     -> first();
 
@@ -100,13 +107,11 @@ class SignosvitalesController extends Controller
 
         $signosvitales->peso=$request->get('peso');
         $signosvitales->talla=$request->get('talla');
+        $signosvitales->temperatura=$request->get('temperatura');
         $signosvitales->pasistolica=$request->get('pasistolica');
         $signosvitales->padiastolica=$request->get('padiastolica');
         $signosvitales->fcardiaca=$request->get('fcardiaca');
     	$signosvitales->frespiratoria=$request->get('frespiratoria');
-        $signosvitales->temperatura=$request->get('temperatura');
-        $signosvitales->fum=$request->get('fum');
-        $signosvitales->observaciones='';
         $signosvitales->updated_at=NOW();
         $signosvitales->update();
 

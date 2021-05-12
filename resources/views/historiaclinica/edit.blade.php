@@ -33,20 +33,49 @@
                     @csrf
                     @method('put')
                         <div class="form-group">
-                            <label for="apaterno">Motivo de Consulta</label>
-                            <textarea class="form-control" name="motivoconsulta" id="motivoconsulta">{{ $historiaclinica->motivoconsulta }}</textarea>
+                            <label for="motivoconsulta">Motivo de Consulta</label>
+                            <textarea class="form-control" name="motivoconsulta" id="motivoconsulta">{{ old('motivoconsulta', $historiaclinica->motivoconsulta) }}</textarea>
+                            @error('motivoconsulta')
+                            <br>
+                            <small>*{{$message}}</small>
+                            <br>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="apaterno">Examen Fisico</label>
-                            <textarea class="form-control" name="examenfisico" id="examenfisico">{{ $historiaclinica->examenfisico }}</textarea>
+                            <label for="enfermedadactual">Enfermedad Actual</label>
+                            <textarea class="form-control" name="enfermedadactual" id="enfermedadactual">{{ old('enfermedadactual', $historiaclinica->enfermedadactual) }}</textarea>
+                            @error('enfermedadactual')
+                            <br>
+                            <small>*{{$message}}</small>
+                            <br>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="apaterno">Analisis Clinico</label>
-                            <textarea class="form-control" name="analisisclinico" id="analisisclinico">{{ $historiaclinica->analisisclinico }}</textarea>
+                            <label for="examenfisico">Examen Fisico</label>
+                            <textarea class="form-control" name="examenfisico" id="examenfisico">{{ old('examenfisico', $historiaclinica->examenfisico) }}</textarea>
+                            @error('examenfisico')
+                            <br>
+                            <small>*{{$message}}</small>
+                            <br>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="apaterno">Plan de Accion</label>
-                            <textarea class="form-control" name="planaccion" id="planaccion">{{ $historiaclinica->planaccion }}</textarea>
+                            <label for="analisisclinico">Analisis Clinico</label>
+                            <textarea class="form-control" name="analisisclinico" id="analisisclinico">{{ old('analisisclinico', $historiaclinica->analisisclinico) }}</textarea>
+                            @error('analisisclinico')
+                            <br>
+                            <small>*{{$message}}</small>
+                            <br>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="planaccion">Plan de Accion</label>
+                            <textarea class="form-control" name="planaccion" id="planaccion">{{ old('planaccion', $historiaclinica->planaccion) }}</textarea>
+                            @error('planaccion')
+                            <br>
+                            <small>*{{$message}}</small>
+                            <br>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary" type="submit">Finalizar</button>
@@ -105,6 +134,12 @@
     <script>
         ClassicEditor
         .create( document.querySelector( '#motivoconsulta' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+        ClassicEditor
+        .create( document.querySelector( '#enfermedadactual' ) )
         .catch( error => {
             console.error( error );
         } );

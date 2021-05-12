@@ -27,7 +27,7 @@
     </div>
     <div class="card">
         <div class="card-body">
-        <form action="{{ route('signosvitales.update', $signosvitales->id) }}" method="POST">
+        <form action="{{ route('signosvitales.update', $signosvitales->cod) }}" method="POST">
         @csrf
         @method('put')
             <div class="form-group row">

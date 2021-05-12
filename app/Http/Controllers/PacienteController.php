@@ -14,6 +14,10 @@ class PacienteController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:pacientes.index')->only('index');
+        $this->middleware('can:pacientes.create')->only('create', 'store');
+        $this->middleware('can:pacientes.edit')->only('edit', 'update');
+        $this->middleware('can:pacientes.show')->only('show');
     }
 
     public function index()
@@ -49,12 +53,6 @@ class PacienteController extends Controller
         return redirect()->route('pacientes.index');
     }
 
-    public function show($id)
-    {
-        $paciente = Paciente::findOrFail($id);
-        return view('pacientes.show')->with('paciente',$paciente);
-    }
-
     public function edit($id)
     {
         $paciente = Paciente::findOrFail($id);
@@ -81,5 +79,11 @@ class PacienteController extends Controller
         $paciente->update();
 
         return redirect()->route('pacientes.index');
+    }
+
+    public function show($id)
+    {
+        $paciente = Paciente::findOrFail($id);
+        return view('pacientes.show')->with('paciente',$paciente);
     }
 }

@@ -41,6 +41,9 @@
                 </div>
                 <label class="col-sm-3 col-form-label">	kg.</label>
             </div>
+            @error('peso')
+            <small>*{{$message}}</small>
+            @enderror
             <div class="form-group row">
                 <label for="talla" class="col-sm-3 col-form-label">Talla</label>
                 <div class="col-sm-2">
@@ -48,6 +51,9 @@
                 </div>
                 <label class="col-sm-3 col-form-label">cm.</label>
             </div>
+            @error('talla')
+            <small>*{{$message}}</small>
+            @enderror
             <div class="form-group row">
                 <label for="temperatura" class="col-sm-3 col-form-label">Temperatura</label>
                 <div class="col-sm-2">
@@ -55,6 +61,9 @@
                 </div>
                 <label class="col-sm-3 col-form-label">°C</label>
             </div>
+            @error('temperatura')
+            <small>*{{$message}}</small>
+            @enderror
             <div class="form-group row">
                 <label for="paasistolica" class="col-sm-3 col-form-label">Presion Arterial Sistolica</label>
                 <div class="col-sm-2">

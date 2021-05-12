@@ -7,6 +7,9 @@ use App\Models\Historiaclinica;
 use App\Models\Consultamedica;
 use App\Models\Signosvitales;
 use App\Models\Paciente;
+
+use App\Http\Requests\HistoriaclinicaFormRequest;
+
 use DB;
 
 class HistoriaclinicaController extends Controller
@@ -14,6 +17,10 @@ class HistoriaclinicaController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:historiaclinica.index')->only('index');
+        $this->middleware('can:historiaclinica.create')->only('create', 'store');
+        $this->middleware('can:historiaclinica.edit')->only('edit', 'update');
+        $this->middleware('can:historiaclinica.completadas')->only('completadas');
     }
 
     public function index()
@@ -47,12 +54,13 @@ class HistoriaclinicaController extends Controller
         return view('historiaclinica.create', compact('paciente', 'signosvitales'));
     }
 
-    public function store(Request $request)
+    public function store(HistoriaclinicaFormRequest $request)
     {
         $historiaclinica = new Historiaclinica;
         $historiaclinica->solicitud_consultamedica_id=$request->get('solicitud_consultamedica_id');
         $historiaclinica->edad=$request->get('edad');
         $historiaclinica->motivoconsulta=$request->get('motivoconsulta');
+        $historiaclinica->enfermedadactual=$request->get('enfermedadactual');
         $historiaclinica->examenfisico=$request->get('examenfisico');
         $historiaclinica->analisisclinico=$request->get('analisisclinico');
         $historiaclinica->planaccion=$request->get('planaccion');
@@ -95,18 +103,19 @@ class HistoriaclinicaController extends Controller
                     -> join('solicitud_consultamedica as c','hc.solicitud_consultamedica_id','=','c.id')
                     -> join('signosvitales as sv','c.id','=','sv.solicitud_consultamedica_id')
                     -> join('paciente as p','c.paciente_id','=','p.id')
-                    -> select('hc.id as cod','hc.motivoconsulta', 'hc.examenfisico','hc.analisisclinico','hc.planaccion','p.*','sv.*')
+                    -> select('hc.id as cod','hc.motivoconsulta','hc.enfermedadactual','hc.examenfisico','hc.analisisclinico','hc.planaccion','p.*','sv.*')
                     -> where('hc.id', '=', $id)
                     -> first();
 
         return view('historiaclinica.edit',compact('historiaclinica'));
     }
 
-    public function update(Request $request, $id)
+    public function update(HistoriaclinicaFormRequest $request, $id)
     {
         $historiaclinica = Historiaclinica::findOrFail($id);
 
         $historiaclinica->motivoconsulta=$request->get('motivoconsulta');
+        $historiaclinica->enfermedadactual=$request->get('enfermedadactual');
         $historiaclinica->examenfisico=$request->get('examenfisico');
         $historiaclinica->analisisclinico=$request->get('analisisclinico');
         $historiaclinica->planaccion=$request->get('planaccion');
@@ -117,7 +126,7 @@ class HistoriaclinicaController extends Controller
         return redirect()->route('historiaclinica.completadas');
     }
 
-    public function PDFHistoriaclinica($id){
+    /*public function PDFHistoriaclinica($id){
         $historiaclinica = DB::table('historiaclinica as hc')
                     -> join('solicitud_consultamedica as c','hc.solicitud_consultamedica_id','=','c.id')
                     -> join('signosvitales as sv','c.id','=','sv.solicitud_consultamedica_id')
@@ -126,5 +135,5 @@ class HistoriaclinicaController extends Controller
                     -> where('hc.id', '=', $id)
                     -> first();
         return view('prueba', compact('historiaclinica'));
-    }
+    }*/
 }
