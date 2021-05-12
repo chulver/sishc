@@ -45,7 +45,7 @@ class ConsultamedicaController extends Controller
         return view('consultas.create', compact('pacientes','servicios','users'));
     }
 
-    public function store(ConsultamedicaFormRequest $request)
+    public function store(Request $request)
     {
         $consulta = new Consultamedica;
 

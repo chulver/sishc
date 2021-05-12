@@ -20,7 +20,7 @@
                     <option value="{{$paciente->id}}">{{$paciente->paciente}}</option>
                     @endforeach
                 </select>
-                @error('paciente_id')
+                @error('paciente')
                 <br>
                     <small>*{{$message}}</small>
                 <br>
@@ -35,7 +35,7 @@
                     <option value="{{$servicio->id}}">{{$servicio->serviciomedico}}</option>
                     @endforeach
                 </select>
-                @error('serviciomedico_id')
+                @error('serviciomedico')
                 <br>
                     <small>*{{$message}}</small>
                 <br>
