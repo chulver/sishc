@@ -41,7 +41,7 @@ class HistoriaclinicaController extends Controller
     {
         $paciente = DB::table('solicitud_consultamedica as c')
                     -> join('paciente as p','c.paciente_id','=','p.id')
-                    -> select(DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'p.sexo','p.fechanacimiento')
+                    -> select('p.apaterno','p.amaterno','p.nombre','p.sexo','p.fechanacimiento')
                     -> where('c.id','=', $id)
                     -> first();
 

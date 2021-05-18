@@ -42,7 +42,7 @@ class SignosvitalesController extends Controller
                     -> join('paciente as p','c.paciente_id','=','p.id')
                     -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
                     -> join('users as u','c.medico','=','u.id')
-                    -> select('c.id','c.paciente_id', DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'), 'sexo','c.serviciomedico_id','s.serviciomedico','name as medico', 'p.fechanacimiento')
+                    -> select('c.id','c.paciente_id','p.apaterno','p.amaterno','nombre','sexo','c.serviciomedico_id','s.serviciomedico','name as medico', 'p.fechanacimiento')
                     -> where('c.id', '=', $id)
                     -> first();
         
@@ -57,8 +57,7 @@ class SignosvitalesController extends Controller
         $signosvitales->peso=$request->get('peso');
         $signosvitales->talla=$request->get('talla');
         $signosvitales->temperatura=$request->get('temperatura');
-        $signosvitales->pasistolica=$request->get('pasistolica');
-        $signosvitales->padiastolica=$request->get('padiastolica');
+        $signosvitales->presionarterial=$request->get('presionarterial');
         $signosvitales->fcardiaca=$request->get('fcardiaca');
     	$signosvitales->frespiratoria=$request->get('frespiratoria');
         $signosvitales->estado='1';
@@ -94,7 +93,7 @@ class SignosvitalesController extends Controller
                     -> join('paciente as p','c.paciente_id','=','p.id')
                     -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
                     -> join('users as u','c.medico','=','u.id')
-                    -> select('sv.id as cod','sv.edad','sv.peso','sv.talla','sv.temperatura','sv.pasistolica','sv.padiastolica','sv.fcardiaca','sv.frespiratoria','s.*','p.*','u.*')
+                    -> select('sv.id as cod','sv.edad','sv.peso','sv.talla','sv.temperatura','sv.presionarterial','sv.fcardiaca','sv.frespiratoria','s.*','p.*','u.*')
                     -> where('sv.id', '=', $id)
                     -> first();
 
@@ -108,8 +107,7 @@ class SignosvitalesController extends Controller
         $signosvitales->peso=$request->get('peso');
         $signosvitales->talla=$request->get('talla');
         $signosvitales->temperatura=$request->get('temperatura');
-        $signosvitales->pasistolica=$request->get('pasistolica');
-        $signosvitales->padiastolica=$request->get('padiastolica');
+        $signosvitales->presionarterial=$request->get('presionarterial');
         $signosvitales->fcardiaca=$request->get('fcardiaca');
     	$signosvitales->frespiratoria=$request->get('frespiratoria');
         $signosvitales->updated_at=NOW();

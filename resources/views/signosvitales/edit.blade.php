@@ -10,18 +10,24 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <label class="col-sm-1 col-form-label">Paciente:</label>
-                <p class="col-sm-4 col-form-label">{{ $signosvitales->apaterno }} {{ $signosvitales->amaterno }} {{ $signosvitales->nombre }}</p>
-                <label class="col-sm-1 col-form-label">Sexo:</label>
-                <p class="col-sm-2 col-form-label">{{ $signosvitales->sexo }}</p>
-                <label class="col-sm-1 col-form-label">Edad:</label>
-                <p class="col-sm-3 col-form-label">{{ $signosvitales->edad }} AÑOS</p>
+                <label class="col-sm-1 col-form-label">Nombre:</label>
+                <p class="col-sm-3 col-form-label">{{ $signosvitales->nombre }}</p>
+                <label class="col-sm-2 col-form-label">Apellido paterno:</label>
+                <p class="col-sm-2 col-form-label">{{ $signosvitales->apaterno }}</p>
+                <label class="col-sm-2 col-form-label">Apellido materno:</label>
+                <p class="col-sm-2 col-form-label">{{ $signosvitales->amaterno }}</p>
             </div>
             <div class="row">
-                <label class="col-sm-1 col-form-label">Servicio:</label>
-                <p class="col-sm-4 col-form-label">{{ $signosvitales->serviciomedico }}</p>
+                <label class="col-sm-1 col-form-label">Sexo:</label>
+                <p class="col-sm-3 col-form-label">{{ $signosvitales->sexo }}</p>
+                <label class="col-sm-2 col-form-label">Edad:</label>
+                <p class="col-sm-2 col-form-label">{{ $signosvitales->edad }} AÑOS</p>
+            </div>
+            <div class="row">
                 <label class="col-sm-1 col-form-label">Medico:</label>
-                <p class="col-sm-6 col-form-label">{{ $signosvitales->name }}</p>
+                <p class="col-sm-3 col-form-label">{{ $signosvitales->name }}</p>
+                <label class="col-sm-2 col-form-label">Servicio:</label>
+                <p class="col-sm-3 col-form-label">{{ $signosvitales->serviciomedico }}</p>
             </div>
         </div>
     </div>
@@ -31,53 +37,38 @@
         @csrf
         @method('put')
             <div class="form-group row">
-                <label for="peso" class="col-sm-3 col-form-label">Peso</label>
+                <label for="peso" class="col-sm-1 col-form-label">Peso</label>
                 <div class="col-sm-2">
-                    <input type="number" class="form-control" name="peso" value="{{ $signosvitales->peso }}" step="any">
+                    <input type="number" class="form-control" name="peso" step="any" value="{{ $signosvitales->peso }}">
                 </div>
-                <label class="col-sm-3 col-form-label">	kg.</label>
-            </div>
-            <div class="form-group row">
-                <label for="talla" class="col-sm-3 col-form-label">Talla</label>
+                <p class="col-sm-1 col-form-label">kg.</p>
+                <label for="talla" class="col-sm-1 col-form-label">Talla</label>
                 <div class="col-sm-2">
                     <input type="number" class="form-control" name="talla" value="{{ $signosvitales->talla }}">
                 </div>
-                <label class="col-sm-3 col-form-label">cm.</label>
-            </div>
-            <div class="form-group row">
-                <label for="temperatura" class="col-sm-3 col-form-label">Temperatura</label>
+                <p class="col-sm-1 col-form-label">cm.</p>
+                <label for="temperatura" class="col-sm-1 col-form-label">T</label>
                 <div class="col-sm-2">
-                    <input type="number" class="form-control" name="temperatura" value="{{ $signosvitales->temperatura }}" step="any">
+                    <input type="number" class="form-control" name="temperatura" step="any" value="{{ $signosvitales->temperatura }}">
                 </div>
-                <label class="col-sm-3 col-form-label">°C</label>
+                <p class="col-sm-1 col-form-label">°C</p>
             </div>
             <div class="form-group row">
-                <label for="paasistolica" class="col-sm-3 col-form-label">Presion Arterial Sistolica</label>
+                <label for="presionarterial" class="col-sm-1 col-form-label">PA</label>
                 <div class="col-sm-2">
-                    <input type="number" class="form-control" name="pasistolica" value="{{ $signosvitales->pasistolica }}">
+                    <input type="text" class="form-control" name="presionarterial" value="{{ $signosvitales->presionarterial }}">
                 </div>
-                <label class="col-sm-3 col-form-label">mm Hg</label>
-            </div>
-            <div class="form-group row">
-                <label for="padiastolica" class="col-sm-3 col-form-label">Presion Arterial Diastolica</label>
-                <div class="col-sm-2">
-                    <input type="number" class="form-control" name="padiastolica" value="{{ $signosvitales->padiastolica }}">
-                </div>
-                <label class="col-sm-3 col-form-label">mm Hg</label>
-            </div>
-            <div class="form-group row">
-                <label for="fcardiaca" class="col-sm-3 col-form-label">Frecuencia Cardiaca</label>
+                <p class="col-sm-1 col-form-label">mm Hg</p>
+                <label for="fcardiaca" class="col-sm-1 col-form-label">FC</label>
                 <div class="col-sm-2">
                     <input type="number" class="form-control" name="fcardiaca" value="{{ $signosvitales->fcardiaca }}">
                 </div>
-                <label class="col-sm-3 col-form-label">lpm</label>
-            </div>
-            <div class="form-group row">
-                <label for="frespiratoria" class="col-sm-3 col-form-label">Frecuencia Respiratoria</label>
+                <p class="col-sm-1 col-form-label">lpm</p>
+                <label for="frespiratoria" class="col-sm-1 col-form-label">FR</label>
                 <div class="col-sm-2">
                     <input type="number" class="form-control" name="frespiratoria" value="{{ $signosvitales->frespiratoria }}">
                 </div>
-                <label class="col-sm-3 col-form-label">rpm</label>
+                <p class="col-sm-1 col-form-label">rpm</p>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>

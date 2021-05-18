@@ -10,24 +10,31 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <label class="col-sm-1 col-form-label">Paciente:</label>
-                <p class="col-sm-4 col-form-label">{{ $consulta->paciente }}</p>
-                <label class="col-sm-1 col-form-label">Sexo:</label>
-                <p class="col-sm-2 col-form-label">{{ $consulta->sexo }}</p>
-                <label class="col-sm-1 col-form-label">Edad:</label>
-                <p class="col-sm-3 col-form-label edad"></p>
+                <label class="col-sm-1 col-form-label">Nombre:</label>
+                <p class="col-sm-3 col-form-label">{{ $consulta->nombre }}</p>
+                <label class="col-sm-2 col-form-label">Apellido paterno:</label>
+                <p class="col-sm-2 col-form-label">{{ $consulta->apaterno }}</p>
+                <label class="col-sm-2 col-form-label">Apellido materno:</label>
+                <p class="col-sm-2 col-form-label">{{ $consulta->amaterno }}</p>
             </div>
             <div class="row">
-                <label class="col-sm-1 col-form-label">Servicio:</label>
-                <p class="col-sm-4 col-form-label">{{ $consulta->serviciomedico }}</p>
+                <label class="col-sm-1 col-form-label">Sexo:</label>
+                <p class="col-sm-3 col-form-label">{{ $consulta->sexo }}</p>
+                <label class="col-sm-2 col-form-label">Edad:</label>
+                <p class="col-sm-2 col-form-label edad"></p>
+            </div>
+            <div class="row">
                 <label class="col-sm-1 col-form-label">Medico:</label>
-                <p class="col-sm-6 col-form-label">{{ $consulta->medico }}</p>
+                <p class="col-sm-3 col-form-label">{{ $consulta->medico }}</p>
+                <label class="col-sm-2 col-form-label">Servicio:</label>
+                <p class="col-sm-3 col-form-label">{{ $consulta->serviciomedico }}</p>
             </div>
             <div class="row">
                 <input type="hidden" id="fechanacimiento" value="{{ $consulta->fechanacimiento }}">
             </div>
         </div>
     </div>
+
     <div class="card">
         <div class="card-body">
         <form action="{{ route('signosvitales.store') }}" method="POST">
@@ -35,62 +42,38 @@
         @csrf
             <input type="hidden" name="solicitud_consultamedica_id" value="{{ $consulta->id }}">
             <div class="form-group row">
-                <label for="peso" class="col-sm-3 col-form-label">Peso</label>
+                <label for="peso" class="col-sm-1 col-form-label">Peso</label>
                 <div class="col-sm-2">
                     <input type="number" class="form-control" name="peso" step="any">
                 </div>
-                <label class="col-sm-3 col-form-label">	kg.</label>
-            </div>
-            @error('peso')
-            <small>*{{$message}}</small>
-            @enderror
-            <div class="form-group row">
-                <label for="talla" class="col-sm-3 col-form-label">Talla</label>
+                <p class="col-sm-1 col-form-label">kg.</p>
+                <label for="talla" class="col-sm-1 col-form-label">Talla</label>
                 <div class="col-sm-2">
                     <input type="number" class="form-control" name="talla">
                 </div>
-                <label class="col-sm-3 col-form-label">cm.</label>
-            </div>
-            @error('talla')
-            <small>*{{$message}}</small>
-            @enderror
-            <div class="form-group row">
-                <label for="temperatura" class="col-sm-3 col-form-label">Temperatura</label>
+                <p class="col-sm-1 col-form-label">cm.</p>
+                <label for="temperatura" class="col-sm-1 col-form-label">T</label>
                 <div class="col-sm-2">
                     <input type="number" class="form-control" name="temperatura" step="any">
                 </div>
-                <label class="col-sm-3 col-form-label">°C</label>
+                <p class="col-sm-1 col-form-label">°C</p>
             </div>
-            @error('temperatura')
-            <small>*{{$message}}</small>
-            @enderror
             <div class="form-group row">
-                <label for="paasistolica" class="col-sm-3 col-form-label">Presion Arterial Sistolica</label>
+                <label for="presionarterial" class="col-sm-1 col-form-label">PA</label>
                 <div class="col-sm-2">
-                    <input type="number" class="form-control" name="pasistolica">
+                    <input type="text" class="form-control" name="presionarterial">
                 </div>
-                <label class="col-sm-3 col-form-label">mm Hg</label>
-            </div>
-            <div class="form-group row">
-                <label for="padiastolica" class="col-sm-3 col-form-label">Presion Arterial Diastolica</label>
-                <div class="col-sm-2">
-                    <input type="number" class="form-control" name="padiastolica">
-                </div>
-                <label class="col-sm-3 col-form-label">mm Hg</label>
-            </div>
-            <div class="form-group row">
-                <label for="fcardiaca" class="col-sm-3 col-form-label">Frecuencia Cardiaca</label>
+                <p class="col-sm-1 col-form-label">mm Hg</p>
+                <label for="fcardiaca" class="col-sm-1 col-form-label">FC</label>
                 <div class="col-sm-2">
                     <input type="number" class="form-control" name="fcardiaca">
                 </div>
-                <label class="col-sm-3 col-form-label">lpm</label>
-            </div>
-            <div class="form-group row">
-                <label for="frespiratoria" class="col-sm-3 col-form-label">Frecuencia Respiratoria</label>
+                <p class="col-sm-1 col-form-label">lpm</p>
+                <label for="frespiratoria" class="col-sm-1 col-form-label">FR</label>
                 <div class="col-sm-2">
                     <input type="number" class="form-control" name="frespiratoria">
                 </div>
-                <label class="col-sm-3 col-form-label">	rpm</label>
+                <p class="col-sm-1 col-form-label">rpm</p>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>

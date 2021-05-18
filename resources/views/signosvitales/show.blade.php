@@ -12,20 +12,27 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <label class="col-sm-1 col-form-label">Paciente:</label>
-                <p class="col-sm-4 col-form-label">{{ $signosvitales->apaterno }} {{ $signosvitales->amaterno }} {{ $signosvitales->nombre }}</p>
-                <label class="col-sm-1 col-form-label">Sexo:</label>
-                <p class="col-sm-2 col-form-label">{{ $signosvitales->sexo }}</p>
-                <label class="col-sm-1 col-form-label">Edad:</label>
-                <p class="col-sm-3 col-form-label">{{ $signosvitales->edad }}  AÑOS</p>
+                <label class="col-sm-1 col-form-label">Nombre:</label>
+                <p class="col-sm-3 col-form-label">{{ $signosvitales->nombre }}</p>
+                <label class="col-sm-2 col-form-label">Apellido paterno:</label>
+                <p class="col-sm-2 col-form-label">{{ $signosvitales->apaterno }}</p>
+                <label class="col-sm-2 col-form-label">Apellido materno:</label>
+                <p class="col-sm-2 col-form-label">{{ $signosvitales->amaterno }}</p>
             </div>
             <div class="row">
-                <label class="col-sm-1 col-form-label">Servicio:</label>
-                <p class="col-sm-4 col-form-label">{{ $signosvitales->serviciomedico }}</p>
+                <label class="col-sm-1 col-form-label">Sexo:</label>
+                <p class="col-sm-3 col-form-label">{{ $signosvitales->sexo }}</p>
+                <label class="col-sm-2 col-form-label">Edad:</label>
+                <p class="col-sm-2 col-form-label">{{ $signosvitales->edad }} AÑOS</p>
+            </div>
+            <div class="row">
                 <label class="col-sm-1 col-form-label">Medico:</label>
-                <p class="col-sm-6 col-form-label">{{ $signosvitales->name }}</p>
+                <p class="col-sm-3 col-form-label">{{ $signosvitales->name }}</p>
+                <label class="col-sm-2 col-form-label">Servicio:</label>
+                <p class="col-sm-3 col-form-label">{{ $signosvitales->serviciomedico }}</p>
             </div>
         </div>
+    </div>
     </div>  
 
     <div class="card">
@@ -34,39 +41,20 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <label class="col-sm-3">Peso:</label>
-                <p class="col-sm-1">{{ $signosvitales->peso }}</p>
-                <p class="col-sm-1">kg.</p>
+                <label class="col-sm-1">Peso:</label>
+                <p class="col-sm-3">{{ $signosvitales->peso }} kg.</p>
+                <label class="col-sm-1">Talla:</label>
+                <p class="col-sm-3">{{ $signosvitales->talla }} cm.</p>
+                <label class="col-sm-1">T:</label>
+                <p class="col-sm-3">{{ $signosvitales->temperatura }} °C</p>
             </div>
             <div class="row">
-                <label class="col-sm-3">Talla:</label>
-                <p class="col-sm-1">{{ $signosvitales->talla }}</p>
-                <p class="col-sm-1">cm.</p>
-            </div>
-            <div class="row">
-                <label class="col-sm-3">Temperatura:</label>
-                <p class="col-sm-1">{{ $signosvitales->temperatura }}</p>
-                <p class="col-sm-1">°C</p>
-            </div>
-            <div class="row">
-                <label class="col-sm-3">Presion Arterial Sistolica:</label>
-                <p class="col-sm-1">{{ $signosvitales->pasistolica }}</p>
-                <p class="col-sm-1">mm Hg</p>
-            </div>
-            <div class="row">
-                <label class="col-sm-3">Presion Arterial Diastolica:</label>
-                <p class="col-sm-1">{{ $signosvitales->padiastolica }}</p>
-                <p class="col-sm-1">mm Hg</p>
-            </div>
-            <div class="row">
-                <label class="col-sm-3">Frecuencia Cardiaca:</label>
-                <p class="col-sm-1">{{ $signosvitales->fcardiaca }}</p>
-                <p class="col-sm-1">lpm</p>
-            </div>
-            <div class="row">
-                <label class="col-sm-3">Frecuencia Respiratoria:</label>
-                <p class="col-sm-1">{{ $signosvitales->frespiratoria }}</p>
-                <p class="col-sm-1">rpm</p>
+                <label class="col-sm-1">PA:</label>
+                <p class="col-sm-3">{{ $signosvitales->presionarterial }} mm Hg</p>
+                <label class="col-sm-1">FC:</label>
+                <p class="col-sm-3">{{ $signosvitales->fcardiaca }} lpm</p>
+                <label class="col-sm-1">FR:</label>
+                <p class="col-sm-3">{{ $signosvitales->frespiratoria }} rpm</p>
             </div>
         </div>
     </div>

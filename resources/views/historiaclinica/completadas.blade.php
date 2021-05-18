@@ -60,6 +60,7 @@
     $(document).ready(function() {
         $('#completadas').DataTable({
             "lengthMenu": [[5,10, 50, -1], [5, 10, 50, "All"]],
+            "aaSorting": [[0,"desc"]],
             "language": {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",
