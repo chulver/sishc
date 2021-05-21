@@ -238,16 +238,16 @@ return [
             'can'  => 'manage-blog',
         ],
         [
+            'text'        => 'Pacientes',
+            'url'         => 'pacientes',
+            'icon'        => 'fas fa-fw fa-user-friends',
+            'can'         => 'pacientes.index',
+        ],
+        [
             'text'        => 'Ventas',
             'url'         => 'consultas',
             'icon'        => 'fas fa-fw fa-cart-arrow-down',
             'can'         => 'consultas.index',
-        ],
-        [
-            'text'        => 'Fichas',
-            'url'         => 'consultas/fichas',
-            'icon'        => 'fas fa-fw fa-clipboard-list',
-            'can'         => 'consultas.fichas',
         ],
         [
             'text'    => 'Signos Vitales',
@@ -288,15 +288,21 @@ return [
             ],
         ],
         [
-            'text'        => 'Pacientes',
-            'url'         => 'pacientes',
-            'icon'        => 'fas fa-fw fa-user-friends',
-            'can'         => 'pacientes.index',
+            'text'        => 'Fichas',
+            'url'         => 'consultas/fichas',
+            'icon'        => 'fas fa-fw fa-clipboard-list',
+            'can'         => 'consultas.fichas',
         ],
         [
             'text'        => 'Usuarios',
             'url'         => 'users',
             'icon'        => 'fas fa-fw fa-users',
+            'can'         => 'users.index',
+        ],
+        [
+            'text'        => 'Roles',
+            'url'         => 'roles',
+            'icon'        => 'fas fa-fw fa-users-cog',
             'can'         => 'users.index',
         ],
     ],

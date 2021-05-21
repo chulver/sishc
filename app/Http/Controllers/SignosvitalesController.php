@@ -52,6 +52,8 @@ class SignosvitalesController extends Controller
     public function store(SignosvitalesFormRequest $request)
     {
         $signosvitales = new Signosvitales;
+
+        $signosvitales->user_id=auth()->user()->id;
         $signosvitales->solicitud_consultamedica_id=$request->get('solicitud_consultamedica_id');
         $signosvitales->edad=$request->get('edad');
         $signosvitales->peso=$request->get('peso');
@@ -61,14 +63,16 @@ class SignosvitalesController extends Controller
         $signosvitales->fcardiaca=$request->get('fcardiaca');
     	$signosvitales->frespiratoria=$request->get('frespiratoria');
         $signosvitales->estado='1';
-        $signosvitales->created_at=NOW();
+        $fecha = Carbon::now('America/La_Paz');
+        $signosvitales->created_at=$fecha->toDateTimeString();
+        $signosvitales->updated_at=$fecha->toDateTimeString();
         $signosvitales->save();
 
         $consulta = Consultamedica::findOrFail($request->get('solicitud_consultamedica_id'));
         $consulta->estado='2';
         $consulta->update();
 
-        return redirect()->route('signosvitales.index');
+        return redirect()->route('signosvitales.index')->with('info', 'Signos Vitales registrado con exito');
     }
 
     public function completadas()
@@ -78,7 +82,8 @@ class SignosvitalesController extends Controller
                     -> join('paciente as p','c.paciente_id','=','p.id')
                     -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
                     -> join('users as u','c.medico','=','u.id')
-                    -> select('sv.id','sv.created_at as fecha',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','medico','sv.estado','name as medico')
+                    -> join('users as e','sv.user_id','=','e.id')
+                    -> select('sv.id','sv.created_at as fecha',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','medico','sv.estado','u.name as medico')
                     -> where('sv.estado', '=', 1)
                     -> orwhere('sv.estado', '=', 2)
                     -> get();
@@ -110,10 +115,11 @@ class SignosvitalesController extends Controller
         $signosvitales->presionarterial=$request->get('presionarterial');
         $signosvitales->fcardiaca=$request->get('fcardiaca');
     	$signosvitales->frespiratoria=$request->get('frespiratoria');
-        $signosvitales->updated_at=NOW();
+        $fecha = Carbon::now('America/La_Paz');
+        $signosvitales->updated_at=$fecha->toDateTimeString();
         $signosvitales->update();
 
-        return redirect()->route('signosvitales.completadas');
+        return redirect()->route('signosvitales.completadas')->with('info', 'Signos Vitales actualizada con exito');
     }
 
     public function show($id)

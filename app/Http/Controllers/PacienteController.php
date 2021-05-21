@@ -47,10 +47,10 @@ class PacienteController extends Controller
         $paciente->email=$request->get('email');
         $fecha = Carbon::now('America/La_Paz');
         $paciente->created_at=$fecha->toDateTimeString();
-
+        $paciente->updated_at=$fecha->toDateTimeString();
         $paciente->save();
 
-        return redirect()->route('pacientes.index');
+        return redirect()->route('pacientes.index')->with('info', 'Paciente registrado con exito');
     }
 
     public function edit($id)
@@ -78,7 +78,7 @@ class PacienteController extends Controller
 
         $paciente->update();
 
-        return redirect()->route('pacientes.index');
+        return redirect()->route('pacientes.index')->with('info', 'Paciente actualizado con exito');
     }
 
     public function show($id)

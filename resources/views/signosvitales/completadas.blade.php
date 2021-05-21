@@ -8,6 +8,12 @@
 
 @section('content')
 
+    @if (session('info'))
+        <div class="alert alert-success">
+            {{ session('info')}}
+        </div>
+    @endif
+
     <div class="card">
         <div class="card-body">
             <table id="consultas" class="table table-striped table-bordered shadow-lg mt-4">
@@ -31,7 +37,7 @@
                     <td>{{$sv->medico}}</td>
                     <td>
                     @if($sv->estado == '1')
-                        <a href="{{ route('signosvitales.edit', $sv->id) }}" class="btn btn-primary">Editar</a>
+                        <a href="{{ route('signosvitales.edit', $sv->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                     @elseif($sv->estado == '2')
                         <a href="{{ route('signosvitales.show', $sv->id) }}" class="btn btn-secondary">Ver</a>
                     @endif

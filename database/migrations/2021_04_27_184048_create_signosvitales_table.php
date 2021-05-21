@@ -15,6 +15,7 @@ class CreateSignosvitalesTable extends Migration
     {
         Schema::create('signosvitales', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->foreignId('solicitud_consultamedica_id');
             $table->foreign('solicitud_consultamedica_id')->references('id')->on('solicitud_consultamedica');
             $table->integer('edad');

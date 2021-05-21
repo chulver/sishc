@@ -46,8 +46,8 @@
                 <label for="medico">Medico</label>
                 <select name="medico" class="selectpicker form-control" data-live-search="true">
                     <option></option>
-                    @foreach($users as $user)
-                    <option value="{{$user->id}}">{{$user->name}}</option>
+                    @foreach($medicos as $medico)
+                    <option value="{{$medico->id}}">{{$medico->name}}</option>
                     @endforeach
                 </select>
                 @error('medico')

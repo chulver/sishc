@@ -11,6 +11,7 @@ use App\Models\Paciente;
 use App\Http\Requests\HistoriaclinicaFormRequest;
 
 use DB;
+use Carbon\Carbon;
 
 class HistoriaclinicaController extends Controller
 {
@@ -57,6 +58,8 @@ class HistoriaclinicaController extends Controller
     public function store(HistoriaclinicaFormRequest $request)
     {
         $historiaclinica = new Historiaclinica;
+
+        $historiaclinica->user_id=auth()->user()->id;
         $historiaclinica->solicitud_consultamedica_id=$request->get('solicitud_consultamedica_id');
         $historiaclinica->edad=$request->get('edad');
         $historiaclinica->motivoconsulta=$request->get('motivoconsulta');
@@ -65,7 +68,9 @@ class HistoriaclinicaController extends Controller
         $historiaclinica->analisisclinico=$request->get('analisisclinico');
         $historiaclinica->planaccion=$request->get('planaccion');
         $historiaclinica->estado='1';
-        $historiaclinica->created_at=NOW();
+        $fecha = Carbon::now('America/La_Paz');
+        $historiaclinica->created_at=$fecha->toDateTimeString();
+        $historiaclinica->updated_at=$fecha->toDateTimeString();
         $historiaclinica->save();
 
         //$signosvitales = Signosvitales::findOrFail($request->get('solicitud_consultamedica_id'));
@@ -79,7 +84,7 @@ class HistoriaclinicaController extends Controller
         $consulta->estado='3';
         $consulta->update();
 
-        return redirect()->route('historiaclinica.index');
+        return redirect()->route('historiaclinica.completadas')->with('info', 'Historia Clinica guardado con exito');
     }
 
     public function completadas()
@@ -120,10 +125,11 @@ class HistoriaclinicaController extends Controller
         $historiaclinica->analisisclinico=$request->get('analisisclinico');
         $historiaclinica->planaccion=$request->get('planaccion');
         $historiaclinica->estado='2';
-        $historiaclinica->updated_at=NOW();
+        $fecha = Carbon::now('America/La_Paz');
+        $historiaclinica->updated_at=$fecha->toDateTimeString();
         $historiaclinica->update();
 
-        return redirect()->route('historiaclinica.completadas');
+        return redirect()->route('historiaclinica.completadas')->with('info', 'Historia Clinica finalizado con exito');
     }
 
     /*public function PDFHistoriaclinica($id){

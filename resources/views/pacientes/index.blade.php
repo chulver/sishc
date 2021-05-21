@@ -3,18 +3,24 @@
 @section('title', 'Pacientes')
 
 @section('content_header')
-    <a href="{{ route('pacientes.create') }}" class="btn btn-secondary float-right">Registrar paciente</a>
+    <a href="{{ route('pacientes.create') }}" class="btn btn-secondary float-right">Paciente Nuevo</a>
     <h1>Listado de pacientes</h1>
 @stop
 
 @section('content')
+
+    @if (session('info'))
+        <div class="alert alert-success">
+            {{ session('info')}}
+        </div>
+    @endif
 
     <div class="card">
         <div class="card-body">
             <table id="pacientes" class="table table-striped table-bordered shadow-lg mt-4">
             <thead class="bg-secondary text-white">
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">CODIGO</th>
                     <th scope="col">PACIENTE</th>
                     <th scope="col">SEXO</th>
                     <th scope="col">ACCIONES</th>
@@ -27,8 +33,12 @@
                     <td>{{$paciente->apaterno}} {{$paciente->amaterno}} {{$paciente->nombre}}</td>
                     <td>{{$paciente->sexo}}</td>
                     <td>
-                        <a href="{{ route('pacientes.show', $paciente->id) }}" class="btn btn-secondary">Ver</a>
-                        <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-primary">Editar</a>
+                        @can('pacientes.show')
+                            <a href="{{ route('pacientes.show', $paciente->id) }}" class="btn btn-secondary"><i class="fas fa-eye"></i></a>
+                        @endcan
+                        @can('pacientes.edit')
+                            <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                        @endcan
                     </td>
                 </tr>
                 @endforeach

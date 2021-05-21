@@ -15,6 +15,7 @@ class Signosvitales extends Model
     public $timestamps=false;
 
     protected $fillable =[
+        'user_id',
         'solicitud_consultamedica_id',
     	'peso',
         'talla',

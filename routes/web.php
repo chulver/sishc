@@ -7,6 +7,7 @@ use App\Http\Controllers\SignosvitalesController;
 use App\Http\Controllers\HistoriaclinicaController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
 
 
 /*
@@ -24,6 +25,10 @@ Route::get('/', function () {
     return view('auth.login');
     //return view('welcome');
 });
+
+/**Paciente**/
+Route::resource('roles', RoleController::class)->names('roles');
+/***********/
 
 /**Paciente**/
 Route::resource('users', UserController::class)->only(['index', 'edit', 'update'])->names('users');

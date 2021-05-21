@@ -15,8 +15,7 @@ class Consultamedica extends Model
     public $timestamps=false;
 
     protected $fillable =[
-        'fecha',
-        'hora',
+        'user_id',
         'paciente_id',
         'serviciomedico_id',
     	'medico',

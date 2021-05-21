@@ -7,6 +7,12 @@
 @stop
 
 @section('content')
+
+    @if (session('info'))
+        <div class="alert alert-success">
+            {{ session('info')}}
+        </div>
+    @endif
     
     <div class="card">
         <div class="card-body">
@@ -31,7 +37,8 @@
                     @if($completada->estado == '1')
                         <a href="{{ route('historiaclinica.edit', $completada->id) }}" class="btn btn-primary">Finalizar atencion</a>
                     @elseif($completada->estado == '2')
-                        <a href="{{ route('generarPDF', $completada->id) }}" class="btn btn-success" target="_blank">Imprimir HC</a>
+                        <a href="{{ route('historiaclinica.edit', $completada->id) }}" class="btn btn-warning"><i class="fas fa-undo"></i></a>
+                        <a href="{{ route('generarPDF', $completada->id) }}" class="btn btn-success" target="_blank"><i class="fas fa-print"></i></a>
                     @endif
                     </td>
                 </tr>

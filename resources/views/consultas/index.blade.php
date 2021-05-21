@@ -11,6 +11,12 @@
 
 @section('content')
 
+    @if (session('info'))
+        <div class="alert alert-success">
+            {{ session('info')}}
+        </div>
+    @endif
+
     <div class="card">
         <div class="card-body">
             <table id="consultas" class="table table-striped table-bordered shadow-lg mt-4">
@@ -33,8 +39,12 @@
                     <td>{{$consulta->serviciomedico}}</td>
                     <td>{{$consulta->medico}}</td>
                     <td>
-                        <a href="{{ route('consultas.edit', $consulta->id) }}" class="btn btn-primary">Editar</a>
-                        <button class="btn btn-danger" data-target="#modal-delete-{{$consulta->id}}" data-toggle="modal">Eliminar</button>
+                        @can('consultas.edit')
+                            <a href="{{ route('consultas.edit', $consulta->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                        @endcan
+                        @can('consultas.destroy')
+                            <button class="btn btn-danger" data-target="#modal-delete-{{$consulta->id}}" data-toggle="modal"><i class="fas fa-trash-alt"></i></button>
+                        @endcan
                     </td>
                 </tr>
                 @include('consultas.modal')

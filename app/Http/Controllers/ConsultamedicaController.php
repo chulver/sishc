@@ -8,6 +8,7 @@ use App\Models\Consultamedica;
 use App\Http\Requests\ConsultamedicaFormRequest;
 
 use DB;
+use Carbon\Carbon;
 
 class ConsultamedicaController extends Controller
 {
@@ -40,24 +41,31 @@ class ConsultamedicaController extends Controller
                     ->select('p.id',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'))
                     ->get();
         $servicios = DB::table('serviciomedico')->get();
-        $users = DB::table('users')->get();
+        //$users = DB::table('users')->get();
+        $medicos = DB::table('model_has_roles')
+                -> join('users as u','model_id','=','u.id') 
+                -> select('u.id','u.name')
+                -> where('model_id', '=', 2)       
+                -> get();
 
-        return view('consultas.create', compact('pacientes','servicios','users'));
+        return view('consultas.create', compact('pacientes','servicios','medicos'));
     }
 
     public function store(Request $request)
     {
         $consulta = new Consultamedica;
 
+        $consulta->user_id=auth()->user()->id;
         $consulta->paciente_id=$request->get('paciente');
         $consulta->serviciomedico_id=$request->get('serviciomedico');
         $consulta->medico=$request->get('medico');
         $consulta->estado='1';
-        $consulta->created_at=NOW();
-
+        $fecha = Carbon::now('America/La_Paz');
+        $consulta->created_at=$fecha->toDateTimeString();
+        $consulta->updated_at=$fecha->toDateTimeString();
         $consulta->save();
 
-        return redirect()->route('consultas.index');
+        return redirect()->route('consultas.index')->with('info', 'Venta registrado con exito');
     }
 
     public function edit($id)
@@ -85,11 +93,11 @@ class ConsultamedicaController extends Controller
         $consulta->paciente_id=$request->get('paciente');
         $consulta->serviciomedico_id=$request->get('serviciomedico');
         $consulta->medico=$request->get('medico');
-        $consulta->updated_at=NOW();
-
+        $fecha = Carbon::now('America/La_Paz');
+        $consulta->updated_at=$fecha->toDateTimeString();
         $consulta->update();
 
-        return redirect()->route('consultas.index');
+        return redirect()->route('consultas.index')->with('info', 'Venta actualizada con exito');
     }
 
     public function destroy($id)
@@ -98,7 +106,7 @@ class ConsultamedicaController extends Controller
         $consulta->estado='0';
         $consulta->update();
 
-        return redirect()->route('consultas.index');
+        return redirect()->route('consultas.index')->with('info', 'Venta eliminada con exito');
     }
 
     public function fichas()
