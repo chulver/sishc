@@ -26,16 +26,20 @@ Route::get('/', function () {
     //return view('welcome');
 });
 
-/**Paciente**/
+/**Roles**/
 Route::resource('roles', RoleController::class)->names('roles');
 /***********/
 
-/**Paciente**/
+/**User**/
 Route::resource('users', UserController::class)->only(['index', 'edit', 'update'])->names('users');
 /***********/
 
-/**Paciente**/
+/**PDF**/
 Route::get('pdf/{consulta}',[PDFController::class, 'PDFHistoriaclinica'])->name('generarPDF');
+/***********/
+
+/**Pacientes**/
+Route::resource('pacientes', PacienteController::class)->only(['index','create','store','edit','update','show'])->names('pacientes');
 /***********/
 
 /**Ventas**/
@@ -44,6 +48,7 @@ Route::get('consultas/create',[ConsultamedicaController::class, 'create'])->name
 Route::post('consultas',[ConsultamedicaController::class, 'store'])->name('consultas.store');
 Route::get('consultas/{consulta}/edit',[ConsultamedicaController::class, 'edit'])->name('consultas.edit');
 Route::put('consultas/{consulta}',[ConsultamedicaController::class, 'update'])->name('consultas.update');
+Route::get('consultas/{consulta}/show',[ConsultamedicaController::class, 'show'])->name('consultas.show');
 Route::get('consultas/fichas',[ConsultamedicaController::class, 'fichas'])->name('consultas.fichas');
 Route::delete('consultas/{consulta}',[ConsultamedicaController::class, 'destroy'])->name('consultas.destroy');
 /***********/
@@ -66,15 +71,6 @@ Route::get('historiaclinica/completadas',[HistoriaclinicaController::class, 'com
 Route::get('historiaclinica/{historia}/edit',[HistoriaclinicaController::class, 'edit'])->name('historiaclinica.edit');
 Route::put('historiaclinica/{completada}',[HistoriaclinicaController::class, 'update'])->name('historiaclinica.update');
 //Route::get('pdf/{consulta}',[HistoriaclinicaController::class, 'PDFHistoriaclinica'])->name('generarPDF');
-/***********/
-
-/**Paciente**/
-Route::get('pacientes',[PacienteController::class, 'index'])->name('pacientes.index');
-Route::get('pacientes/create',[PacienteController::class, 'create'])->name('pacientes.create');
-Route::post('pacientes',[PacienteController::class, 'store'])->name('pacientes.store');
-Route::get('pacientes/{paciente}/show',[PacienteController::class, 'show'])->name('pacientes.show');
-Route::get('pacientes/{paciente}/edit',[PacienteController::class, 'edit'])->name('pacientes.edit');
-Route::put('pacientes/{paciente}',[PacienteController::class, 'update'])->name('pacientes.update');
 /***********/
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

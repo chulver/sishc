@@ -16,6 +16,7 @@ class CreateSolicitudConsultamedicaTable extends Migration
         Schema::create('solicitud_consultamedica', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->integer('numeroturno');
             $table->foreignId('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('paciente');
             $table->foreignId('serviciomedico_id');

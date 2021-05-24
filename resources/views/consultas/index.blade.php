@@ -22,10 +22,11 @@
             <table id="consultas" class="table table-striped table-bordered shadow-lg mt-4">
             <thead class="bg-secondary text-white">
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">N°</th>
                     <th scope="col">FECHA</th>
+                    <th scope="col">HORA</th>
                     <th scope="col">PACIENTE</th>
-                    <th scope="col">SERVICO</th>
+                    <th scope="col">SERVICIO</th>
                     <th scope="col">MEDICO</th>
                     <th scope="col">ACCION</th>
                 </tr>
@@ -33,18 +34,24 @@
             <tbody>
                 @foreach ($consultas as $consulta)
                 <tr>
-                    <td>{{$consulta->id}}</td>
+                    <td>{{$consulta->numeroturno}}</td>
                     <td>{{$consulta->fecha}}</td>
+                    <td>{{$consulta->hora}}</td>
                     <td>{{$consulta->paciente}}</td>
                     <td>{{$consulta->serviciomedico}}</td>
                     <td>{{$consulta->medico}}</td>
                     <td>
-                        @can('consultas.edit')
-                            <a href="{{ route('consultas.edit', $consulta->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                        @endcan
-                        @can('consultas.destroy')
-                            <button class="btn btn-danger" data-target="#modal-delete-{{$consulta->id}}" data-toggle="modal"><i class="fas fa-trash-alt"></i></button>
-                        @endcan
+                        @if($consulta->estado == '1')
+                            @can('consultas.edit')
+                                <a href="{{ route('consultas.edit', $consulta->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                            @endcan
+                            @can('consultas.destroy')
+                                <button class="btn btn-danger" data-target="#modal-delete-{{$consulta->id}}" data-toggle="modal"><i class="fas fa-trash-alt"></i></button>
+                            @endcan
+                        @else
+                            <a href="{{ route('consultas.show', $consulta->id) }}" class="btn btn-secondary">Ver</a>
+                        @endif
+                        
                     </td>
                 </tr>
                 @include('consultas.modal')

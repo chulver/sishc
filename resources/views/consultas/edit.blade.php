@@ -13,48 +13,53 @@
         <form action="{{ route('consultas.update', $consulta->id) }}" method="POST">
         @csrf
         @method('put')
-            <div class="form-group">
-                <label for="paciente">Paciente</label>
-                <select name="paciente" class="form-control selectpicker" data-live-search="true">
-                @foreach($pacientes as $paciente)
-                    @if ($paciente->id == $consulta->paciente_id)
-                        <option value="{{$consulta->paciente_id}}" selected>{{$consulta->paciente}}</option>
-                    @else
-                        <option value="{{$paciente->id}}">{{$paciente->paciente}}</option>
-                    @endif
-                @endforeach
-                </select>
+            <div class="form-group row">
+                <label for="paciente" class="col-sm-1 col-form-label">Paciente:</label>
+                <div class="col-sm-11">
+                    <select name="paciente" class="form-control selectpicker" data-live-search="true">
+                    @foreach($pacientes as $paciente)
+                        @if ($paciente->id == $consulta->paciente_id)
+                            <option value="{{$consulta->paciente_id}}" selected>{{$consulta->paciente}}</option>
+                        @else
+                            <option value="{{$paciente->id}}">{{$paciente->paciente}}</option>
+                        @endif
+                    @endforeach
+                    </select>
+                </div>
             </div>
         
-            <div class="form-group">
-                <label for="serviciomedico">Servicio</label>
-                <select name="serviciomedico" class="form-control selectpicker" data-live-search="true">
-                @foreach($servicios as $servicio)
-                    @if ($servicio->id == $consulta->serviciomedico_id)
-                        <option value="{{$consulta->serviciomedico_id}}" selected>{{$consulta->serviciomedico}}</option>
-                    @else
-                        <option value="{{$servicio->id}}">{{$servicio->serviciomedico}}</option>
-                    @endif
-                @endforeach
-                </select>
+            <div class="form-group row">
+                <label for="serviciomedico" class="col-sm-1 col-form-label">Servicio:</label>
+                <div class="col-sm-11">
+                    <select name="serviciomedico" class="form-control selectpicker" data-live-search="true">
+                    @foreach($servicios as $servicio)
+                        @if ($servicio->id == $consulta->serviciomedico_id)
+                            <option value="{{$consulta->serviciomedico_id}}" selected>{{$consulta->serviciomedico}}</option>
+                        @else
+                            <option value="{{$servicio->id}}">{{$servicio->serviciomedico}}</option>
+                        @endif
+                    @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="medico" class="col-sm-1 col-form-label">Medico:</label>
+                <div class="col-sm-11">
+                    <select name="medico" class="form-control selectpicker" data-live-search="true">
+                    @foreach($medicos as $medico)
+                        @if ($medico->id == $consulta->medico)
+                            <option value="{{$consulta->medico}}" selected>{{$consulta->name}}</option>
+                        @else
+                            <option value="{{$medico->id}}">{{$medico->name}}</option>
+                        @endif
+                    @endforeach
+                    </select>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="medico">Medico</label>
-                <select name="medico" class="form-control selectpicker" data-live-search="true">
-                @foreach($users as $user)
-                    @if ($user->id == $consulta->medico)
-                        <option value="{{$consulta->medico}}" selected>{{$consulta->name}}</option>
-                    @else
-                        <option value="{{$user->id}}">{{$user->name}}</option>
-                    @endif
-                @endforeach
-                </select>
-            </div>
-
-            <div class="form-group">
-                <button class="btn btn-primary" type="submit">Guardar</button>
-                <button class="btn btn-danger" type="reset">Cancelar</button>
+                <button class="btn btn-primary" type="submit">Actualizar</button>
             </div>
         </form>
         </div>

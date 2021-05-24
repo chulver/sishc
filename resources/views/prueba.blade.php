@@ -107,36 +107,36 @@
         </table>
         <table border="1" style="width: 100%">
             <tr><td>
-            <table border="0" style="width: 100%">
+            <table border="0" style="width: 637px;">
                 <tr>
                     <td colspan="2" class="font-weight-bold">MOTIVO DE CONSULTA (Síntomas que el paciente refiera)</td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="height:25px;" >{!! html_entity_decode($historiaclinica->motivoconsulta) !!}</td>
+                    <td colspan="2" style="height:25px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->motivoconsulta) !!}</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="font-weight-bold">ENFERMEDAD ACTUAL (Anamnesis)</td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="height:75px;">{!! html_entity_decode($historiaclinica->enfermedadactual) !!}</td>
+                    <td colspan="2" style="height:75px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->enfermedadactual) !!}</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="font-weight-bold">EXAMEN FISICO GENERAL</td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="height:100px;">{!! html_entity_decode($historiaclinica->examenfisico) !!}</td>
+                    <td colspan="2" style="height:100px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->examenfisico) !!}</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="font-weight-bold">ANALISIS CLINICO (Lista de problemas destacados)</td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="height:100px;">{!! html_entity_decode($historiaclinica->analisisclinico) !!}</td>
+                    <td colspan="2" style="height:100px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->analisisclinico) !!}</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="font-weight-bold">PLAN DE ACCION (Tratamiento, orientaciones, seguimiento)</td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="height:100px;">{!! html_entity_decode($historiaclinica->planaccion) !!}</td>
+                    <td colspan="2" style="height:100px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->planaccion) !!}</td>
                 </tr>
                 <tr>
                     <td colspan="2" style="height:60px;"></td>

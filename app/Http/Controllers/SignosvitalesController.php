@@ -25,6 +25,21 @@ class SignosvitalesController extends Controller
 
     public function index()
     {
+        $fecha = Carbon::now('America/La_Paz');
+
+        $consultas = DB::table('solicitud_consultamedica as c')
+                    -> join('paciente as p','c.paciente_id','=','p.id')
+                    -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
+                    -> join('users as u','c.medico','=','u.id')
+                    -> select('c.id','c.numeroturno',DB::Raw('DATE(c.created_at) as fecha'),DB::Raw('TIME(c.created_at) as hora'),DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','name as medico','c.estado')
+                    -> wheredate('c.created_at', $fecha->toDateString())
+                    -> get();
+
+        return view('signosvitales.index', compact('consultas'));
+    }
+
+    public function pendientes()
+    {
         $consultas = DB::table('solicitud_consultamedica as c')
                     -> join('paciente as p','c.paciente_id','=','p.id')
                     -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
@@ -99,7 +114,8 @@ class SignosvitalesController extends Controller
                     -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
                     -> join('users as u','c.medico','=','u.id')
                     -> select('sv.id as cod','sv.edad','sv.peso','sv.talla','sv.temperatura','sv.presionarterial','sv.fcardiaca','sv.frespiratoria','s.*','p.*','u.*')
-                    -> where('sv.id', '=', $id)
+                    //-> where('sv.id', '=', $id)
+                    -> where('c.id', '=', $id)
                     -> first();
 
         return view('signosvitales.edit',compact('signosvitales'));
@@ -119,7 +135,7 @@ class SignosvitalesController extends Controller
         $signosvitales->updated_at=$fecha->toDateTimeString();
         $signosvitales->update();
 
-        return redirect()->route('signosvitales.completadas')->with('info', 'Signos Vitales actualizada con exito');
+        return redirect()->route('signosvitales.index')->with('info', 'Signos Vitales actualizado con exito');
     }
 
     public function show($id)
@@ -130,7 +146,7 @@ class SignosvitalesController extends Controller
                     -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
                     -> join('users as u','c.medico','=','u.id')
                     -> select('*')
-                    -> where('sv.id', '=', $id)
+                    -> where('C.id', '=', $id)
                     -> first();
 
         return view('signosvitales.show',compact('signosvitales'));

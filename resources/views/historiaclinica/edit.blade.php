@@ -98,7 +98,7 @@
                 </div>
                 <div class="form-group">
                     <label for="planaccion">Plan de Accion</label>
-                    <textarea class="form-control" name="planaccion" id="planaccion">{{ old('planaccion', $historiaclinica->planaccion) }}</textarea>
+                    <textarea class="form-control" name="planaccion" id="planaccion" rows="10" cols="58">{{ old('planaccion', $historiaclinica->planaccion) }}</textarea>
                     @error('planaccion')
                     <br>
                     <small>*{{$message}}</small>
@@ -106,8 +106,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Finalizar</button>
-                    <button class="btn btn-danger" type="reset">Cancelar</button>
+                    <button class="btn btn-primary" type="submit">Actualizar</button>
                 </div>
             </form>
         </div>

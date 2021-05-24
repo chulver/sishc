@@ -12,14 +12,23 @@
         <div class="card-body">
         <form action="{{ route('consultas.store') }}" method="POST">
         @csrf
-            <div class="form-group">
-                <label for="paciente">Paciente</label>
-                <select name="paciente" class="selectpicker form-control" data-live-search="true">
-                    <option></option>
-                    @foreach($pacientes as $paciente)
-                    <option value="{{$paciente->id}}">{{$paciente->paciente}}</option>
-                    @endforeach
-                </select>
+            <div class="form-group row">
+                <label for="numeroturno" class="col-sm-1 col-form-label">N° Turno:</label>
+                <div class="col-sm-1">
+                    <input type="number" class="form-control" name="numeroturno" value="{{ $numeroturno->numeroturno }}" readonly>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="paciente" class="col-sm-1 col-form-label">Paciente:</label>
+                <div class="col-sm-11">
+                    <select name="paciente" class="selectpicker form-control" data-live-search="true">
+                        <option></option>
+                        @foreach($pacientes as $paciente)
+                        <option value="{{$paciente->id}}">{{$paciente->paciente}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 @error('paciente')
                 <br>
                     <small>*{{$message}}</small>
@@ -27,14 +36,16 @@
                 @enderror
             </div>
         
-            <div class="form-group">
-                <label for="serviciomedico">Servicio</label>
-                <select name="serviciomedico" class="selectpicker form-control" data-live-search="true">
-                    <option></option>
-                    @foreach($servicios as $servicio)
-                    <option value="{{$servicio->id}}">{{$servicio->serviciomedico}}</option>
-                    @endforeach
-                </select>
+            <div class="form-group row">
+                <label for="serviciomedico" class="col-sm-1 col-form-label">Servicio:</label>
+                <div class="col-sm-11">
+                    <select name="serviciomedico" class="selectpicker form-control" data-live-search="true">
+                        <option></option>
+                        @foreach($servicios as $servicio)
+                        <option value="{{$servicio->id}}">{{$servicio->serviciomedico}}</option>
+                        @endforeach
+                    </select>
+                    </div>
                 @error('serviciomedico')
                 <br>
                     <small>*{{$message}}</small>
@@ -42,14 +53,16 @@
                 @enderror
             </div>
 
-            <div class="form-group">
-                <label for="medico">Medico</label>
-                <select name="medico" class="selectpicker form-control" data-live-search="true">
-                    <option></option>
-                    @foreach($medicos as $medico)
-                    <option value="{{$medico->id}}">{{$medico->name}}</option>
-                    @endforeach
-                </select>
+            <div class="form-group row">
+                <label for="medico" class="col-sm-1 col-form-label">Medico:</label>
+                <div class="col-sm-11">
+                    <select name="medico" class="selectpicker form-control" data-live-search="true">
+                        <option></option>
+                        @foreach($medicos as $medico)
+                        <option value="{{$medico->id}}">{{$medico->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 @error('medico')
                 <br>
                     <small>*{{$message}}</small>
@@ -59,7 +72,6 @@
 
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>
-                <button class="btn btn-danger" type="reset">Cancelar</button>
             </div>
         </form>
         </div>

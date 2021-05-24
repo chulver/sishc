@@ -71,8 +71,7 @@
                 <p class="col-sm-1 col-form-label">rpm</p>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary" type="submit">Guardar</button>
-                <button class="btn btn-danger" type="reset">Cancelar</button>
+                <button class="btn btn-primary" type="submit">Actualizar</button>
             </div>
         </form>
         </div>

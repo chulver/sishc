@@ -5,24 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Consultamedica extends Model
+class Numeroturno extends Model
 {
     //use HasFactory;
-    protected $table='solicitud_consultamedica';
+    protected $table='numeroturno';
 
     protected $primaryKey='id';
 
     public $timestamps=false;
 
     protected $fillable =[
-        'user_id',
-        'numeroturno',
-        'paciente_id',
-        'serviciomedico_id',
-    	'medico',
-    	'estado',
-        'created_at',
-        'updated_at'
+        'fecha',
+        'numeroturno'
     ];
 
     protected $guarded =[

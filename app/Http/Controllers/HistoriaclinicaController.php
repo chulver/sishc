@@ -26,6 +26,22 @@ class HistoriaclinicaController extends Controller
 
     public function index()
     {
+        $fecha = Carbon::now('America/La_Paz');
+
+        $consultas = DB::table('solicitud_consultamedica as c')
+                    -> join('paciente as p','c.paciente_id','=','p.id')
+                    -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
+                    -> join('users as u','c.medico','=','u.id')
+                    -> select('c.id','c.numeroturno',DB::Raw('DATE(c.created_at) as fecha'),DB::Raw('TIME(c.created_at) as hora'),DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','c.estado')
+                    -> wheredate('c.created_at', $fecha->toDateString())
+                    //-> where('c.medico', auth()->user()->id)
+                    -> get();
+
+        return view('historiaclinica.index', compact('consultas'));
+    }
+
+    public function pendientes()
+    {
         $consultas = DB::table('solicitud_consultamedica as c')
                     -> join('paciente as p','c.paciente_id','=','p.id')
                     -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
@@ -37,6 +53,7 @@ class HistoriaclinicaController extends Controller
 
         return view('historiaclinica.index', compact('consultas'));
     }
+
 
     public function create($id)
     {
@@ -77,14 +94,13 @@ class HistoriaclinicaController extends Controller
         //$signosvitales->estado='2';
         //$signosvitales->update();
 
-        Signosvitales::where('solicitud_consultamedica_id', $request->get('solicitud_consultamedica_id'))
-                        ->update(['estado' => '2']);
+        Signosvitales::where('solicitud_consultamedica_id', $request->get('solicitud_consultamedica_id'))->update(['estado' => '2']);
 
         $consulta = Consultamedica::findOrFail($request->get('solicitud_consultamedica_id'));
         $consulta->estado='3';
         $consulta->update();
 
-        return redirect()->route('historiaclinica.completadas')->with('info', 'Historia Clinica guardado con exito');
+        return redirect()->route('historiaclinica.index')->with('info', 'Historia Clinica guardado con exito');
     }
 
     public function completadas()
@@ -109,7 +125,8 @@ class HistoriaclinicaController extends Controller
                     -> join('signosvitales as sv','c.id','=','sv.solicitud_consultamedica_id')
                     -> join('paciente as p','c.paciente_id','=','p.id')
                     -> select('hc.id as cod','hc.motivoconsulta','hc.enfermedadactual','hc.examenfisico','hc.analisisclinico','hc.planaccion','p.*','sv.*')
-                    -> where('hc.id', '=', $id)
+                    //-> where('hc.id', '=', $id)
+                    -> where('c.id', '=', $id)
                     -> first();
 
         return view('historiaclinica.edit',compact('historiaclinica'));
@@ -129,7 +146,7 @@ class HistoriaclinicaController extends Controller
         $historiaclinica->updated_at=$fecha->toDateTimeString();
         $historiaclinica->update();
 
-        return redirect()->route('historiaclinica.completadas')->with('info', 'Historia Clinica finalizado con exito');
+        return redirect()->route('historiaclinica.index')->with('info', 'Historia Clinica Actualizado con exito');
     }
 
     /*public function PDFHistoriaclinica($id){
