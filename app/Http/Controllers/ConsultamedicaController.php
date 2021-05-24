@@ -30,8 +30,9 @@ class ConsultamedicaController extends Controller
         $consultas = DB::table('solicitud_consultamedica as c')
                     -> join('paciente as p','c.paciente_id','=','p.id')
                     -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
-                    -> join('users as u','c.medico','=','u.id')
-                    -> select('c.id','c.numeroturno',DB::Raw('DATE(c.created_at) as fecha'),DB::Raw('TIME(c.created_at) as hora'),DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','name as medico','c.estado')
+                    -> join('users as m','c.medico','=','m.id')
+                    -> join('users as u','c.user_id','=','u.id')
+                    -> select('c.id','c.numeroturno',DB::Raw('DATE(c.created_at) as fecha'),DB::Raw('TIME(c.created_at) as hora'),'u.name as user',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','m.name as medico','c.estado')
                     //-> where('c.estado', '=', 1)
                     -> wheredate('c.created_at', $fecha->toDateString())
                     -> get();

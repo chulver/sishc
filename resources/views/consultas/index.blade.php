@@ -25,6 +25,7 @@
                     <th scope="col">N°</th>
                     <th scope="col">FECHA</th>
                     <th scope="col">HORA</th>
+                    <th scope="col">USUARIO</th>
                     <th scope="col">PACIENTE</th>
                     <th scope="col">SERVICIO</th>
                     <th scope="col">MEDICO</th>
@@ -37,6 +38,7 @@
                     <td>{{$consulta->numeroturno}}</td>
                     <td>{{$consulta->fecha}}</td>
                     <td>{{$consulta->hora}}</td>
+                    <td>{{$consulta->user}}</td>
                     <td>{{$consulta->paciente}}</td>
                     <td>{{$consulta->serviciomedico}}</td>
                     <td>{{$consulta->medico}}</td>

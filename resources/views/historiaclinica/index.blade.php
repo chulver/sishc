@@ -22,6 +22,7 @@
                     <th>N°</th>
                     <th>FECHA</th>
                     <th>HORA</th>
+                    <th>ENFERMERA</th>
                     <th>PACIENTE</th>
                     <th>SERVICO</th>
                     <th>ACCION</th>
@@ -33,6 +34,7 @@
                     <td>{{$consulta->numeroturno}}</td>
                     <td>{{$consulta->fecha}}</td>
                     <td>{{$consulta->hora}}</td>
+                    <td>{{$consulta->user}}</td>
                     <td>{{$consulta->paciente}}</td>
                     <td>{{$consulta->serviciomedico}}</td>
                     <td>
