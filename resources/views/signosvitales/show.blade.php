@@ -42,19 +42,23 @@
         <div class="card-body">
             <div class="row">
                 <label class="col-sm-1">Peso:</label>
-                <p class="col-sm-3">{{ $signosvitales->peso }} kg.</p>
+                <p class="col-sm-2">{{ $signosvitales->peso }} kg.</p>
                 <label class="col-sm-1">Talla:</label>
-                <p class="col-sm-3">{{ $signosvitales->talla }} cm.</p>
+                <p class="col-sm-2">{{ $signosvitales->talla }} cm.</p>
                 <label class="col-sm-1">T:</label>
-                <p class="col-sm-3">{{ $signosvitales->temperatura }} °C</p>
+                <p class="col-sm-2">{{ $signosvitales->temperatura }} °C</p>
+                <label class="col-sm-1">PA:</label>
+                <p class="col-sm-2">{{ $signosvitales->presionarterial }} mm Hg</p>
             </div>
             <div class="row">
-                <label class="col-sm-1">PA:</label>
-                <p class="col-sm-3">{{ $signosvitales->presionarterial }} mm Hg</p>
+                <label class="col-sm-1">SpO2:</label>
+                <p class="col-sm-2">{{ $signosvitales->spo2 }} mm Hg</p>
                 <label class="col-sm-1">FC:</label>
-                <p class="col-sm-3">{{ $signosvitales->fcardiaca }} lpm</p>
+                <p class="col-sm-2">{{ $signosvitales->fcardiaca }} lpm</p>
                 <label class="col-sm-1">FR:</label>
-                <p class="col-sm-3">{{ $signosvitales->frespiratoria }} rpm</p>
+                <p class="col-sm-2">{{ $signosvitales->frespiratoria }} rpm</p>
+                <label class="col-sm-1">Glicemia:</label>
+                <p class="col-sm-2">{{ $signosvitales->glicemia }}</p>
             </div>
         </div>
     </div>

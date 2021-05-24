@@ -43,37 +43,60 @@
             <input type="hidden" name="solicitud_consultamedica_id" value="{{ $consulta->id }}">
             <div class="form-group row">
                 <label for="peso" class="col-sm-1 col-form-label">Peso</label>
-                <div class="col-sm-2">
+                <div class="input-group col-sm-2">
                     <input type="number" class="form-control" name="peso" step="any">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">kg.</div>
+                    </div>
                 </div>
-                <p class="col-sm-1 col-form-label">kg.</p>
                 <label for="talla" class="col-sm-1 col-form-label">Talla</label>
-                <div class="col-sm-2">
+                <div class="input-group col-sm-2">
                     <input type="number" class="form-control" name="talla">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">cm.</div>
+                    </div>
                 </div>
-                <p class="col-sm-1 col-form-label">cm.</p>
-                <label for="temperatura" class="col-sm-1 col-form-label">T</label>
-                <div class="col-sm-2">
+                <label for="temperatura" class="col-sm-1 col-form-label">T°</label>
+                <div class="input-group col-sm-2">
                     <input type="number" class="form-control" name="temperatura" step="any">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">°C</div>
+                    </div>
                 </div>
-                <p class="col-sm-1 col-form-label">°C</p>
+                <label for="presionarterial" class="col-sm-1 col-form-label">PA</label>
+                <div class="input-group col-sm-2">
+                    <input type="text" class="form-control" name="presionarterial">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">mm Hg</div>
+                    </div>
+                </div>
             </div>
             <div class="form-group row">
-                <label for="presionarterial" class="col-sm-1 col-form-label">PA</label>
-                <div class="col-sm-2">
-                    <input type="text" class="form-control" name="presionarterial">
+                <label for="spo2" class="col-sm-1 col-form-label">SpO2</label>
+                <div class="input-group col-sm-2">
+                    <input type="number" class="form-control" name="spo2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">%</div>
+                    </div>
                 </div>
-                <p class="col-sm-1 col-form-label">mm Hg</p>
                 <label for="fcardiaca" class="col-sm-1 col-form-label">FC</label>
-                <div class="col-sm-2">
+                <div class="input-group col-sm-2">
                     <input type="number" class="form-control" name="fcardiaca">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">lpm</div>
+                    </div>
                 </div>
-                <p class="col-sm-1 col-form-label">lpm</p>
                 <label for="frespiratoria" class="col-sm-1 col-form-label">FR</label>
-                <div class="col-sm-2">
+                <div class="input-group col-sm-2">
                     <input type="number" class="form-control" name="frespiratoria">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">rpm</div>
+                    </div>
                 </div>
-                <p class="col-sm-1 col-form-label">rpm</p>
+                <label for="glicemia" class="col-sm-1 col-form-label">Glicemia</label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" name="glicemia">
+                </div>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>

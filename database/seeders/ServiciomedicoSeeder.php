@@ -15,9 +15,10 @@ class ServiciomedicoSeeder extends Seeder
      */
     public function run()
     {
-        $servicio = new Serviciomedico();
-        $servicio->serviciomedico = "CONSULTA MEDICA";
-
-        $servicio->save();
+        Serviciomedico::create(['serviciomedico' => 'CONSULTA MEDICA']);
+        Serviciomedico::create(['serviciomedico' => 'CURACION']);
+        Serviciomedico::create(['serviciomedico' => 'RESULTADO DE LABORATORIO']);
+        Serviciomedico::create(['serviciomedico' => 'RESULTADO RX']);
+        Serviciomedico::create(['serviciomedico' => 'SUERO']);
     }
 }

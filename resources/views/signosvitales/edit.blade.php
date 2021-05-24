@@ -38,37 +38,60 @@
         @method('put')
             <div class="form-group row">
                 <label for="peso" class="col-sm-1 col-form-label">Peso</label>
-                <div class="col-sm-2">
+                <div class="input-group col-sm-2">
                     <input type="number" class="form-control" name="peso" step="any" value="{{ $signosvitales->peso }}">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">kg.</div>
+                    </div>
                 </div>
-                <p class="col-sm-1 col-form-label">kg.</p>
                 <label for="talla" class="col-sm-1 col-form-label">Talla</label>
-                <div class="col-sm-2">
+                <div class="input-group col-sm-2">
                     <input type="number" class="form-control" name="talla" value="{{ $signosvitales->talla }}">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">cm.</div>
+                    </div>
                 </div>
-                <p class="col-sm-1 col-form-label">cm.</p>
-                <label for="temperatura" class="col-sm-1 col-form-label">T</label>
-                <div class="col-sm-2">
+                <label for="temperatura" class="col-sm-1 col-form-label">T°</label>
+                <div class="input-group col-sm-2">
                     <input type="number" class="form-control" name="temperatura" step="any" value="{{ $signosvitales->temperatura }}">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">°C</div>
+                    </div>
                 </div>
-                <p class="col-sm-1 col-form-label">°C</p>
+                <label for="presionarterial" class="col-sm-1 col-form-label">PA</label>
+                <div class="input-group col-sm-2">
+                    <input type="text" class="form-control" name="presionarterial" value="{{ $signosvitales->presionarterial }}">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">mm Hg</div>
+                    </div>
+                </div>
             </div>
             <div class="form-group row">
-                <label for="presionarterial" class="col-sm-1 col-form-label">PA</label>
-                <div class="col-sm-2">
-                    <input type="text" class="form-control" name="presionarterial" value="{{ $signosvitales->presionarterial }}">
+                <label for="spo2" class="col-sm-1 col-form-label">SpO2</label>
+                <div class="input-group col-sm-2">
+                    <input type="text" class="form-control" name="spo2" value="{{ $signosvitales->spo2 }}">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">%</div>
+                    </div>
                 </div>
-                <p class="col-sm-1 col-form-label">mm Hg</p>
                 <label for="fcardiaca" class="col-sm-1 col-form-label">FC</label>
-                <div class="col-sm-2">
+                <div class="input-group col-sm-2">
                     <input type="number" class="form-control" name="fcardiaca" value="{{ $signosvitales->fcardiaca }}">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">lpm</div>
+                    </div>
                 </div>
-                <p class="col-sm-1 col-form-label">lpm</p>
                 <label for="frespiratoria" class="col-sm-1 col-form-label">FR</label>
-                <div class="col-sm-2">
+                <div class="input-group col-sm-2">
                     <input type="number" class="form-control" name="frespiratoria" value="{{ $signosvitales->frespiratoria }}">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">rpm</div>
+                    </div>
                 </div>
-                <p class="col-sm-1 col-form-label">rpm</p>
+                <label for="glicemia" class="col-sm-1 col-form-label">FR</label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" name="glicemia" value="{{ $signosvitales->glicemia }}">
+                </div>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Actualizar</button>

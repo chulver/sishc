@@ -35,19 +35,23 @@
         <div class="card-body">
             <div class="row">
                 <label class="col-sm-1">Peso:</label>
-                <p class="col-sm-3">{{ $historiaclinica->peso }} kg.</p>
+                <p class="col-sm-2">{{ $historiaclinica->peso }} kg.</p>
                 <label class="col-sm-1">Talla:</label>
-                <p class="col-sm-3">{{ $historiaclinica->talla }} cm.</p>
+                <p class="col-sm-2">{{ $historiaclinica->talla }} cm.</p>
                 <label class="col-sm-1">T:</label>
-                <p class="col-sm-3">{{ $historiaclinica->temperatura }} °C</p>
+                <p class="col-sm-2">{{ $historiaclinica->temperatura }} °C</p>
+                <label class="col-sm-1">PA:</label>
+                <p class="col-sm-2">{{ $historiaclinica->presionarterial }} mm Hg</p>
             </div>
             <div class="row">
-                <label class="col-sm-1">PA:</label>
-                <p class="col-sm-3">{{ $historiaclinica->presionarterial }} mm Hg</p>
+                <label class="col-sm-1">SpO2:</label>
+                <p class="col-sm-2">{{ $historiaclinica->spo2 }} %</p>
                 <label class="col-sm-1">FC:</label>
-                <p class="col-sm-3">{{ $historiaclinica->fcardiaca }} lpm</p>
+                <p class="col-sm-2">{{ $historiaclinica->fcardiaca }} lpm</p>
                 <label class="col-sm-1">FR:</label>
-                <p class="col-sm-3">{{ $historiaclinica->frespiratoria }} rpm</p>
+                <p class="col-sm-2">{{ $historiaclinica->frespiratoria }} rpm</p>
+                <label class="col-sm-1">Glicemia:</label>
+                <p class="col-sm-2">{{ $historiaclinica->glicemia }}</p>
             </div>
         </div>
     </div> 

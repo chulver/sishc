@@ -48,7 +48,7 @@
 </head>
 <body>
     <header>
-        <table border="0" style="width: 100%">
+        <table border="0" style="color:#003874; width: 100%">
             <tr>
                 <td><img src="{{ asset('vendor/adminlte/dist/img/LasaludperfectaLogo.png' )}}"></td>
                 <td align="left"><p class="font-weight-bold" style="font-size:24px;">HISTORIA CLINICA<p><p class="font-weight-bold" style="font-size:16px;">DATOS DE IDENTIFICACION<</p></td>
@@ -56,7 +56,7 @@
         </table>
     </header>
     <main>
-        <table border="0" style="width: 100%">
+        <table border="0" style="color:#003874; width: 100%">
             <tr>
                 <td class="text-center">{{ $historiaclinica->nombre }}</td>
                 <td class="text-center">{{ $historiaclinica->apaterno }}</td>
@@ -73,7 +73,7 @@
             </tr>
         </table>
         <br>
-        <table border="0" style="width: 60%">
+        <table border="0" style="width: 60%; color:#003874;">
             <tr>
                 <td class="font-weight-bold">Edad:</td>
                 <td>{{ $historiaclinica->edad }} AÑOS</td>
@@ -82,7 +82,7 @@
             </tr>
         </table>
         <br>
-        <table border="0" style="width: 100%">
+        <table border="0" style="width: 100%; color:#003874;">
             <tr>
                 <td class="font-weight-bold">Signos Vitales:</td>
                 <td class="text-center font-weight-bold">Peso:</td>
@@ -93,21 +93,25 @@
                 <td>{{ $historiaclinica->temperatura }}</td>
                 <td class=" text-center font-weight-bold">PA:</td>
                 <td>{{ $historiaclinica->presionarterial }}</td>
+                <td class=" text-center font-weight-bold">SpO2:</td>
+                <td>{{ $historiaclinica->spo2 }}</td>
                 <td class=" text-center font-weight-bold">FC:</td>
                 <td>{{ $historiaclinica->fcardiaca }}</td>
                 <td class="text-center font-weight-bold">FR:</td>
                 <td>{{ $historiaclinica->frespiratoria }}</td>
+                <td class="text-center font-weight-bold">Glicemia:</td>
+                <td>{{ $historiaclinica->glicemia }}</td>
             </tr>
         </table>
         <br>
-        <table border="1" style="width: 100%">
+        <table border="1" style="width: 100%; color:#003874;">
             <tr>
                 <td align="center" style="font-size:12px;">De acuerdo al sistema <strong>SOAP   S:</strong> Subjetivo   <strong>O:</strong> Objetivo  <strong>A:</strong> Analisis Diagnostico  <strong>P:</strong> Plan Terapeutico</td>
             </tr>
         </table>
-        <table border="1" style="width: 100%">
+        <table border="1" style="width: 100%; color:#003874;">
             <tr><td>
-            <table border="0" style="width: 637px;">
+            <table border="0" style="width: 637px; color:#003874;">
                 <tr>
                     <td colspan="2" class="font-weight-bold">MOTIVO DE CONSULTA (Síntomas que el paciente refiera)</td>
                 </tr>

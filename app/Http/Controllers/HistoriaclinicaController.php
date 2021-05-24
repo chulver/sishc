@@ -54,7 +54,6 @@ class HistoriaclinicaController extends Controller
         return view('historiaclinica.index', compact('consultas'));
     }
 
-
     public function create($id)
     {
         $paciente = DB::table('solicitud_consultamedica as c')
@@ -103,21 +102,6 @@ class HistoriaclinicaController extends Controller
         return redirect()->route('historiaclinica.index')->with('info', 'Historia Clinica guardado con exito');
     }
 
-    public function completadas()
-    {
-        $completadas = DB::table('historiaclinica as hc')
-                    -> join('solicitud_consultamedica as c','hc.solicitud_consultamedica_id','=','c.id')
-                    -> join('paciente as p','c.paciente_id','=','p.id')
-                    -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
-                    -> join('users as u','c.medico','=','u.id')
-                    -> select('hc.id','hc.created_at as fecha',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','hc.estado')
-                    -> where('hc.estado', '=', 1)
-                    -> orwhere('hc.estado', '=', 2)
-                    //-> where('c.medico', auth()->user()->id)
-                    -> get();
-        return view('historiaclinica.completadas',compact('completadas'));
-    }
-
     public function edit($id)
     {
         $historiaclinica = DB::table('historiaclinica as hc')
@@ -147,6 +131,21 @@ class HistoriaclinicaController extends Controller
         $historiaclinica->update();
 
         return redirect()->route('historiaclinica.index')->with('info', 'Historia Clinica Actualizado con exito');
+    }
+
+    public function completadas()
+    {
+        $completadas = DB::table('historiaclinica as hc')
+                    -> join('solicitud_consultamedica as c','hc.solicitud_consultamedica_id','=','c.id')
+                    -> join('paciente as p','c.paciente_id','=','p.id')
+                    -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
+                    -> join('users as u','c.medico','=','u.id')
+                    -> select('hc.id','hc.created_at as fecha',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','hc.estado')
+                    -> where('hc.estado', '=', 1)
+                    -> orwhere('hc.estado', '=', 2)
+                    //-> where('c.medico', auth()->user()->id)
+                    -> get();
+        return view('historiaclinica.completadas',compact('completadas'));
     }
 
     /*public function PDFHistoriaclinica($id){

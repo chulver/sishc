@@ -75,8 +75,10 @@ class SignosvitalesController extends Controller
         $signosvitales->talla=$request->get('talla');
         $signosvitales->temperatura=$request->get('temperatura');
         $signosvitales->presionarterial=$request->get('presionarterial');
+        $signosvitales->spo2=$request->get('spo2');
         $signosvitales->fcardiaca=$request->get('fcardiaca');
     	$signosvitales->frespiratoria=$request->get('frespiratoria');
+        $signosvitales->glicemia=$request->get('glicemia');
         $signosvitales->estado='1';
         $fecha = Carbon::now('America/La_Paz');
         $signosvitales->created_at=$fecha->toDateTimeString();
@@ -90,22 +92,6 @@ class SignosvitalesController extends Controller
         return redirect()->route('signosvitales.index')->with('info', 'Signos Vitales registrado con exito');
     }
 
-    public function completadas()
-    {
-        $signosvitales = DB::table('signosvitales as sv')
-                    -> join('solicitud_consultamedica as c','sv.solicitud_consultamedica_id','=','c.id')
-                    -> join('paciente as p','c.paciente_id','=','p.id')
-                    -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
-                    -> join('users as u','c.medico','=','u.id')
-                    -> join('users as e','sv.user_id','=','e.id')
-                    -> select('sv.id','sv.created_at as fecha',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','medico','sv.estado','u.name as medico')
-                    -> where('sv.estado', '=', 1)
-                    -> orwhere('sv.estado', '=', 2)
-                    -> get();
-
-        return view('signosvitales.completadas', compact('signosvitales'));
-    }
-
     public function edit($id)
     {
         $signosvitales = DB::table('signosvitales as sv')
@@ -113,7 +99,7 @@ class SignosvitalesController extends Controller
                     -> join('paciente as p','c.paciente_id','=','p.id')
                     -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
                     -> join('users as u','c.medico','=','u.id')
-                    -> select('sv.id as cod','sv.edad','sv.peso','sv.talla','sv.temperatura','sv.presionarterial','sv.fcardiaca','sv.frespiratoria','s.*','p.*','u.*')
+                    -> select('sv.id as cod','sv.edad','sv.peso','sv.talla','sv.temperatura','sv.presionarterial','sv.spo2','sv.fcardiaca','sv.frespiratoria','sv.glicemia','s.*','p.*','u.*')
                     //-> where('sv.id', '=', $id)
                     -> where('c.id', '=', $id)
                     -> first();
@@ -129,8 +115,10 @@ class SignosvitalesController extends Controller
         $signosvitales->talla=$request->get('talla');
         $signosvitales->temperatura=$request->get('temperatura');
         $signosvitales->presionarterial=$request->get('presionarterial');
+        $signosvitales->spo2=$request->get('spo2');
         $signosvitales->fcardiaca=$request->get('fcardiaca');
     	$signosvitales->frespiratoria=$request->get('frespiratoria');
+        $signosvitales->glicemia=$request->get('glicemia');
         $fecha = Carbon::now('America/La_Paz');
         $signosvitales->updated_at=$fecha->toDateTimeString();
         $signosvitales->update();
@@ -150,5 +138,21 @@ class SignosvitalesController extends Controller
                     -> first();
 
         return view('signosvitales.show',compact('signosvitales'));
+    }
+
+    public function completadas()
+    {
+        $signosvitales = DB::table('signosvitales as sv')
+                    -> join('solicitud_consultamedica as c','sv.solicitud_consultamedica_id','=','c.id')
+                    -> join('paciente as p','c.paciente_id','=','p.id')
+                    -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
+                    -> join('users as u','c.medico','=','u.id')
+                    -> join('users as e','sv.user_id','=','e.id')
+                    -> select('sv.id','sv.created_at as fecha',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','medico','sv.estado','u.name as medico')
+                    -> where('sv.estado', '=', 1)
+                    -> orwhere('sv.estado', '=', 2)
+                    -> get();
+
+        return view('signosvitales.completadas', compact('signosvitales'));
     }
 }

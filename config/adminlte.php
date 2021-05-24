@@ -251,41 +251,15 @@ return [
         ],
         [
             'text'    => 'Signos Vitales',
+            'url'     => 'signosvitales',
             'icon'    => 'fas fa-fw fa-user-nurse',
-            'can'  => 'signosvitales.index',
-            'submenu' => [
-                [
-                    'text' => 'Pendientes',
-                    'url'  => 'signosvitales',
-                    'icon' => 'fas fa-fw fa-notes-medical',
-                    'can'  => 'signosvitales.index',
-                ],
-                [
-                    'text' => 'Completadas',
-                    'url'  => 'signosvitales/completadas',
-                    'icon' => 'fas fa-fw fa-notes-medical',
-                    'can'  => 'signosvitales.completadas',
-                ],
-            ],
+            'can'     => 'signosvitales.index',
         ],
         [
             'text'    => 'Consulta Medica',
+            'url'  => 'historiaclinica',
             'icon'    => 'fas fa-fw fa-user-md',
-            'can'     => 'historiaclinica.index',
-            'submenu' => [
-                [
-                    'text' => 'Pendientes',
-                    'url'  => 'historiaclinica',
-                    'icon' => 'far fa-fw fa-file',
-                    'can'  => 'historiaclinica.index',
-                ],
-                [
-                    'text' => 'Completadas',
-                    'url'  => 'historiaclinica/completadas',
-                    'icon' => 'far fa-fw fa-file',
-                    'can'  => 'historiaclinica.completadas',
-                ],
-            ],
+            'can'  => 'historiaclinica.index',
         ],
         [
             'text'        => 'Fichas',

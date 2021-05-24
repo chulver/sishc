@@ -3,7 +3,7 @@
 @section('title', 'Signos Vitales')
 
 @section('content_header')
-    <h1>Pendientes</h1>
+    <h1>Signos Vitales</h1>
 @stop
 
 @section('content')

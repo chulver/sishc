@@ -23,8 +23,10 @@ class CreateSignosvitalesTable extends Migration
             $table->integer('talla');
             $table->decimal('temperatura',10,1);
             $table->string('presionarterial',7)->nullable();
+            $table->integer('spo2')->nullable();
             $table->integer('fcardiaca')->nullable();
             $table->integer('frespiratoria')->nullable();
+            $table->integer('glicemia')->nullable();
             $table->char('estado',1);
             $table->timestamps();
         });
