@@ -17,7 +17,7 @@ class ServiciomedicoSeeder extends Seeder
     {
         Serviciomedico::create(['serviciomedico' => 'CONSULTA MEDICA']);
         Serviciomedico::create(['serviciomedico' => 'CURACION']);
-        Serviciomedico::create(['serviciomedico' => 'RESULTADO DE LABORATORIO']);
+        Serviciomedico::create(['serviciomedico' => 'RESULTADO LABORATORIO']);
         Serviciomedico::create(['serviciomedico' => 'RESULTADO RX']);
         Serviciomedico::create(['serviciomedico' => 'SUERO']);
     }

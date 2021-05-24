@@ -23,14 +23,32 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'PAMELA LOPEZ LEDEZMA',
-            'email' => 'pamela.lopez@chulver.com',
-            'password' => bcrypt('2021')
+            'email' => 'drapamela@chulver.com',
+            'password' => bcrypt('2016')
         ])->assignRole('Medico');
 
         User::create([
             'name' => 'ZAIDA',
             'email' => 'zaida@chulver.com',
-            'password' => bcrypt('2021')
+            'password' => bcrypt('6574')
+        ])->assignRole('Enfermera');
+
+        User::create([
+            'name' => 'SILVIA',
+            'email' => 'silvia@chulver.com',
+            'password' => bcrypt('5820')
+        ])->assignRole('Enfermera');
+
+        User::create([
+            'name' => 'MONICA',
+            'email' => 'monica@chulver.com',
+            'password' => bcrypt('7842')
+        ])->assignRole('Enfermera');
+        
+        User::create([
+            'name' => 'LISBET',
+            'email' => 'lisbet@chulver.com',
+            'password' => bcrypt('3987')
         ])->assignRole('Enfermera');
     }
 }
