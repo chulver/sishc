@@ -14,12 +14,6 @@
         @csrf
         @method('put')
             <div class="form-group row">
-                <label for="ci" class="col-sm-2 col-form-label">CI:</label>
-                <div class="col-sm-10">
-                    <input type="number" name="ci" class="form-control" value="{{ old('ci', $paciente->ci) }}">
-                </div>
-            </div>
-            <div class="form-group row">
                 <label for="apaterno" class="col-sm-2 col-form-label">Apellido paterno:</label>
                 <div class="col-sm-10">
                     <input type="text" name="apaterno" class="form-control" value="{{ old('apaterno', $paciente->apaterno) }}">
@@ -69,6 +63,12 @@
                 <label for="fechanacimiento" class="col-sm-2 col-form-label">Domicilio:</label>
                 <div class="col-sm-10">
                     <textarea name="domicilio" class="form-control">{{ old('domicilio', $paciente->domicilio) }}</textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="ci" class="col-sm-2 col-form-label">CI:</label>
+                <div class="col-sm-2">
+                    <input type="number" name="ci" class="form-control" value="{{ old('ci', $paciente->ci) }}">
                 </div>
             </div>
             <div class="form-group row">

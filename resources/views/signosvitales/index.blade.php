@@ -26,6 +26,7 @@
                     <th scope="col">PACIENTE</th>
                     <th scope="col">SERVICIO</th>
                     <th scope="col">MEDICO</th>
+                    <th scope="col">ESTADO</th>
                     <th scope="col">ACCION</th>
                 </tr>
             </thead>
@@ -39,6 +40,15 @@
                     <td>{{$consulta->paciente}}</td>
                     <td>{{$consulta->serviciomedico}}</td>
                     <td>{{$consulta->medico}}</td>
+                    <td>
+                        @if($consulta->estado == '1')
+                            <p class="text-danger">Pendiente</p>
+                        @elseif($consulta->estado == '2')
+                            <p class="text-danger">Pendiente</p>
+                        @elseif($consulta->estado == '3')
+                            <p class="text-success">Completado</p>
+                        @endif
+                    </td>
                     <td>
                         @if($consulta->estado == '1')
                             <a href="{{ route('signosvitales.create', $consulta->id) }}" class="btn btn-primary">Signos vitales</a>

@@ -9,14 +9,14 @@
 @section('content')
 
     <div class="card">
-        <div class="card-body">    
-            <p><strong>CI:</strong>     {{ $paciente->ci }}</p>                                   
+        <div class="card-body">                                      
             <p><strong>Apellido paterno:</strong>      {{ $paciente->apaterno }}</p>
             <p><strong>Apellido materno:</strong>      {{ $paciente->amaterno }}</p>
             <p><strong>Nombre:</strong>      {{ $paciente->nombre }}</p>
             <p><strong>Sexo:</strong>      {{ $paciente->sexo }}</p>
             <p><strong>Fecha de nacimiento:</strong>      {{ $paciente->fechanacimiento }}</p>
             <p><strong>Domicilio:</strong>      {{ $paciente->domicilio }}</p>
+            <p><strong>CI:</strong>     {{ $paciente->ci }}</p> 
             <p><strong>Telefono delular:</strong>      {{ $paciente->telefonodomicilio }}</p>
             <p><strong>Telefono celular:</strong>      {{ $paciente->telefonocelular }}</p>
             <p><strong>Email:</strong>      {{ $paciente->email }}</p>

@@ -29,6 +29,7 @@
                     <th scope="col">PACIENTE</th>
                     <th scope="col">SERVICIO</th>
                     <th scope="col">MEDICO</th>
+                    <th scope="col">ESTADO</th>
                     <th scope="col">ACCION</th>
                 </tr>
             </thead>
@@ -44,6 +45,13 @@
                     <td>{{$consulta->medico}}</td>
                     <td>
                         @if($consulta->estado == '1')
+                            <p class="text-danger">Pendiente</p>
+                        @else
+                            <p class="text-success">Completado</p>
+                        @endif
+                    </td>
+                    <td>
+                        @if($consulta->estado == '1')
                             @can('consultas.edit')
                                 <a href="{{ route('consultas.edit', $consulta->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                             @endcan
@@ -53,7 +61,6 @@
                         @else
                             <a href="{{ route('consultas.show', $consulta->id) }}" class="btn btn-secondary">Ver</a>
                         @endif
-                        
                     </td>
                 </tr>
                 @include('consultas.modal')
