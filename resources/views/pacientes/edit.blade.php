@@ -14,6 +14,15 @@
         @csrf
         @method('put')
             <div class="form-group row">
+                <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="nombre" class="form-control" value="{{ old('nombre', $paciente->nombre) }}">
+                </div>
+            </div>
+            @error('nombre')
+                <small>*{{$message}}</small>
+            @enderror
+            <div class="form-group row">
                 <label for="apaterno" class="col-sm-2 col-form-label">Apellido paterno:</label>
                 <div class="col-sm-10">
                     <input type="text" name="apaterno" class="form-control" value="{{ old('apaterno', $paciente->apaterno) }}">
@@ -26,13 +35,19 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
-                <div class="col-sm-10">
-                    <input type="text" name="nombre" class="form-control" value="{{ old('nombre', $paciente->nombre) }}">
+                <label for="ci" class="col-sm-2 col-form-label">CI:</label>
+                <div class="col-sm-2">
+                    <input type="number" name="ci" class="form-control" value="{{ old('ci', $paciente->ci) }}">
                 </div>
             </div>
-            @error('nombre')
-                <small>*{{$message}}</small>
+            <div class="form-group row">
+                <label for="fechanacimiento" class="col-sm-2 col-form-label">Fecha de nacimiento:</label>
+                <div class="col-sm-2">
+                    <input type="date" name="fechanacimiento" class="form-control" value="{{ old('fechanacimiento', $paciente->fechanacimiento) }}">
+                </div>
+            </div>
+            @error('fechanacimiento')
+            <small>*{{$message}}</small>
             @enderror
             <div class="form-group row">
                 <label class="col-form-label col-sm-2 pt-0">Sexo:</label>
@@ -51,36 +66,23 @@
             <small>*{{$message}}</small>
             @enderror
             <div class="form-group row">
-                <label for="fechanacimiento" class="col-sm-2 col-form-label">Fecha de nacimiento:</label>
-                <div class="col-sm-2">
-                    <input type="date" name="fechanacimiento" class="form-control" value="{{ old('fechanacimiento', $paciente->fechanacimiento) }}">
-                </div>
-            </div>
-            @error('fechanacimiento')
-            <small>*{{$message}}</small>
-            @enderror
-            <div class="form-group row">
                 <label for="fechanacimiento" class="col-sm-2 col-form-label">Domicilio:</label>
                 <div class="col-sm-10">
                     <textarea name="domicilio" class="form-control">{{ old('domicilio', $paciente->domicilio) }}</textarea>
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="ci" class="col-sm-2 col-form-label">CI:</label>
-                <div class="col-sm-2">
-                    <input type="number" name="ci" class="form-control" value="{{ old('ci', $paciente->ci) }}">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="fechanacimiento" class="col-sm-2 col-form-label">Telefono domicilio:</label>
-                <div class="col-sm-2">
-                    <input type="number" name="telefonodomicilio" class="form-control" value="{{ old('telefonodomicilio', $paciente->telefonodomicilio) }}">
-                </div>
-            </div>
+            
+            
             <div class="form-group row">
                 <label for="fechanacimiento" class="col-sm-2 col-form-label">Telefono celular:</label>
                 <div class="col-sm-2">
                     <input type="number" name="telefonocelular" class="form-control" value="{{ old('telefonocelular', $paciente->telefonocelular) }}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="fechanacimiento" class="col-sm-2 col-form-label">Telefono fijo:</label>
+                <div class="col-sm-2">
+                    <input type="number" name="telefonodomicilio" class="form-control" value="{{ old('telefonodomicilio', $paciente->telefonodomicilio) }}">
                 </div>
             </div>
             <div class="form-group row">
