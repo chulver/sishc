@@ -42,7 +42,7 @@
                         @if($consulta->estado == '1')
                             <p class="text-danger">Pendiente</p>
                         @elseif($consulta->estado == '2')
-                            <p class="text-success">Pendiente</p>
+                            <p class="text-danger">Pendiente</p>
                         @elseif($consulta->estado == '3')
                             <p class="text-success">Completado</p>
                         @endif     
