@@ -21,7 +21,7 @@
                 <label class="col-sm-1 col-form-label">Sexo:</label>
                 <p class="col-sm-3 col-form-label">{{ $signosvitales->sexo }}</p>
                 <label class="col-sm-2 col-form-label">Edad:</label>
-                <p class="col-sm-2 col-form-label">{{ $signosvitales->edad }} AÑOS</p>
+                <p class="col-sm-2 col-form-label">{{ $signosvitales->anios }} AÑOS</p>
             </div>
             <div class="row">
                 <label class="col-sm-1 col-form-label">Medico:</label>

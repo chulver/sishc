@@ -39,19 +39,6 @@ class SignosvitalesController extends Controller
         return view('signosvitales.index', compact('consultas'));
     }
 
-    public function pendientes()
-    {
-        $consultas = DB::table('solicitud_consultamedica as c')
-                    -> join('paciente as p','c.paciente_id','=','p.id')
-                    -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
-                    -> join('users as u','c.medico','=','u.id')
-                    -> select('c.id','c.created_at as fecha',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','name as medico')
-                    -> where('c.estado', '=', 1)
-                    -> get();
-
-        return view('signosvitales.index', compact('consultas'));
-    }
-
     public function create($id)
     {
         $consulta = DB::table('solicitud_consultamedica as c')
@@ -71,7 +58,9 @@ class SignosvitalesController extends Controller
 
         $signosvitales->user_id=auth()->user()->id;
         $signosvitales->solicitud_consultamedica_id=$request->get('solicitud_consultamedica_id');
-        $signosvitales->edad=$request->get('edad');
+        $signosvitales->anios=$request->get('anios');
+        $signosvitales->meses=$request->get('meses');
+        $signosvitales->dias=$request->get('dias');
         $signosvitales->peso=$request->get('peso');
         $signosvitales->talla=$request->get('talla');
         $signosvitales->temperatura=$request->get('temperatura');
@@ -100,7 +89,7 @@ class SignosvitalesController extends Controller
                     -> join('paciente as p','c.paciente_id','=','p.id')
                     -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
                     -> join('users as u','c.medico','=','u.id')
-                    -> select('sv.id as cod','sv.edad','sv.peso','sv.talla','sv.temperatura','sv.presionarterial','sv.spo2','sv.fcardiaca','sv.frespiratoria','sv.glicemia','s.*','p.*','u.*')
+                    -> select('sv.id as cod','sv.anios','sv.meses','sv.dias','sv.peso','sv.talla','sv.temperatura','sv.presionarterial','sv.spo2','sv.fcardiaca','sv.frespiratoria','sv.glicemia','s.*','p.*','u.*')
                     //-> where('sv.id', '=', $id)
                     -> where('c.id', '=', $id)
                     -> first();
@@ -139,6 +128,19 @@ class SignosvitalesController extends Controller
                     -> first();
 
         return view('signosvitales.show',compact('signosvitales'));
+    }
+
+    public function pendientes()
+    {
+        $consultas = DB::table('solicitud_consultamedica as c')
+                    -> join('paciente as p','c.paciente_id','=','p.id')
+                    -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
+                    -> join('users as u','c.medico','=','u.id')
+                    -> select('c.id','c.created_at as fecha',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','name as medico')
+                    -> where('c.estado', '=', 1)
+                    -> get();
+
+        return view('signosvitales.index', compact('consultas'));
     }
 
     public function completadas()

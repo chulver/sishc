@@ -44,10 +44,10 @@
                     <td>{{$consulta->serviciomedico}}</td>
                     <td>{{$consulta->medico}}</td>
                     <td>
-                        @if($consulta->estado == '1')
-                            <p class="text-danger">Pendiente</p>
-                        @else
+                        @if($consulta->estado == '3')
                             <p class="text-success">Completado</p>
+                        @else
+                            <p class="text-danger">Pendiente</p>
                         @endif
                     </td>
                     <td>

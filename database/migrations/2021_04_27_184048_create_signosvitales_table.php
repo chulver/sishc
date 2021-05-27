@@ -18,7 +18,9 @@ class CreateSignosvitalesTable extends Migration
             $table->integer('user_id');
             $table->foreignId('solicitud_consultamedica_id');
             $table->foreign('solicitud_consultamedica_id')->references('id')->on('solicitud_consultamedica');
-            $table->integer('edad');
+            $table->integer('anios');
+            $table->integer('meses');
+            $table->integer('dias');
             $table->decimal('peso',10,2);
             $table->integer('talla');
             $table->decimal('temperatura',10,1);

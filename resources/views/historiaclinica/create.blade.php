@@ -67,7 +67,9 @@
             <form action="{{ route('historiaclinica.store') }}" method="POST">
                 @csrf
                 <input type="hidden" name="solicitud_consultamedica_id" value="{{ $signosvitales->solicitud_consultamedica_id }}">
-                <input type="hidden" name="edad" id="edad">
+                <input type="text" name="anios" id="anios">
+                <input type="text" name="meses" id="meses" value="0">
+                <input type="text" name="dias" id="dias" value="0">
                 <div class="form-group">
                     <label for="motivoconsulta">Motivo de Consulta</label>
                     <textarea class="form-control" name="motivoconsulta" id="motivoconsulta">{{ old('motivoconsulta') }}</textarea>
@@ -141,10 +143,10 @@
             fechaActual.setMonth(mes);
             fechaActual.setFullYear(año);
 
-            edad = Math.floor(((fechaActual - fechaNacimineto) / (1000 * 60 * 60 * 24) / 365));
+            anios = Math.floor(((fechaActual - fechaNacimineto) / (1000 * 60 * 60 * 24) / 365));
 
-            $('#edad').val(edad);
-            $('.edad').text(edad+" AÑOS");
+            $('#anios').val(anios);
+            $('.edad').text(anios+" AÑOS");
         });
 
         ClassicEditor

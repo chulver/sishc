@@ -76,7 +76,7 @@
         <table border="0" style="width: 60%; color:#003874;">
             <tr>
                 <td class="font-weight-bold">Edad:</td>
-                <td>{{ $historiaclinica->edad }} AÑOS</td>
+                <td>{{ $historiaclinica->anios }} AÑOS</td>
                 <td class="text-center font-weight-bold">Fecha:</td>
                 <td>{{ $historiaclinica->fecha }}</td>
             </tr>

@@ -38,7 +38,9 @@
     <div class="card">
         <div class="card-body">
         <form action="{{ route('signosvitales.store') }}" method="POST">
-        <input type="hidden" name="edad" id="edad">
+        <input type="text" name="anios" id="anios">
+        <input type="text" name="meses" id="meses" value="0">
+        <input type="text" name="dias" id="dias" value="0">
         @csrf
             <input type="hidden" name="solicitud_consultamedica_id" value="{{ $consulta->id }}">
             <div class="form-group row">
@@ -124,10 +126,10 @@
         fechaActual.setMonth(mes);
         fechaActual.setFullYear(año);
 
-        edad = Math.floor(((fechaActual - fechaNacimineto) / (1000 * 60 * 60 * 24) / 365));
+        anios = Math.floor(((fechaActual - fechaNacimineto) / (1000 * 60 * 60 * 24) / 365));
 
-        $('#edad').val(edad);
-        $('.edad').text(edad+" AÑOS");
+        $('#anios').val(anios);
+        $('.edad').text(anios+" AÑOS");
     });
 </script>
 @stop
