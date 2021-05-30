@@ -18,6 +18,7 @@ class CreateSolicitudConsultamedicaTable extends Migration
             $table->integer('user_id');
             $table->integer('numeroturno');
             $table->foreignId('paciente_id');
+            //$table->integer('paciente_id')->unsigned();  
             $table->foreign('paciente_id')->references('id')->on('paciente');
             $table->foreignId('serviciomedico_id');
             $table->foreign('serviciomedico_id')->references('id')->on('serviciomedico');

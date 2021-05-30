@@ -14,8 +14,8 @@ class CreatePacienteTable extends Migration
     public function up()
     {
         Schema::create('paciente', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
             $table->id();
+            //$table->increments('id');
             $table->integer('ci')->nullable();
             $table->string('apaterno',50)->nullable();
             $table->string('amaterno',50)->nullable();

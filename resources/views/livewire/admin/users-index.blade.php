@@ -6,11 +6,11 @@
         @if($users->count())
             <div class="card-body">
                 <table class="table table-striped">
-                    <thead>
+                    <thead class="bg-secondary text-white">
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Email</th>
-                        <th></th>
+                        <th>ACCIONES</th>
                     <thead>
                     <tbody>
                         @foreach ($users as $user)

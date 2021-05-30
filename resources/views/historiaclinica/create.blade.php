@@ -67,9 +67,9 @@
             <form action="{{ route('historiaclinica.store') }}" method="POST">
                 @csrf
                 <input type="hidden" name="solicitud_consultamedica_id" value="{{ $signosvitales->solicitud_consultamedica_id }}">
-                <input type="text" name="anios" id="anios">
-                <input type="text" name="meses" id="meses" value="0">
-                <input type="text" name="dias" id="dias" value="0">
+                <input type="hidden" name="anios" id="anios">
+                <input type="hidden" name="meses" id="meses" value="0">
+                <input type="hidden" name="dias" id="dias" value="0">
                 <div class="form-group">
                     <label for="motivoconsulta">Motivo de Consulta</label>
                     <textarea class="form-control" name="motivoconsulta" id="motivoconsulta">{{ old('motivoconsulta') }}</textarea>

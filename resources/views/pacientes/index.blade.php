@@ -2,6 +2,13 @@
 
 @section('title', 'Pacientes')
 
+@section('css')
+
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+@stop
+
 @section('content_header')
     <a href="{{ route('pacientes.create') }}" class="btn btn-secondary float-right">Paciente Nuevo</a>
     <h1>Listado de pacientes</h1>
@@ -17,7 +24,7 @@
 
     <div class="card">
         <div class="card-body">
-            <table id="pacientes" class="table table-striped table-bordered shadow-lg mt-4">
+            <table id="pacientes" class="table table-striped">
             <thead class="bg-secondary text-white">
                 <tr>
                     <th scope="col">CODIGO</th>
@@ -26,63 +33,44 @@
                     <th scope="col">ACCIONES</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($pacientes as $paciente)
-                <tr>
-                    <td>{{$paciente->id}}</td>
-                    <td>{{$paciente->apaterno}} {{$paciente->amaterno}} {{$paciente->nombre}}</td>
-                    <td>{{$paciente->sexo}}</td>
-                    <td>
-                        @can('pacientes.show')
-                            <a href="{{ route('pacientes.show', $paciente->id) }}" class="btn btn-secondary"><i class="fas fa-eye"></i></a>
-                        @endcan
-                        @can('pacientes.edit')
-                            <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                        @endcan
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
             </table>
         </div>
     </div>
 
 @stop
 
-@section('css')
-
-<link rel="stylesheet" href="/css/admin_custom.css">
-<link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-
-@stop
-
 @section('js')
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
 
-<script>
-    $(document).ready(function() {
-        $('#pacientes').DataTable({
-            "lengthMenu": [[5,10, 50, -1], [5, 10, 50, "All"]],
-            "language": {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "sProcessing":"Procesando...",
-            }
-        });
-    });
-</script>
+    <script>
+            $('#pacientes').DataTable({
+                "ajax": "{{ route('datatable.paciente') }}",
+                "columns": [
+                    { data: 'id' },
+                    { data: 'paciente' },
+                    { data: 'sexo' },
+                    { data: 'btn' }
+                ],
+                "lengthMenu": [[5,10, 50, -1], [5, 10, 50, "All"]],
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sSearch": "Buscar:",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast":"Último",
+                        "sNext":"Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "sProcessing":"Procesando...",
+                }
+            });
+    </script>
 
 @stop

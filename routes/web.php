@@ -8,6 +8,7 @@ use App\Http\Controllers\HistoriaclinicaController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\DatatableController;
 
 
 /*
@@ -25,6 +26,10 @@ Route::get('/', function () {
     return view('auth.login');
     //return view('welcome');
 });
+
+/**Datable**/
+Route::get('datatable/pacientes', [DatatableController::class, 'paciente'])->name('datatable.paciente');
+/***********/
 
 /**Roles**/
 Route::resource('roles', RoleController::class)->names('roles');

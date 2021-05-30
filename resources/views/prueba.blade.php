@@ -11,7 +11,7 @@
         }
 
         body {
-            margin: 4cm 2cm 2cm;
+            margin: 4cm 0.8cm 0.8cm;
         }
 
         header {
@@ -111,7 +111,7 @@
         </table>
         <table border="1" style="width: 100%; color:#003874;">
             <tr><td>
-            <table border="0" style="width: 637px; color:#003874;">
+            <table border="0" style="width: 730px; color:#003874;">
                 <tr>
                     <td colspan="2" class="font-weight-bold">MOTIVO DE CONSULTA (Síntomas que el paciente refiera)</td>
                 </tr>
@@ -140,7 +140,7 @@
                     <td colspan="2" class="font-weight-bold">PLAN DE ACCION (Tratamiento, orientaciones, seguimiento)</td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="height:100px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->planaccion) !!}</td>
+                    <td colspan="2" style="height:150px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->planaccion) !!}</td>
                 </tr>
                 <tr>
                     <td colspan="2" style="height:60px;"></td>

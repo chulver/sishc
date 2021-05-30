@@ -38,9 +38,9 @@
     <div class="card">
         <div class="card-body">
         <form action="{{ route('signosvitales.store') }}" method="POST">
-        <input type="text" name="anios" id="anios">
-        <input type="text" name="meses" id="meses" value="0">
-        <input type="text" name="dias" id="dias" value="0">
+        <input type="hidden" name="anios" id="anios">
+        <input type="hidden" name="meses" id="meses" value="0">
+        <input type="hidden" name="dias" id="dias" value="0">
         @csrf
             <input type="hidden" name="solicitud_consultamedica_id" value="{{ $consulta->id }}">
             <div class="form-group row">
