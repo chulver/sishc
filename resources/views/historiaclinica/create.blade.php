@@ -23,10 +23,7 @@
                 <label class="col-sm-1 col-form-label">Sexo:</label>
                 <p class="col-sm-3 col-form-label">{{ $paciente->sexo }}</p>
                 <label class="col-sm-2 col-form-label">Edad:</label>
-                <p class="col-sm-2 col-form-label edad"></p>
-            </div>
-            <div class="row">
-                <input type="hidden" id="fechanacimiento" value="{{ $paciente->fechanacimiento }}">
+                <p class="col-sm-2 col-form-label">{{ \Carbon\Carbon::createFromDate($paciente->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%y años, %m meses, %d dias') }}</p>
             </div>
         </div>
     </div>  
@@ -67,9 +64,9 @@
             <form action="{{ route('historiaclinica.store') }}" method="POST">
                 @csrf
                 <input type="hidden" name="solicitud_consultamedica_id" value="{{ $signosvitales->solicitud_consultamedica_id }}">
-                <input type="hidden" name="anios" id="anios">
-                <input type="hidden" name="meses" id="meses" value="0">
-                <input type="hidden" name="dias" id="dias" value="0">
+                <input type="hidden" name="anios" id="anios" value="{{ \Carbon\Carbon::createFromDate($paciente->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%y') }}">
+                <input type="hidden" name="meses" id="meses" value="{{ \Carbon\Carbon::createFromDate($paciente->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%m') }}">
+                <input type="hidden" name="dias" id="dias" value="{{ \Carbon\Carbon::createFromDate($paciente->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%d') }}">
                 <div class="form-group">
                     <label for="motivoconsulta">Motivo de Consulta</label>
                     <textarea class="form-control" name="motivoconsulta" id="motivoconsulta">{{ old('motivoconsulta') }}</textarea>
@@ -130,25 +127,6 @@
 @section('js')
     <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
     <script>
-
-        $(document).ready(function() {
-            var fechaNacimineto = new Date($('#fechanacimiento').val());
-            var fechaActual = new Date()
-
-            var mes = fechaActual.getMonth();
-            var dia = fechaActual.getDate();
-            var año = fechaActual.getFullYear();
-
-            fechaActual.setDate(dia);
-            fechaActual.setMonth(mes);
-            fechaActual.setFullYear(año);
-
-            anios = Math.floor(((fechaActual - fechaNacimineto) / (1000 * 60 * 60 * 24) / 365));
-
-            $('#anios').val(anios);
-            $('.edad').text(anios+" AÑOS");
-        });
-
         ClassicEditor
         .create( document.querySelector( '#motivoconsulta' ) )
         .catch( error => {

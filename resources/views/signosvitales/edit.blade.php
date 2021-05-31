@@ -21,7 +21,7 @@
                 <label class="col-sm-1 col-form-label">Sexo:</label>
                 <p class="col-sm-3 col-form-label">{{ $signosvitales->sexo }}</p>
                 <label class="col-sm-2 col-form-label">Edad:</label>
-                <p class="col-sm-2 col-form-label">{{ $signosvitales->anios }} AÑOS</p>
+                <p class="col-sm-2 col-form-label">{{ $signosvitales->anios }} años, {{ $signosvitales->meses }} meses, {{ $signosvitales->dias }} dias</p>
             </div>
             <div class="row">
                 <label class="col-sm-1 col-form-label">Medico:</label>
@@ -88,7 +88,7 @@
                         <div class="input-group-text">rpm</div>
                     </div>
                 </div>
-                <label for="glicemia" class="col-sm-1 col-form-label">FR</label>
+                <label for="glicemia" class="col-sm-1 col-form-label">Glicemia</label>
                 <div class="col-sm-2">
                     <input type="number" class="form-control" name="glicemia" value="{{ $signosvitales->glicemia }}">
                 </div>

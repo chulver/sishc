@@ -21,7 +21,7 @@
                 <label class="col-sm-1 col-form-label">Sexo:</label>
                 <p class="col-sm-3 col-form-label">{{ $consulta->sexo }}</p>
                 <label class="col-sm-2 col-form-label">Edad:</label>
-                <p class="col-sm-2 col-form-label edad"></p>
+                <p class="col-sm-2 col-form-label">{{ \Carbon\Carbon::createFromDate($consulta->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%y años, %m meses, %d dias') }}</p>
             </div>
             <div class="row">
                 <label class="col-sm-1 col-form-label">Medico:</label>
@@ -29,18 +29,15 @@
                 <label class="col-sm-2 col-form-label">Servicio:</label>
                 <p class="col-sm-3 col-form-label">{{ $consulta->serviciomedico }}</p>
             </div>
-            <div class="row">
-                <input type="hidden" id="fechanacimiento" value="{{ $consulta->fechanacimiento }}">
-            </div>
         </div>
     </div>
 
     <div class="card">
         <div class="card-body">
         <form action="{{ route('signosvitales.store') }}" method="POST">
-        <input type="hidden" name="anios" id="anios">
-        <input type="hidden" name="meses" id="meses" value="0">
-        <input type="hidden" name="dias" id="dias" value="0">
+        <input type="hidden" name="anios" id="anios" value="{{ \Carbon\Carbon::createFromDate($consulta->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%y') }}">
+        <input type="hidden" name="meses" id="meses" value="{{ \Carbon\Carbon::createFromDate($consulta->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%m') }}">
+        <input type="hidden" name="dias" id="dias" value="{{ \Carbon\Carbon::createFromDate($consulta->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%d') }}">
         @csrf
             <input type="hidden" name="solicitud_consultamedica_id" value="{{ $consulta->id }}">
             <div class="form-group row">
@@ -106,30 +103,4 @@
         </form>
         </div>
     </div>
-@stop
-
-@section('css')
-
-@stop
-
-@section('js')
-<script>
-    $(document).ready(function() {
-        var fechaNacimineto = new Date($('#fechanacimiento').val());
-        var fechaActual = new Date()
-
-        var mes = fechaActual.getMonth();
-        var dia = fechaActual.getDate();
-        var año = fechaActual.getFullYear();
-
-        fechaActual.setDate(dia);
-        fechaActual.setMonth(mes);
-        fechaActual.setFullYear(año);
-
-        anios = Math.floor(((fechaActual - fechaNacimineto) / (1000 * 60 * 60 * 24) / 365));
-
-        $('#anios').val(anios);
-        $('.edad').text(anios+" AÑOS");
-    });
-</script>
 @stop
