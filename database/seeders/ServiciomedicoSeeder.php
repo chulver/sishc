@@ -15,13 +15,13 @@ class ServiciomedicoSeeder extends Seeder
      */
     public function run()
     {
-        Serviciomedico::create(['serviciomedico' => 'CONSULTA MEDICA']);
-        Serviciomedico::create(['serviciomedico' => 'CURACION']);
-        Serviciomedico::create(['serviciomedico' => 'RESULTADO LABORATORIO']);
-        Serviciomedico::create(['serviciomedico' => 'RESULTADO RX']);
-        Serviciomedico::create(['serviciomedico' => 'SUERO']);
-        Serviciomedico::create(['serviciomedico' => 'PAP']);
-        Serviciomedico::create(['serviciomedico' => 'RESULTADO PAP']);
-        Serviciomedico::create(['serviciomedico' => 'ECOGRAFIA']);
+        Serviciomedico::create(['serviciomedico' => 'CONSULTA MEDICA', 'precio' => '0.0']);
+        Serviciomedico::create(['serviciomedico' => 'CURACION', 'precio' => '0.0']);
+        Serviciomedico::create(['serviciomedico' => 'RESULTADO LABORATORIO', 'precio' => '0.0']);
+        Serviciomedico::create(['serviciomedico' => 'RESULTADO RX', 'precio' => '0.0']);
+        Serviciomedico::create(['serviciomedico' => 'SUERO', 'precio' => '0.0']);
+        Serviciomedico::create(['serviciomedico' => 'PAP', 'precio' => '0.0']);
+        Serviciomedico::create(['serviciomedico' => 'RESULTADO PAP', 'precio' => '0.0']);
+        Serviciomedico::create(['serviciomedico' => 'ECOGRAFIA', 'precio' => '0.0']);
     }
 }

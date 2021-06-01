@@ -53,6 +53,10 @@
                 @enderror
             </div>
 
+            <div>
+                <input type="text" name="precio" value="0.0">
+            </div>
+
             <div class="form-group row">
                 <label for="medico" class="col-sm-1 col-form-label">Medico:</label>
                 <div class="col-sm-11">

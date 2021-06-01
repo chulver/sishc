@@ -22,6 +22,7 @@ class CreateSolicitudConsultamedicaTable extends Migration
             $table->foreign('paciente_id')->references('id')->on('paciente');
             $table->foreignId('serviciomedico_id');
             $table->foreign('serviciomedico_id')->references('id')->on('serviciomedico');
+            $table->decimal('precio',10,2);
             $table->string('medico');
             $table->char('estado',1);
             $table->timestamps();

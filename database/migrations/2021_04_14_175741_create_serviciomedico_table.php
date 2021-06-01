@@ -16,6 +16,7 @@ class CreateServiciomedicoTable extends Migration
         Schema::create('serviciomedico', function (Blueprint $table) {
             $table->id();
             $table->string('serviciomedico',50);
+            $table->decimal('precio',10,2);
             $table->timestamps();
         });
     }

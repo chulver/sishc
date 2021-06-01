@@ -16,6 +16,7 @@ class Serviciomedico extends Model
 
     protected $fillable =[
         'serviciomedico',
+        'precio',
         'created_at',
         'updated_at'
     ];

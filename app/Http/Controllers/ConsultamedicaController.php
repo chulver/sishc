@@ -77,6 +77,7 @@ class ConsultamedicaController extends Controller
         $consulta->numeroturno=$request->get('numeroturno');
         $consulta->paciente_id=$request->get('paciente');
         $consulta->serviciomedico_id=$request->get('serviciomedico');
+        $consulta->precio=$request->get('precio');
         $consulta->medico=$request->get('medico');
         $consulta->estado='1';
         $fecha = Carbon::now('America/La_Paz');

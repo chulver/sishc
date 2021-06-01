@@ -19,6 +19,7 @@ class Consultamedica extends Model
         'numeroturno',
         'paciente_id',
         'serviciomedico_id',
+        'precio',
     	'medico',
     	'estado',
         'created_at',
