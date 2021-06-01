@@ -54,7 +54,7 @@
             </div>
 
             <div>
-                <input type="text" name="precio" value="0.0">
+                <input type="hidden" name="precio" value="0.0">
             </div>
 
             <div class="form-group row">
