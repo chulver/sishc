@@ -18,7 +18,7 @@ class PDFController extends Controller
                     -> join('historiaclinica as hc','c.id','=','hc.solicitud_consultamedica_id')
                     -> join('signosvitales as sv','c.id','=','sv.solicitud_consultamedica_id')
                     -> join('paciente as p','c.paciente_id','=','p.id')
-                    -> select('hc.id as cod','hc.created_at as fecha','hc.motivoconsulta','hc.enfermedadactual','hc.examenfisico','hc.analisisclinico','hc.planaccion','p.*','sv.*')
+                    -> select('hc.id as cod',DB::Raw('DATE(hc.created_at) as fecha'),DB::Raw('TIME(hc.created_at) as hora'),'hc.motivoconsulta','hc.enfermedadactual','hc.examenfisico','hc.analisisclinico','hc.planaccion','p.*','sv.*')
                     -> where('c.id', '=', $id)
                     -> first();
 

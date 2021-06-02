@@ -33,7 +33,7 @@
                 @foreach ($consultas as $consulta)
                 <tr>
                     <td>{{$consulta->numeroturno}}</td>
-                    <td>{{$consulta->fecha}}</td>
+                    <td>{{\Carbon\Carbon::parse($consulta->fecha)->format('d/m/Y')}}</td>
                     <td>{{$consulta->hora}}</td>
                     <td>{{$consulta->user}}</td>
                     <td>{{$consulta->paciente}}</td>

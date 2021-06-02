@@ -73,12 +73,14 @@
             </tr>
         </table>
         <br>
-        <table border="0" style="width: 60%; color:#003874;">
+        <table border="0" style="width: 80%; color:#003874;">
             <tr>
                 <td class="font-weight-bold">Edad:</td>
                 <td>{{ $historiaclinica->anios }} años, {{ $historiaclinica->meses }} meses, {{ $historiaclinica->dias }} dias</td>
                 <td class="text-center font-weight-bold">Fecha:</td>
-                <td>{{ $historiaclinica->fecha }}</td>
+                <td>{{ \Carbon\Carbon::parse($historiaclinica->fecha)->format('d/m/Y') }}</td>
+                <td class="text-center font-weight-bold">Hora:</td>
+                <td>{{ $historiaclinica->hora }}</td>
             </tr>
         </table>
         <br>
@@ -111,36 +113,36 @@
         </table>
         <table border="1" style="width: 100%; color:#003874;">
             <tr><td>
-            <table border="0" style="width: 730px; color:#003874;">
+            <table border="0" style="width: 720px; color:#003874;">
                 <tr>
                     <td colspan="2" class="font-weight-bold">MOTIVO DE CONSULTA (Síntomas que el paciente refiera)</td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="height:25px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->motivoconsulta) !!}</td>
+                    <td colspan="2" valign="top" style="height:25px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->motivoconsulta) !!}</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="font-weight-bold">ENFERMEDAD ACTUAL (Anamnesis)</td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="height:75px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->enfermedadactual) !!}</td>
+                    <td colspan="2" valign="top" style="height:75px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->enfermedadactual) !!}</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="font-weight-bold">EXAMEN FISICO GENERAL</td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="height:100px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->examenfisico) !!}</td>
+                    <td colspan="2" valign="top" style="height:100px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->examenfisico) !!}</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="font-weight-bold">ANALISIS CLINICO (Lista de problemas destacados)</td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="height:100px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->analisisclinico) !!}</td>
+                    <td colspan="2" valign="top" style="height:100px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->analisisclinico) !!}</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="font-weight-bold">PLAN DE ACCION (Tratamiento, orientaciones, seguimiento)</td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="height:150px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->planaccion) !!}</td>
+                    <td colspan="2" valign="top" style="height:150px; word-wrap:break-word;">{!! html_entity_decode($historiaclinica->planaccion) !!}</td>
                 </tr>
                 <tr>
                     <td colspan="2" style="height:60px;"></td>

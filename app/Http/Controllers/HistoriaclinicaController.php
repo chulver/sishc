@@ -35,6 +35,7 @@ class HistoriaclinicaController extends Controller
                     -> join('users as u','c.user_id','=','u.id')
                     -> select('c.id','c.numeroturno',DB::Raw('DATE(c.created_at) as fecha'),DB::Raw('TIME(c.created_at) as hora'),'u.name as user',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','c.estado')
                     -> wheredate('c.created_at', $fecha->toDateString())
+                    -> whereIn('c.estado', [1, 2, 3])
                     //-> where('c.medico', auth()->user()->id)
                     -> get();
 
@@ -45,7 +46,7 @@ class HistoriaclinicaController extends Controller
     {
         $paciente = DB::table('solicitud_consultamedica as c')
                     -> join('paciente as p','c.paciente_id','=','p.id')
-                    -> select('p.apaterno','p.amaterno','p.nombre','p.sexo','p.fechanacimiento')
+                    -> select('p.apaterno','p.amaterno','p.nombre','p.sexo','p.fechanacimiento', 'c.precio')
                     -> where('c.id','=', $id)
                     -> first();
 
@@ -85,6 +86,7 @@ class HistoriaclinicaController extends Controller
         Signosvitales::where('solicitud_consultamedica_id', $request->get('solicitud_consultamedica_id'))->update(['estado' => '2']);
 
         $consulta = Consultamedica::findOrFail($request->get('solicitud_consultamedica_id'));
+        $consulta->precio=$request->get('precio');
         $consulta->estado='3';
         $consulta->update();
 
@@ -97,7 +99,7 @@ class HistoriaclinicaController extends Controller
                     -> join('solicitud_consultamedica as c','hc.solicitud_consultamedica_id','=','c.id')
                     -> join('signosvitales as sv','c.id','=','sv.solicitud_consultamedica_id')
                     -> join('paciente as p','c.paciente_id','=','p.id')
-                    -> select('hc.id as cod','hc.motivoconsulta','hc.enfermedadactual','hc.examenfisico','hc.analisisclinico','hc.planaccion','p.*','sv.*')
+                    -> select('hc.id as idhc','c.id as idventa','c.precio','hc.motivoconsulta','hc.enfermedadactual','hc.examenfisico','hc.analisisclinico','hc.planaccion','p.*','sv.*')
                     //-> where('hc.id', '=', $id)
                     -> where('c.id', '=', $id)
                     -> first();
@@ -118,6 +120,10 @@ class HistoriaclinicaController extends Controller
         $fecha = Carbon::now('America/La_Paz');
         $historiaclinica->updated_at=$fecha->toDateTimeString();
         $historiaclinica->update();
+
+        $venta = Consultamedica::findOrFail($request->get('solicitud_consultamedica_id'));
+        $venta->precio=$request->get('precio');
+        $venta->update();
 
         return redirect()->route('historiaclinica.index')->with('info', 'Historia Clinica Actualizado con exito');
     }
@@ -141,14 +147,25 @@ class HistoriaclinicaController extends Controller
         $completadas = DB::table('historiaclinica as hc')
                     -> join('solicitud_consultamedica as c','hc.solicitud_consultamedica_id','=','c.id')
                     -> join('paciente as p','c.paciente_id','=','p.id')
-                    -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
-                    -> join('users as u','c.medico','=','u.id')
-                    -> select('hc.id','hc.created_at as fecha',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','hc.estado')
-                    -> where('hc.estado', '=', 1)
-                    -> orwhere('hc.estado', '=', 2)
-                    //-> where('c.medico', auth()->user()->id)
+                    -> select('p.id',DB::Raw('DATE(c.created_at) as fecha'),DB::Raw('TIME(c.created_at) as hora'),DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'p.sexo','hc.estado')
+                    -> where('hc.estado', '=', 2)
                     -> get();
         return view('historiaclinica.completadas',compact('completadas'));
+    }
+
+    public function historiasclinicas($id)
+    {
+        $paciente = Paciente::findOrFail($id);
+
+        $historiasclinicas  = DB::table('solicitud_consultamedica as c')
+                            -> join('historiaclinica as hc','c.id','=','hc.solicitud_consultamedica_id')
+                            -> join('signosvitales as sv','c.id','=','sv.solicitud_consultamedica_id')
+                            -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
+                            -> select('c.id',DB::Raw('DATE(hc.created_at) as fecha'),DB::Raw('TIME(hc.created_at) as hora'),'s.serviciomedico','hc.estado')
+                            -> where('paciente_id', '=', $id)
+                            -> get();
+
+        return view('historiaclinica.historiasclinicas',compact('paciente', 'historiasclinicas'));
     }
 
     /*public function PDFHistoriaclinica($id){

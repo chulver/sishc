@@ -6,6 +6,8 @@
 @stop
 
 @section('content')
+    <form action="{{ route('historiaclinica.store') }}" method="POST">
+    @csrf
     <div class="card">
         <div class="card-header">
             <h3>Paciente</h3>
@@ -24,6 +26,10 @@
                 <p class="col-sm-3 col-form-label">{{ $paciente->sexo }}</p>
                 <label class="col-sm-2 col-form-label">Edad:</label>
                 <p class="col-sm-2 col-form-label">{{ \Carbon\Carbon::createFromDate($paciente->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%y años, %m meses, %d dias') }}</p>
+                <label for="precio" class="col-sm-2 col-form-label">S:</label>
+                <div class="col-sm-2">
+                    <input type="text" name="precio" class="form-control">
+                </div>
             </div>
         </div>
     </div>  
@@ -61,63 +67,61 @@
             <h3>Historia Clinica</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('historiaclinica.store') }}" method="POST">
-                @csrf
-                <input type="hidden" name="solicitud_consultamedica_id" value="{{ $signosvitales->solicitud_consultamedica_id }}">
-                <input type="hidden" name="anios" id="anios" value="{{ \Carbon\Carbon::createFromDate($paciente->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%y') }}">
-                <input type="hidden" name="meses" id="meses" value="{{ \Carbon\Carbon::createFromDate($paciente->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%m') }}">
-                <input type="hidden" name="dias" id="dias" value="{{ \Carbon\Carbon::createFromDate($paciente->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%d') }}">
-                <div class="form-group">
-                    <label for="motivoconsulta">Motivo de Consulta</label>
-                    <textarea class="form-control" name="motivoconsulta" id="motivoconsulta">{{ old('motivoconsulta') }}</textarea>
-                    @error('motivoconsulta')
-                    <br>
-                    <small>*{{$message}}</small>
-                    <br>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="enfermedadactual">Enfermedad Actual</label>
-                    <textarea class="form-control" name="enfermedadactual" id="enfermedadactual">{{ old('enfermedadactual') }}</textarea>
-                    @error('enfermedadactual')
-                    <br>
-                    <small>*{{$message}}</small>
-                    <br>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="examenfisico">Examen Fisico</label>
-                    <textarea class="form-control" name="examenfisico" id="examenfisico">{{ old('examenfisico') }}</textarea>
-                    @error('examenfisico')
-                    <br>
-                    <small>*{{$message}}</small>
-                    <br>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="analisisclinico">Analisis Clinico</label>
-                    <textarea class="form-control" name="analisisclinico" id="analisisclinico">{{ old('analisisclinico') }}</textarea>
-                    @error('analisisclinico')
-                    <br>
-                    <small>*{{$message}}</small>
-                    <br>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="planaccion">Plan de Accion</label>
-                    <textarea class="form-control" name="planaccion" id="planaccion">{{ old('planaccion') }}</textarea>
-                    @error('planaccion')
-                    <br>
-                    <small>*{{$message}}</small>
-                    <br>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Guardar</button>
-                </div>
-            </form>
+            <input type="hidden" name="solicitud_consultamedica_id" value="{{ $signosvitales->solicitud_consultamedica_id }}">
+            <input type="hidden" name="anios" id="anios" value="{{ \Carbon\Carbon::createFromDate($paciente->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%y') }}">
+            <input type="hidden" name="meses" id="meses" value="{{ \Carbon\Carbon::createFromDate($paciente->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%m') }}">
+            <input type="hidden" name="dias" id="dias" value="{{ \Carbon\Carbon::createFromDate($paciente->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%d') }}">
+            <div class="form-group">
+                <label for="motivoconsulta">Motivo de Consulta</label>
+                <textarea class="form-control" name="motivoconsulta" id="motivoconsulta">{{ old('motivoconsulta') }}</textarea>
+                @error('motivoconsulta')
+                <br>
+                <small>*{{$message}}</small>
+                <br>
+                 @enderror
+            </div>
+            <div class="form-group">
+                <label for="enfermedadactual">Enfermedad Actual</label>
+                <textarea class="form-control" name="enfermedadactual" id="enfermedadactual">{{ old('enfermedadactual') }}</textarea>
+                @error('enfermedadactual')
+                <br>
+                <small>*{{$message}}</small>
+                <br>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="examenfisico">Examen Fisico</label>
+                <textarea class="form-control" name="examenfisico" id="examenfisico">{{ old('examenfisico') }}</textarea>
+                @error('examenfisico')
+                <br>
+                <small>*{{$message}}</small>
+                <br>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="analisisclinico">Analisis Clinico</label>
+                <textarea class="form-control" name="analisisclinico" id="analisisclinico">{{ old('analisisclinico') }}</textarea>
+                @error('analisisclinico')
+                <br>
+                <small>*{{$message}}</small>
+                <br>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="planaccion">Plan de Accion</label>
+                <textarea class="form-control" name="planaccion" id="planaccion">{{ old('planaccion') }}</textarea>
+                @error('planaccion')
+                <br>
+                <small>*{{$message}}</small>
+                <br>
+                @enderror
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Guardar</button>
+            </div>
         </div>
     </div>
+    </form>
 @stop
 
 @section('css')

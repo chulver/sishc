@@ -6,6 +6,10 @@
 @stop
 
 @section('content')
+    <form action="{{ route('historiaclinica.update', $historiaclinica->idhc) }}" method="POST">
+    @csrf
+    @method('put')
+    <input type="hidden" name="solicitud_consultamedica_id" value="{{ $historiaclinica->idventa }}">
     <div class="card">
         <div class="card-header">
             <h3>Paciente</h3>
@@ -24,6 +28,10 @@
                 <p class="col-sm-3 col-form-label">{{ $historiaclinica->sexo }}</p>
                 <label class="col-sm-2 col-form-label">Edad:</label>
                 <p class="col-sm-2 col-form-label">{{ $historiaclinica->anios }} años, {{ $historiaclinica->meses }} meses, {{ $historiaclinica->dias }} dias</p>
+                <label for="precio" class="col-sm-2 col-form-label">S:</label>
+                <div class="col-sm-2">
+                    <input type="text" name="precio" class="form-control" value="{{ $historiaclinica->precio }}">
+                </div>
             </div>
         </div>
     </div>
@@ -61,19 +69,16 @@
             <h3>Historia Clinica</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('historiaclinica.update', $historiaclinica->cod) }}" method="POST">
-                @csrf
-                @method('put')
-                <div class="form-group">
-                    <label for="motivoconsulta">Motivo de Consulta</label>
-                    <textarea class="form-control" name="motivoconsulta" id="motivoconsulta">{{ old('motivoconsulta', $historiaclinica->motivoconsulta) }}</textarea>
-                    @error('motivoconsulta')
-                    <br>
-                    <small>*{{$message}}</small>
-                    <br>
-                    @enderror
-                </div>
-                <div class="form-group">
+            <div class="form-group">
+                <label for="motivoconsulta">Motivo de Consulta</label>
+                <textarea class="form-control" name="motivoconsulta" id="motivoconsulta">{{ old('motivoconsulta', $historiaclinica->motivoconsulta) }}</textarea>
+                @error('motivoconsulta')
+                <br>
+                <small>*{{$message}}</small>
+                <br>
+                @enderror
+            </div>
+            <div class="form-group">
                     <label for="enfermedadactual">Enfermedad Actual</label>
                     <textarea class="form-control" name="enfermedadactual" id="enfermedadactual">{{ old('enfermedadactual', $historiaclinica->enfermedadactual) }}</textarea>
                     @error('enfermedadactual')
@@ -112,9 +117,9 @@
                 <div class="form-group">
                     <button class="btn btn-primary" type="submit">Actualizar</button>
                 </div>
-            </form>
         </div>
     </div>
+    </form>
 @stop
 
 @section('css')

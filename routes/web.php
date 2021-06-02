@@ -72,9 +72,10 @@ Route::get('signosvitales/{signosvitales}/show',[SignosvitalesController::class,
 Route::get('historiaclinica',[HistoriaclinicaController::class, 'index'])->name('historiaclinica.index');
 Route::get('historiaclinica/{consulta}/create',[HistoriaclinicaController::class, 'create'])->name('historiaclinica.create');
 Route::post('historiaclinica',[HistoriaclinicaController::class, 'store'])->name('historiaclinica.store');
-Route::get('historiaclinica/completadas',[HistoriaclinicaController::class, 'completadas'])->name('historiaclinica.completadas');
 Route::get('historiaclinica/{historia}/edit',[HistoriaclinicaController::class, 'edit'])->name('historiaclinica.edit');
 Route::put('historiaclinica/{completada}',[HistoriaclinicaController::class, 'update'])->name('historiaclinica.update');
+Route::get('historiaclinica/completadas',[HistoriaclinicaController::class, 'completadas'])->name('historiaclinica.completadas');
+Route::get('historiaclinica/{codigo}/historiasclinicas',[HistoriaclinicaController::class, 'historiasclinicas'])->name('historiaclinica.historiasclinicas');
 //Route::get('pdf/{consulta}',[HistoriaclinicaController::class, 'PDFHistoriaclinica'])->name('generarPDF');
 /***********/
 

@@ -3,7 +3,7 @@
 @section('title', 'Consultas')
 
 @section('content_header')
-    <h1>Completadas</h1>
+    <h1>Historia Clinica</h1>
 @stop
 
 @section('content')
@@ -19,8 +19,7 @@
             <table id="completadas" class="table table-striped table-bordered shadow-lg mt-4">
             <thead class="bg-secondary text-white">
                 <tr>
-                    <th>ID</th>
-                    <th>FECHA</th>
+                    <th>CODIGO</th>
                     <th>PACIENTE</th>
                     <th>SERVICO</th>
                     <th>ACCION</th>
@@ -30,16 +29,10 @@
                 @foreach ($completadas as $completada)
                 <tr>
                     <td>{{$completada->id}}</td>
-                    <td>{{$completada->fecha}}</td>
                     <td>{{$completada->paciente}}</td>
-                    <td>{{$completada->serviciomedico}}</td>
+                    <td>{{$completada->sexo}}</td>
                     <td>
-                    @if($completada->estado == '1')
-                        <a href="{{ route('historiaclinica.edit', $completada->id) }}" class="btn btn-primary">Finalizar atencion</a>
-                    @elseif($completada->estado == '2')
-                        <a href="{{ route('historiaclinica.edit', $completada->id) }}" class="btn btn-warning"><i class="fas fa-undo"></i></a>
-                        <a href="{{ route('generarPDF', $completada->id) }}" class="btn btn-success" target="_blank"><i class="fas fa-print"></i></a>
-                    @endif
+                        <a href="{{ route('historiaclinica.historiasclinicas', $completada->id) }}" class="btn btn-primary">Historia Clinica</a>
                     </td>
                 </tr>
                 @endforeach
@@ -67,7 +60,6 @@
     $(document).ready(function() {
         $('#completadas').DataTable({
             "lengthMenu": [[5,10, 50, -1], [5, 10, 50, "All"]],
-            "aaSorting": [[0,"desc"]],
             "language": {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",

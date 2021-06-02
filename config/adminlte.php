@@ -262,6 +262,12 @@ return [
             'can'  => 'historiaclinica.index',
         ],
         [
+            'text'    => 'Historia Clinica',
+            'url'  => 'historiaclinica/completadas',
+            'icon'    => 'fas fa-fw fa-user-md',
+            'can'  => 'historiaclinica.completadas',
+        ],
+        [
             'text'        => 'Fichas',
             'url'         => 'consultas/fichas',
             'icon'        => 'fas fa-fw fa-clipboard-list',
