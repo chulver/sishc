@@ -16,11 +16,11 @@ class ConsultamedicaController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        //$this->middleware('can:consultas.index')->only('index');
-        //$this->middleware('can:consultas.create')->only('create', 'store');
-        //$this->middleware('can:consultas.edit')->only('edit', 'update');
-        //$this->middleware('can:consultas.destroy')->only('destroy');
-        //$this->middleware('can:consultas.fichas')->only('fichas');
+        $this->middleware('can:consultas.index')->only('index');
+        $this->middleware('can:consultas.create')->only('create', 'store');
+        $this->middleware('can:consultas.edit')->only('edit', 'update');
+        $this->middleware('can:consultas.destroy')->only('destroy');
+        $this->middleware('can:consultas.fichas')->only('fichas');
     }
 
     public function index()

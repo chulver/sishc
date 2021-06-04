@@ -27,6 +27,10 @@ Route::get('/', function () {
     //return view('welcome');
 });
 
+Route::get('/home', function () {
+    return view('home.index');
+})->middleware('auth');
+
 /**Datable**/
 Route::get('datatable/pacientes', [DatatableController::class, 'paciente'])->name('datatable.paciente');
 /***********/

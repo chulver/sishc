@@ -238,6 +238,11 @@ return [
             'can'  => 'manage-blog',
         ],
         [
+            'text'        => 'Pagina Principal',
+            'url'         => 'home',
+            'icon'        => 'fas fa-fw fa-home',
+        ],
+        [
             'text'        => 'Pacientes',
             'url'         => 'pacientes',
             'icon'        => 'fas fa-fw fa-user-friends',
@@ -246,7 +251,7 @@ return [
         [
             'text'        => 'Ventas',
             'url'         => 'consultas',
-            'icon'        => 'fas fa-fw fa-cart-arrow-down',
+            'icon'        => 'fas fa-fw fa-shopping-cart',
             'can'         => 'consultas.index',
         ],
         [
