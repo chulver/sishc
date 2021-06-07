@@ -161,7 +161,8 @@ class HistoriaclinicaController extends Controller
                             -> join('historiaclinica as hc','c.id','=','hc.solicitud_consultamedica_id')
                             -> join('signosvitales as sv','c.id','=','sv.solicitud_consultamedica_id')
                             -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
-                            -> select('c.id',DB::Raw('DATE(hc.created_at) as fecha'),DB::Raw('TIME(hc.created_at) as hora'),'s.serviciomedico','hc.estado')
+                            -> join('users as u','c.medico','=','u.id')
+                            -> select('c.id',DB::Raw('DATE(hc.created_at) as fecha'),DB::Raw('TIME(hc.created_at) as hora'),'s.serviciomedico','u.name','hc.estado')
                             -> where('paciente_id', '=', $id)
                             -> get();
 

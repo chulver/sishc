@@ -23,7 +23,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'users.index',
                             'description' => 'Ver listado de usuarios'])->syncRoles([$role1]);
         Permission::create(['name' => 'users.edit',
-                            'description' => 'Asignar un rol'])->syncRoles([$role1]);
+                            'description' => 'Asignar rol'])->syncRoles([$role1]);
 
         Permission::create(['name' => 'roles.index',
                             'description' => 'Ver listado de roles'])->syncRoles([$role1]);
@@ -37,11 +37,13 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'consultas.index',
                             'description' => 'Ver listado de ventas'])->syncRoles([$role1,$role3]);
         Permission::create(['name' => 'consultas.create',
-                            'description' => 'Crear una venta'])->syncRoles([$role1,$role3]);
+                            'description' => 'Crear venta'])->syncRoles([$role1,$role3]);
         Permission::create(['name' => 'consultas.edit',
                             'description' => 'Editar venta'])->syncRoles([$role1,$role3]);
         Permission::create(['name' => 'consultas.destroy',
-                            'description' => 'Anular una venta'])->syncRoles([$role1]);
+                            'description' => 'Anular venta'])->syncRoles([$role1]);
+        Permission::create(['name' => 'consultas.show',
+                            'description' => 'Ver venta'])->syncRoles([$role1]);
         Permission::create(['name' => 'consultas.fichas',
                             'description' => 'Ver listado de fichas'])->syncRoles([$role1]);
 
@@ -54,7 +56,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'signosvitales.completadas',
                             'description' => 'Ver listado de signos vitales completados'])->syncRoles([$role1]);
         Permission::create(['name' => 'signosvitales.show',
-                            'description' => 'Mostrar signos vitales'])->syncRoles([$role1,$role3]);
+                            'description' => 'Ver signos vitales'])->syncRoles([$role1,$role3]);
 
         Permission::create(['name' => 'historiaclinica.index',
                             'description' => 'Ver listado de atenciones pendientes'])->syncRoles([$role1,$role2]);

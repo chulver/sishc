@@ -59,7 +59,9 @@
                                 <button class="btn btn-danger" data-target="#modal-delete-{{$consulta->id}}" data-toggle="modal"><i class="fas fa-trash-alt"></i></button>
                             @endcan
                         @else
-                            <a href="{{ route('consultas.show', $consulta->id) }}" class="btn btn-secondary">Ver</a>
+                            @can('consultas.show')
+                                <a href="{{ route('consultas.show', $consulta->id) }}" class="btn btn-secondary">Ver</a>
+                            @endcan
                         @endif
                     </td>
                 </tr>
