@@ -31,7 +31,7 @@
                 </div>
                 @error('paciente')
                 <br>
-                    <small>*{{$message}}</small>
+                    <small class="text-danger">*{{$message}}</small>
                 <br>
                 @enderror
             </div>
@@ -48,7 +48,7 @@
                     </div>
                 @error('serviciomedico')
                 <br>
-                    <small>*{{$message}}</small>
+                    <small class="text-danger">*{{$message}}</small>
                 <br>
                 @enderror
             </div>
@@ -69,7 +69,7 @@
                 </div>
                 @error('medico')
                 <br>
-                    <small>*{{$message}}</small>
+                    <small class="text-danger">*{{$message}}</small>
                 <br>
                 @enderror
             </div>

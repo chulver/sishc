@@ -28,7 +28,7 @@
                 <p class="col-sm-2 col-form-label">{{ \Carbon\Carbon::createFromDate($paciente->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%y años, %m meses, %d dias') }}</p>
                 <label for="precio" class="col-sm-2 col-form-label">S:</label>
                 <div class="col-sm-2">
-                    <input type="text" name="precio" class="form-control">
+                    <input type="text" name="precio" class="form-control" value="{{ $paciente->precio }}">
                 </div>
             </div>
         </div>

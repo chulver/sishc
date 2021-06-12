@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             'name' => 'PAMELA LOPEZ LEDEZMA',
             'email' => 'drapamela@chulver.com',
             'password' => bcrypt('2016')
-        ])->assignRole('Medico');
+        ])->assignRole('Medico','Enfermera');
 
         User::create([
             'name' => 'ZAIDA',
@@ -55,6 +55,6 @@ class UserSeeder extends Seeder
             'name' => 'ADMINISTRADOR',
             'email' => 'adm@chulver.com',
             'password' => bcrypt('3030')
-        ])->assignRole('Admin');
+        ])->assignRole('Administrador');
     }
 }

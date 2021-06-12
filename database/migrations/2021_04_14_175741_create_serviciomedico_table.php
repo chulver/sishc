@@ -17,6 +17,7 @@ class CreateServiciomedicoTable extends Migration
             $table->id();
             $table->string('serviciomedico',50);
             $table->decimal('precio',10,2);
+            $table->char('estado',1);
             $table->timestamps();
         });
     }

@@ -9,7 +9,7 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DatatableController;
-
+use App\Http\Controllers\ServicioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +33,11 @@ Route::get('/home', function () {
 
 /**Datable**/
 Route::get('datatable/pacientes', [DatatableController::class, 'paciente'])->name('datatable.paciente');
+Route::get('datatable/historias', [DatatableController::class, 'historias'])->name('datatable.historias');
+/***********/
+
+/**Roles**/
+Route::resource('servicios', ServicioController::class)->names('servicios');
 /***********/
 
 /**Roles**/

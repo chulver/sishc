@@ -164,6 +164,7 @@ class HistoriaclinicaController extends Controller
                             -> join('users as u','c.medico','=','u.id')
                             -> select('c.id',DB::Raw('DATE(hc.created_at) as fecha'),DB::Raw('TIME(hc.created_at) as hora'),'s.serviciomedico','u.name','hc.estado')
                             -> where('paciente_id', '=', $id)
+                            -> orderBy('fecha', 'desc')
                             -> get();
 
         return view('historiaclinica.historiasclinicas',compact('paciente', 'historiasclinicas'));

@@ -47,7 +47,7 @@ class ConsultamedicaController extends Controller
         $pacientes = DB::table('paciente as p')
                     ->select('p.id',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'))
                     ->get();
-        $servicios = DB::table('serviciomedico')->get();
+        $servicios = DB::table('serviciomedico')->where('estado','1')->get();
         //$users = DB::table('users')->get();
         $medicos = DB::table('model_has_roles')
                 -> join('users as u','model_id','=','u.id') 
@@ -69,6 +69,12 @@ class ConsultamedicaController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'paciente' => 'required',
+            'serviciomedico' => 'required',
+            'medico' => 'required'
+        ]);
+
         $fecha = Carbon::now('America/La_Paz');
 
         $consulta = new Consultamedica;
@@ -102,7 +108,7 @@ class ConsultamedicaController extends Controller
         $pacientes = DB::table('paciente as p')
                     ->select('p.id',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'))
                     ->get();
-        $servicios = DB::table('serviciomedico')->get();
+        $servicios = DB::table('serviciomedico')->where('estado','1')->get();
         //$users = DB::table('users')->get();
         $medicos = DB::table('model_has_roles')
                 -> join('users as u','model_id','=','u.id') 

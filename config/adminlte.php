@@ -289,10 +289,22 @@ return [
             ],
         ],
         [
+            'text'        => 'Servicios',
+            'url'         => 'servicios',
+            'icon'        => 'fas fa-fw fa-clinic-medical',
+            'can'         => 'servicios.index',
+        ],
+        [
             'text'        => 'Usuarios',
             'url'         => 'users',
             'icon'        => 'fas fa-fw fa-users',
             'can'         => 'users.index',
+        ],
+        [
+            'text'        => 'Roles',
+            'url'         => 'roles',
+            'icon'        => 'fas fa-fw fa-tasks',
+            'can'         => 'roles.index',
         ],
     ],
 
