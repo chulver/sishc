@@ -10,7 +10,7 @@
 @stop
 
 @section('content_header')
-    <a href="{{ route('pacientes.create') }}" class="btn btn-secondary float-right">Paciente Nuevo</a>
+    <a href="{{ route('pacientes.create') }}" class="btn btn-warning float-right"><strong>Paciente Nuevo</strong></a>
     <h1>Listado de pacientes</h1>
 @stop
 

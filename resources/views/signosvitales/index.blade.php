@@ -33,14 +33,14 @@
             <tbody>
                 @foreach ($consultas as $consulta)
                 <tr>
-                    <td>{{$consulta->numeroturno}}</td>
-                    <td>{{\Carbon\Carbon::parse($consulta->fecha)->format('d/m/Y')}}</td>
-                    <td>{{$consulta->hora}}</td>
-                    <td>{{$consulta->user}}</td>
-                    <td>{{$consulta->paciente}}</td>
-                    <td>{{$consulta->serviciomedico}}</td>
-                    <td>{{$consulta->medico}}</td>
-                    <td>
+                    <td class="font-weight-bold">{{$consulta->numeroturno}}</td>
+                    <td class="font-weight-bold">{{\Carbon\Carbon::parse($consulta->fecha)->format('d/m/Y')}}</td>
+                    <td class="font-weight-bold">{{$consulta->hora}}</td>
+                    <td class="font-weight-bold">{{$consulta->user}}</td>
+                    <td class="font-weight-bold">{{$consulta->paciente}}</td>
+                    <td class="font-weight-bold">{{$consulta->serviciomedico}}</td>
+                    <td class="font-weight-bold">{{$consulta->medico}}</td>
+                    <td class="font-weight-bold">
                         @if($consulta->estado == '1')
                             <p class="text-danger">Pendiente</p>
                         @elseif($consulta->estado == '2')

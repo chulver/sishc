@@ -45,11 +45,11 @@ class RoleSeeder extends Seeder
                             'description' => 'Eliminar servicio'])->syncRoles([$role1,$role4]);
 
         Permission::create(['name' => 'consultas.index',
-                            'description' => 'Ver listado de ventas'])->syncRoles([$role1,$role3,$role4]);
+                            'description' => 'Ver listado de ventas'])->syncRoles([$role1,$role2,$role3,$role4]);
         Permission::create(['name' => 'consultas.create',
-                            'description' => 'Crear venta'])->syncRoles([$role1,$role3,$role4]);
+                            'description' => 'Crear venta'])->syncRoles([$role1,$role2,$role3,$role4]);
         Permission::create(['name' => 'consultas.edit',
-                            'description' => 'Editar venta'])->syncRoles([$role1,$role3,$role4]);
+                            'description' => 'Editar venta'])->syncRoles([$role1,$role2,$role3,$role4]);
         Permission::create(['name' => 'consultas.destroy',
                             'description' => 'Anular venta'])->syncRoles([$role1,$role4]);
         Permission::create(['name' => 'consultas.show',
@@ -58,13 +58,13 @@ class RoleSeeder extends Seeder
                             'description' => 'Ver listado de fichas'])->syncRoles([$role1]);
 
         Permission::create(['name' => 'signosvitales.index',
-                            'description' => 'Ver Listado de signos vitales pendientes'])->syncRoles([$role1,$role3,$role4]);
+                            'description' => 'Ver Listado de signos vitales pendientes'])->syncRoles([$role1,$role2,$role3,$role4]);
         Permission::create(['name' => 'signosvitales.create',
-                            'description' => 'Registrar signos vitales'])->syncRoles([$role1,$role3,$role4]);
+                            'description' => 'Registrar signos vitales'])->syncRoles([$role1,$role2,$role3,$role4]);
         Permission::create(['name' => 'signosvitales.edit',
-                            'description' => 'Editar signos vitales'])->syncRoles([$role1,$role3,$role4]);
+                            'description' => 'Editar signos vitales'])->syncRoles([$role1,$role2,$role3,$role4]);
         Permission::create(['name' => 'signosvitales.show',
-                            'description' => 'Ver signos vitales'])->syncRoles([$role1,$role3,$role4]);
+                            'description' => 'Ver signos vitales'])->syncRoles([$role1,$role2,$role3,$role4]);
         Permission::create(['name' => 'signosvitales.completadas',
                             'description' => 'Ver listado de signos vitales completados'])->syncRoles([$role1]);
 
@@ -78,13 +78,13 @@ class RoleSeeder extends Seeder
                             'description' => 'Ver listado de atencines completadas'])->syncRoles([$role1,$role2,$role4]);
 
         Permission::create(['name' => 'pacientes.index',
-                            'description' => 'Ver Listado de pacientes'])->syncRoles([$role1,$role3,$role4]);
+                            'description' => 'Ver Listado de pacientes'])->syncRoles([$role1,$role2,$role3,$role4]);
         Permission::create(['name' => 'pacientes.create',
-                            'description' => 'Registrar nuevo paciente'])->syncRoles([$role1,$role3,$role4]);
+                            'description' => 'Registrar nuevo paciente'])->syncRoles([$role1,$role2,$role3,$role4]);
         Permission::create(['name' => 'pacientes.edit',
                             'description' => 'Editar datos del paciente'])->syncRoles([$role1,$role4]);
         Permission::create(['name' => 'pacientes.show',
-                            'description' => 'Ver datos del paciente'])->syncRoles([$role1,$role3,$role4]);
+                            'description' => 'Ver datos del paciente'])->syncRoles([$role1,$role2,$role3,$role4]);
 
         Permission::create(['name' => 'generarPDF',
                             'description' => 'Genera PDF de la Historia Clinica'])->syncRoles([$role1,$role2,$role4]);

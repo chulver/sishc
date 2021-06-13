@@ -3,7 +3,7 @@
 @section('title', 'Servicios')
 
 @section('content_header')
-    <a href="{{ route('servicios.create') }}" class="btn btn-secondary float-right">Nuevo Servicio</a>
+    <a href="{{ route('servicios.create') }}" class="btn btn-warning float-right"><strong>Nuevo Servicio</strong></a>
     <h1>Listado de Servicios</h1>
 @stop
 
