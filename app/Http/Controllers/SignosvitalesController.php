@@ -35,6 +35,7 @@ class SignosvitalesController extends Controller
                     -> select('c.id','c.numeroturno',DB::Raw('DATE(c.created_at) as fecha'),DB::Raw('TIME(c.created_at) as hora'),'u.name as user',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','m.name as medico','c.estado')
                     -> wheredate('c.created_at', $fecha->toDateString())
                     -> whereIn('c.estado', [1, 2, 3])
+                    -> orderBy('c.numeroturno', 'asc')
                     -> get();
 
         return view('signosvitales.index', compact('consultas'));

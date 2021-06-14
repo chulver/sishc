@@ -36,6 +36,7 @@ class HistoriaclinicaController extends Controller
                     -> select('c.id','c.numeroturno',DB::Raw('DATE(c.created_at) as fecha'),DB::Raw('TIME(c.created_at) as hora'),'u.name as user',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','c.estado')
                     -> wheredate('c.created_at', $fecha->toDateString())
                     -> whereIn('c.estado', [1, 2, 3])
+                    -> orderBy('c.numeroturno', 'asc')
                     //-> where('c.medico', auth()->user()->id)
                     -> get();
 
