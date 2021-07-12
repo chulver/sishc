@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\InyectableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,11 @@ Route::get('/home', function () {
 /**Datable**/
 Route::get('datatable/pacientes', [DatatableController::class, 'paciente'])->name('datatable.paciente');
 Route::get('datatable/historias', [DatatableController::class, 'historias'])->name('datatable.historias');
+/***********/
+
+/**Inyectables**/
+Route::get('inyectables',[InyectableController::class, 'index'])->name('inyectables.index');
+Route::get('inyectables/registrar',[InyectableController::class, 'registrar'])->name('inyectables.registrar');
 /***********/
 
 /**Roles**/

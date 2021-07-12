@@ -289,6 +289,11 @@ return [
             ],
         ],
         [
+            'text'        => 'Inyectables',
+            'url'         => 'inyectables',
+            'icon'        => 'fas fa-fw fa-user-nurse',
+        ],
+        [
             'text'        => 'Servicios',
             'url'         => 'servicios',
             'icon'        => 'fas fa-fw fa-clinic-medical',
