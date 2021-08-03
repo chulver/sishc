@@ -289,9 +289,16 @@ return [
             ],
         ],
         [
-            'text'        => 'Inyectables',
-            'url'         => 'inyectables',
-            'icon'        => 'fas fa-fw fa-user-nurse',
+            'text'    => 'multilevel',
+            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Enfermeria',
+            'submenu' => [
+                [
+                    'text'        => '      Inyectables',
+                    'url'         => 'inyectables',
+                    'icon'        => 'fas fa-fw fa-user-nurse',
+                ],
+            ],
         ],
         [
             'text'        => 'Servicios',

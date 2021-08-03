@@ -17,6 +17,9 @@ class CreateInyectableTable extends Migration
             $table->id();
             $table->foreignId('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('paciente');
+            $table->integer('anios');
+            $table->integer('meses');
+            $table->integer('dias');
             $table->string('diagnostico');
             $table->string('via');
             $table->decimal('precio',10,2);

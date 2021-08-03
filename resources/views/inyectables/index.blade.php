@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Servicios')
+@section('title', 'Inyectable')
 
 @section('content_header')
 
@@ -10,10 +10,10 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Venta de Inyectable</h3>
+            <h3>Venta de Inyectable</h3>
         </div>
         <div class="card-body">
-        <form action="{{ route('inyectables.registrar') }}" method="GET">
+        <form action="{{ route('inyectables.historial') }}" method="GET">
             <div class="form-group row">
                 <label for="paciente" class="col-sm-1 col-form-label">Paciente:</label>
                 <div class="col-sm-5">
@@ -24,13 +24,12 @@
                         @endforeach
                     </select>
                 </div>
-                @error('paciente')
-                <br>
-                    <small class="text-danger">*{{$message}}</small>
-                <br>
-                @enderror
             </div>
-
+            @error('paciente')
+            <small class="text-danger">*{{$message}}</small>
+            <br>
+            <br>
+            @enderror
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Confirmar</button>
                 <button class="btn btn-danger" type="submit">Cancelar</button>

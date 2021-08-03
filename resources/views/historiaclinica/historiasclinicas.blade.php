@@ -61,7 +61,7 @@
             <tbody>
                 @foreach ($historiasclinicas as $hc)
                 <tr>
-                    <td>{{ \Carbon\Carbon::parse($hc->fecha)->format('d/m/Y')}}</td>
+                    <td>{{ \Carbon\Carbon::parse($hc->fecha)->format('d/m/Y') }}</td>
                     <td>{{ $hc->hora }}</td>
                     <td>{{ $hc->serviciomedico }}</td>
                     <td>{{ $hc->name }}</td>

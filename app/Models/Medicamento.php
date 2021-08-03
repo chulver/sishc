@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Inyectable extends Model
+class Medicamento extends Model
 {
     //use HasFactory;
-    protected $table='inyectable';
+    protected $table='medicamento';
 
     protected $primaryKey='id';
 
@@ -21,4 +21,5 @@ class Inyectable extends Model
     protected $guarded =[
 
     ];
+
 }

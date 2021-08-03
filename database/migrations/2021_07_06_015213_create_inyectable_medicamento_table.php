@@ -19,8 +19,7 @@ class CreateInyectableMedicamentoTable extends Migration
             $table->foreign('inyectable_id')->references('id')->on('inyectable');
             $table->foreignId('medicamento_id');
             $table->foreign('medicamento_id')->references('id')->on('medicamento');
-            $table->integer('cantidad');
-            $table->string('observaciones');
+            $table->string('observaciones')->nullable();
         });
     }
 

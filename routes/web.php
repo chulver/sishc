@@ -39,7 +39,10 @@ Route::get('datatable/historias', [DatatableController::class, 'historias'])->na
 
 /**Inyectables**/
 Route::get('inyectables',[InyectableController::class, 'index'])->name('inyectables.index');
-Route::get('inyectables/registrar',[InyectableController::class, 'registrar'])->name('inyectables.registrar');
+Route::get('inyectables/historial',[InyectableController::class, 'historial'])->name('inyectables.historial');
+Route::get('inyectables/{paciente}/registrar',[InyectableController::class, 'registrar'])->name('inyectables.registrar');
+Route::post('inyectables',[InyectableController::class, 'store'])->name('inyectables.store');
+Route::get('inyectables/{inyectable}/show',[InyectableController::class, 'show'])->name('inyectables.show');
 /***********/
 
 /**Roles**/
