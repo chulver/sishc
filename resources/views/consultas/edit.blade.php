@@ -3,19 +3,22 @@
 @section('title', 'Ventas')
 
 @section('content_header')
-    <h1>Editar consulta medica</h1>
+
 @stop
 
 @section('content')
 
     <div class="card">
+        <div class="card-header">
+            <h3>Editar Venta</h3>
+        </div>
         <div class="card-body">
         <form action="{{ route('consultas.update', $consulta->id) }}" method="POST">
         @csrf
         @method('put')
             <div class="form-group row">
                 <label for="paciente" class="col-sm-1 col-form-label">Paciente:</label>
-                <div class="col-sm-11">
+                <div class="col-sm-5">
                     <select name="paciente" class="form-control selectpicker" data-live-search="true">
                     @foreach($pacientes as $paciente)
                         @if ($paciente->id == $consulta->paciente_id)
@@ -27,10 +30,10 @@
                     </select>
                 </div>
             </div>
-        
+
             <div class="form-group row">
                 <label for="serviciomedico" class="col-sm-1 col-form-label">Servicio:</label>
-                <div class="col-sm-11">
+                <div class="col-sm-5">
                     <select name="serviciomedico" class="form-control selectpicker" data-live-search="true">
                     @foreach($servicios as $servicio)
                         @if ($servicio->id == $consulta->serviciomedico_id)
@@ -45,7 +48,7 @@
 
             <div class="form-group row">
                 <label for="medico" class="col-sm-1 col-form-label">Medico:</label>
-                <div class="col-sm-11">
+                <div class="col-sm-5">
                     <select name="medico" class="form-control selectpicker" data-live-search="true">
                     @foreach($medicos as $medico)
                         @if ($medico->id == $consulta->medico)

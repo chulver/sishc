@@ -5,25 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Consultamedica;
 use App\Models\Numeroturno;
-
-use App\Http\Requests\ConsultamedicaFormRequest;
-
 use DB;
 use Carbon\Carbon;
 
-class ConsultamedicaController extends Controller
+class VentaController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('can:consultas.index')->only('index');
-        $this->middleware('can:consultas.create')->only('create', 'store');
-        $this->middleware('can:consultas.edit')->only('edit', 'update');
-        $this->middleware('can:consultas.destroy')->only('destroy');
-        $this->middleware('can:consultas.fichas')->only('fichas');
+
     }
 
     public function index()
+    {
+        return view('ventas.index');
+    }
+
+    public function tabla()
     {
         $fecha = Carbon::now('America/La_Paz');
 
@@ -32,13 +29,13 @@ class ConsultamedicaController extends Controller
                     -> join('serviciomedico as s','c.serviciomedico_id','=','s.id')
                     -> join('users as m','c.medico','=','m.id')
                     -> join('users as u','c.user_id','=','u.id')
-                    -> select('c.id','c.numeroturno',DB::Raw('DATE(c.created_at) as fecha'),DB::Raw('TIME(c.created_at) as hora'),'u.name as user',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','m.name as medico','c.estado')
+                    -> select('c.id','c.numeroturno',DB::Raw('DATE_FORMAT(DATE(c.created_at), "%d/%m/%Y") as fecha'),DB::Raw('TIME(c.created_at) as hora'),'u.name as user',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'s.serviciomedico','m.name as medico','c.estado')
                     -> wheredate('c.created_at', $fecha->toDateString())
                     -> whereIn('c.estado', [1, 2, 3])
                     -> orderBy('c.numeroturno', 'asc')
                     -> get();
 
-        return view('consultas.index', compact('consultas'));
+        return view('ventas.tabla', compact('consultas'));
     }
 
     public function create()
@@ -94,7 +91,7 @@ class ConsultamedicaController extends Controller
 
         Numeroturno::where('fecha',$fecha->toDateString())->increment('numeroturno');
 
-        return redirect()->route('consultas.index')->with('info', 'Venta registrado con exito');
+        //return redirect()->route('consultas.index')->with('info', 'Venta registrado con exito');
     }
 
     public function edit($id)
@@ -106,18 +103,8 @@ class ConsultamedicaController extends Controller
                     -> select('c.id','c.paciente_id', DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'),'c.serviciomedico_id','s.serviciomedico','c.medico','u.name')
                     -> where('c.id', '=', $id)
                     -> first();
-        $pacientes = DB::table('paciente as p')
-                    ->select('p.id',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'))
-                    ->get();
-        $servicios = DB::table('serviciomedico')->where('estado','1')->get();
-        //$users = DB::table('users')->get();
-        $medicos = DB::table('model_has_roles')
-                -> join('users as u','model_id','=','u.id')
-                -> select('u.id','u.name')
-                -> where('model_id', '=', 2)
-                -> get();
 
-        return view('consultas.edit', compact('consulta','pacientes','servicios','medicos'));
+        return response()->json($consulta);
     }
 
     public function update(Request $request, $id)
@@ -131,7 +118,7 @@ class ConsultamedicaController extends Controller
         $consulta->updated_at=$fecha->toDateTimeString();
         $consulta->update();
 
-        return redirect()->route('consultas.index')->with('info', 'Venta actualizada con exito');
+        //return redirect()->route('consultas.index')->with('info', 'Venta actualizada con exito');
     }
 
     public function show($id)
@@ -144,7 +131,8 @@ class ConsultamedicaController extends Controller
                     -> where('c.id', '=', $id)
                     -> first();
 
-        return view('consultas.show', compact('consulta'));
+        //return view('consultas.show', compact('consulta'));
+        return response()->json($consulta);
     }
 
     public function destroy($id)
@@ -153,7 +141,7 @@ class ConsultamedicaController extends Controller
         $consulta->estado='0';
         $consulta->update();
 
-        return redirect()->route('consultas.index')->with('info', 'Venta eliminada con exito');
+        //return redirect()->route('consultas.index')->with('info', 'Venta eliminada con exito');
     }
 
     public function fichas()
@@ -166,5 +154,48 @@ class ConsultamedicaController extends Controller
                     -> get();
 
         return view('consultas.fichas', compact('consultas'));
+    }
+
+    public function pacientes()
+    {
+        $pacientes = DB::table('paciente as p')
+                    ->select('p.id',DB::raw('CONCAT(p.apaterno," ",p.amaterno," ",nombre) as paciente'))
+                    ->get();
+
+        return response()->json($pacientes);
+    }
+
+    public function servicios()
+    {
+        $servicios = DB::table('serviciomedico')->where('estado','1')->get();
+
+        return response()->json($servicios);
+    }
+
+    public function turno()
+    {
+        $fecha = Carbon::now('America/La_Paz');
+
+        $numeroturno = DB::table('numeroturno')->wheredate('fecha',$fecha->toDateString())->first();
+
+        if(!$numeroturno) {
+            $numeroturno =  new Numeroturno;
+            $numeroturno->fecha=$fecha->toDateString();
+            $numeroturno->numeroturno=1;
+            $numeroturno->save();
+        }
+
+        return response()->json($numeroturno);
+    }
+
+    public function medicos()
+    {
+        $medicos = DB::table('model_has_roles')
+                -> join('users as u','model_id','=','u.id')
+                -> select('u.id','u.name')
+                -> where('model_id', '=', 2)
+                -> get();
+
+        return response()->json($medicos);
     }
 }

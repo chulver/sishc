@@ -3,7 +3,7 @@
 @section('title', 'Signos Vitales')
 
 @section('content_header')
-    <h1>Signos Vitales</h1>
+
 @stop
 
 @section('content')
@@ -15,6 +15,9 @@
     @endif
 
     <div class="card">
+        <div class="card-header">
+            <h3>Signos Vitales</h3>
+        </div>
         <div class="card-body">
             <table id="consultas" class="table table-striped table-bordered shadow-lg mt-4">
             <thead class="bg-secondary text-white">

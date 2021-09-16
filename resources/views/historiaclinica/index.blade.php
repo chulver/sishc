@@ -3,7 +3,7 @@
 @section('title', 'Consultas')
 
 @section('content_header')
-    <h1>Consulta Medica</h1>
+
 @stop
 
 @section('content')
@@ -15,6 +15,9 @@
     @endif
 
     <div class="card">
+        <div class="card-header">
+            <h3>Consulta Medica</h3>
+        </div>
         <div class="card-body">
             <table id="consultas" class="table table-striped table-bordered shadow-lg mt-4">
             <thead class="bg-secondary text-white">
@@ -45,7 +48,7 @@
                             <p class="text-danger">Pendiente</p>
                         @elseif($consulta->estado == '3')
                             <p class="text-success">Completado</p>
-                        @endif     
+                        @endif
                     </td>
                     <td>
                         @if($consulta->estado == '2')
@@ -53,7 +56,7 @@
                         @elseif($consulta->estado == '3')
                             <a href="{{ route('historiaclinica.edit', $consulta->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                             <a href="{{ route('generarPDF', $consulta->id) }}" class="btn btn-success" target="_blank"><i class="fas fa-print"></i></a>
-                        @endif   
+                        @endif
                     </td>
                 </tr>
                 @endforeach

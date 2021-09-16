@@ -3,10 +3,7 @@
 @section('title', 'Ventas')
 
 @section('content_header')
-    @can('consultas.create')
-        <a href="{{ route('consultas.create') }}" class="btn btn-warning float-right"><strong>Registrar Venta</strong></a>
-    @endcan
-    <h1>Ventas</h1>
+
 @stop
 
 @section('content')
@@ -18,6 +15,12 @@
     @endif
 
     <div class="card">
+        <div class="card-header">
+            @can('consultas.create')
+                <a href="{{ route('consultas.create') }}" class="btn btn-warning float-right"><strong>Registrar Venta</strong></a>
+            @endcan
+            <h3>Ventas</h3>
+        </div>
         <div class="card-body">
             <table id="consultas" class="table table-striped table-bordered shadow-lg mt-4">
             <thead class="bg-secondary text-white">
@@ -71,5 +74,4 @@
             </table>
         </div>
     </div>
-
 @stop

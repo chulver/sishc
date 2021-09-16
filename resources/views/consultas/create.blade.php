@@ -3,12 +3,15 @@
 @section('title', 'Ventas')
 
 @section('content_header')
-    <h1>Registrar Venta</h1>
+
 @stop
 
 @section('content')
 
     <div class="card">
+        <div class="card-header">
+            <h3>Registrar Venta</h3>
+        </div>
         <div class="card-body">
         <form action="{{ route('consultas.store') }}" method="POST">
         @csrf
@@ -21,7 +24,7 @@
 
             <div class="form-group row">
                 <label for="paciente" class="col-sm-1 col-form-label">Paciente:</label>
-                <div class="col-sm-11">
+                <div class="col-sm-5">
                     <select name="paciente" class="selectpicker form-control" data-live-search="true">
                         <option></option>
                         @foreach($pacientes as $paciente)
@@ -35,10 +38,10 @@
                 <br>
                 @enderror
             </div>
-        
+
             <div class="form-group row">
                 <label for="serviciomedico" class="col-sm-1 col-form-label">Servicio:</label>
-                <div class="col-sm-11">
+                <div class="col-sm-5">
                     <select name="serviciomedico" class="selectpicker form-control" data-live-search="true">
                         <option></option>
                         @foreach($servicios as $servicio)
@@ -59,7 +62,7 @@
 
             <div class="form-group row">
                 <label for="medico" class="col-sm-1 col-form-label">Medico:</label>
-                <div class="col-sm-11">
+                <div class="col-sm-5">
                     <select name="medico" class="selectpicker form-control" data-live-search="true">
                         <option></option>
                         @foreach($medicos as $medico)

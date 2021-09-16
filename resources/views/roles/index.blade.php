@@ -3,8 +3,7 @@
 @section('title', 'Usuarios')
 
 @section('content_header')
-    <a href="{{ route('roles.create') }}" class="btn btn-secondary float-right">Nuevo Role</a>
-    <h1>Listado de Roles</h1>
+
 @stop
 
 @section('content')
@@ -16,6 +15,10 @@
     @endif
 
     <div class="card">
+        <div class="card-header">
+            <a href="{{ route('roles.create') }}" class="btn btn-secondary float-right">Nuevo Role</a>
+            <h3>Listado de Roles</h3>
+        </div>
         <div class="card-body">
             <table id="pacientes" class="table table-striped table-bordered shadow-lg mt-4">
             <thead class="bg-secondary text-white">

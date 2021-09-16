@@ -9,7 +9,7 @@
 @stop
 
 @section('content_header')
-    <h1>Historia Clinica</h1>
+
 @stop
 
 @section('content')
@@ -19,8 +19,11 @@
             {{ session('info')}}
         </div>
     @endif
-    
+
     <div class="card">
+        <div class="card-header">
+            <h3>Historia Clinica</h3>
+        </div>
         <div class="card-body">
             <table id="completadas" class="table table-striped">
             <thead class="bg-secondary text-white">

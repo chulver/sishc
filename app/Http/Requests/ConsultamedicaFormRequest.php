@@ -26,7 +26,7 @@ class ConsultamedicaFormRequest extends FormRequest
         return [
             'paciente_id'=>'required',
             'serviciomedico_id'=>'required',
-            'precio'=>'required'
+            'precio'=>'required',
     	    'medico'=>'required'
         ];
     }

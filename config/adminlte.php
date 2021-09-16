@@ -245,26 +245,6 @@ return [
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
-            'text'    => 'Medico',
-            'can'  => 'historiaclinica.index',
-            'submenu' => [
-                [
-                    'text'    => 'Consulta Medica',
-                    'url'  => 'historiaclinica',
-                    'icon'    => 'fas fa-fw fa-user-md',
-                    'can'  => 'historiaclinica.index',
-                ],
-                [
-                    'text'    => 'Historia Clinica',
-                    'url'  => 'historiaclinica/completadas',
-                    'icon'    => 'fas fa-fw fa-user-md',
-                    'can'  => 'historiaclinica.completadas',
-                ],
-            ],
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
             'text'    => 'Registro',
             'can'  => 'pacientes.index',
             'submenu' => [
@@ -291,6 +271,26 @@ return [
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Medico',
+            'can'  => 'historiaclinica.index',
+            'submenu' => [
+                [
+                    'text'    => 'Consulta Medica',
+                    'url'  => 'historiaclinica',
+                    'icon'    => 'fas fa-fw fa-user-md',
+                    'can'  => 'historiaclinica.index',
+                ],
+                [
+                    'text'    => 'Historia Clinica',
+                    'url'  => 'historiaclinica/completadas',
+                    'icon'    => 'fas fa-fw fa-user-md',
+                    'can'  => 'historiaclinica.completadas',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'multilevel',
+            'icon'    => 'fas fa-fw fa-share',
             'text'    => 'Enfermeria',
             'submenu' => [
                 [
@@ -301,10 +301,25 @@ return [
             ],
         ],
         [
+            'text'        => 'Clientes',
+            'url'         => 'clientes',
+            'icon'        => 'fas fa-fw fa-users',
+        ],
+        [
+            'text'        => 'Ventas',
+            'url'         => 'ventas',
+            'icon'        => 'fas fa-fw fa-shopping-cart',
+        ],
+        [
             'text'        => 'Servicios',
             'url'         => 'servicios',
             'icon'        => 'fas fa-fw fa-clinic-medical',
             'can'         => 'servicios.index',
+        ],
+        [
+            'text'        => 'Services',
+            'url'         => 'services',
+            'icon'        => 'fas fa-fw fa-clinic-medical',
         ],
         [
             'text'        => 'Usuarios',
@@ -317,6 +332,11 @@ return [
             'url'         => 'roles',
             'icon'        => 'fas fa-fw fa-tasks',
             'can'         => 'roles.index',
+        ],
+        [
+            'text'        => 'Tabs',
+            'url'         => 'tabs',
+            'icon'        => 'fas fa-fw fa-tasks',
         ],
     ],
 
