@@ -30,6 +30,7 @@ use App\Http\Controllers\TabController;
 Route::get('/', function () {
     return view('auth.login');
     //return view('welcome');
+    //return view('welcome');
 });
 
 Route::get('/home', function () {
