@@ -294,32 +294,29 @@ return [
             'text'    => 'Enfermeria',
             'submenu' => [
                 [
-                    'text'        => '      Inyectables',
+                    'text'        => 'Inyectables',
                     'url'         => 'inyectables',
                     'icon'        => 'fas fa-fw fa-user-nurse',
                 ],
             ],
         ],
         [
-            'text'        => 'Clientes',
-            'url'         => 'clientes',
-            'icon'        => 'fas fa-fw fa-users',
-        ],
-        [
-            'text'        => 'Ventas',
-            'url'         => 'ventas',
-            'icon'        => 'fas fa-fw fa-shopping-cart',
+            'text'    => 'multilevel',
+            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Reportes',
+            'submenu' => [
+                [
+                    'text'        => 'Reporte de ventas',
+                    'url'         => 'reportes/reporteventas',
+                    'icon'        => 'far fa-file-pdf',
+                ],
+            ],
         ],
         [
             'text'        => 'Servicios',
             'url'         => 'servicios',
             'icon'        => 'fas fa-fw fa-clinic-medical',
             'can'         => 'servicios.index',
-        ],
-        [
-            'text'        => 'Services',
-            'url'         => 'services',
-            'icon'        => 'fas fa-fw fa-clinic-medical',
         ],
         [
             'text'        => 'Usuarios',
@@ -332,11 +329,6 @@ return [
             'url'         => 'roles',
             'icon'        => 'fas fa-fw fa-tasks',
             'can'         => 'roles.index',
-        ],
-        [
-            'text'        => 'Tabs',
-            'url'         => 'tabs',
-            'icon'        => 'fas fa-fw fa-tasks',
         ],
     ],
 

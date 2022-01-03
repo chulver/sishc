@@ -27,14 +27,12 @@
                     <div class="row">
                         <label class="col-sm-1 col-form-label">Sexo:</label>
                         <p class="col-sm-3 col-form-label">{{ $paciente->sexo }}</p>
-                        <label class="col-sm-2 col-form-label">Fecha de Nacimiento:</label>
-                        <p class="col-sm-2 col-form-label">{{ \Carbon\Carbon::parse($paciente->fechanacimiento)->format('d/m/Y') }}</p>
                         <label class="col-sm-2 col-form-label">Edad:</label>
                         <p class="col-sm-2 col-form-label">{{ \Carbon\Carbon::createFromDate($paciente->fechanacimiento)->diff(\Carbon\Carbon::now())->format('%y años, %m meses, %d dias') }}</p>
                     </div>
                 </div>
             </div>
-      
+
             <table id="completadas" class="table table-striped table-bordered shadow-lg mt-4">
             <thead class="bg-secondary text-white">
                 <tr>

@@ -3,8 +3,7 @@
 @section('title', 'Servicios')
 
 @section('content_header')
-    <a href="{{ route('servicios.create') }}" class="btn btn-warning float-right"><strong>Nuevo Servicio</strong></a>
-    <h1>Listado de Servicios</h1>
+
 @stop
 
 @section('content')
@@ -16,6 +15,10 @@
     @endif
 
     <div class="card">
+        <div class="card-header">
+            <a href="{{ route('servicios.create') }}" class="btn btn-warning float-right"><strong>Nuevo Servicio</strong></a>
+            <h3>Listado de Servicios</h3>
+        </div>
         <div class="card-body">
             <table id="pacientes" class="table table-striped table-bordered shadow-lg mt-4">
             <thead class="bg-secondary text-white">

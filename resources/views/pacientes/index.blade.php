@@ -9,8 +9,7 @@
 @stop
 
 @section('content_header')
-    <a href="{{ route('pacientes.create') }}" class="btn btn-warning float-right"><strong>Paciente Nuevo</strong></a>
-    <h1>Listado de pacientes</h1>
+
 @stop
 
 @section('content')
@@ -22,6 +21,10 @@
     @endif
 
     <div class="card">
+        <div class="card-header">
+            <a href="{{ route('pacientes.create') }}" class="btn btn-warning float-right"><strong>Paciente Nuevo</strong></a>
+            <h3>Listado de pacientes</h3>
+        </div>
         <div class="card-body">
             <table id="pacientes" class="table table-striped">
             <thead class="bg-secondary text-white">

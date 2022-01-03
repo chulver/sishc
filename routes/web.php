@@ -11,10 +11,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\InyectableController;
-use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\VentaController;
-use App\Http\Controllers\TabController;
+use App\Http\Controllers\ReporteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,62 +34,26 @@ Route::get('/home', function () {
     return view('home.index');
 })->middleware('auth');
 
-/**Ventas**/
-Route::get('tabs',[TabController::class, 'index'])->name('tabs.index');
-Route::get('tabs/tabla',[TabController::class, 'tabla'])->name('tabs.tabla');
-Route::get('tabs/frm',[TabController::class, 'frm'])->name('tabs.frm');
+/**Reportes**/
+Route::get('reportes/reporteventas',[ReporteController::class, 'reporteventas'])->name('reportes.reporteventas');
+Route::post('reportes',[ReporteController::class, 'resultado'])->name('reportes.resultado');
 /***********/
 
-/**Ventas**/
-Route::get('ventas',[VentaController::class, 'index'])->name('ventas.index');
-Route::get('ventas/create',[VentaController::class, 'create'])->name('ventas.create');
-Route::post('ventas',[VentaController::class, 'store'])->name('ventas.store');
-Route::get('ventas/{consulta}/edit',[VentaController::class, 'edit'])->name('ventas.edit');
-Route::put('ventas/{consulta}',[VentaController::class, 'update'])->name('ventas.update');
-Route::get('ventas/{consulta}/show',[VentaController::class, 'show'])->name('ventas.show');
-Route::get('ventas/fichas',[VentaController::class, 'fichas'])->name('ventas.fichas');
-Route::delete('ventas/{consulta}',[VentaController::class, 'destroy'])->name('ventas.destroy');
-Route::get('ventas/tabla',[VentaController::class, 'tabla'])->name('ventas.tabla');
-Route::get('ventas/pacientes',[VentaController::class, 'pacientes'])->name('ventas.pacientes');
-Route::get('ventas/servicios',[VentaController::class, 'servicios'])->name('ventas.servicios');
-Route::get('ventas/medicos',[VentaController::class, 'medicos'])->name('ventas.medicos');
-Route::get('ventas/turno',[VentaController::class, 'turno'])->name('ventas.turno');
-/***********/
-
-/**Services**/
-Route::get('services',[ServiceController::class, 'index'])->name('services.index');
-Route::get('services/tabla',[ServiceController::class, 'tabla'])->name('services.tabla');
-Route::post('services',[ServiceController::class, 'store'])->name('services.store');
-Route::get('services/{service}/edit',[ServiceController::class, 'edit'])->name('services.edit');
-Route::put('services/{service}',[ServiceController::class, 'update'])->name('services.update');
-Route::get('services/{service}/show',[ServiceController::class, 'show'])->name('services.show');
-Route::delete('services/{service}',[ServiceController::class, 'destroy'])->name('services.destroy');
-/***********/
-
-/**Clientes**/
-Route::get('clientes',[ClienteController::class, 'index'])->name('clientes.index');
-Route::post('clientes',[ClienteController::class, 'store'])->name('clientes.store');
-Route::get('clientes/{cliente}/edit',[ClienteController::class, 'edit'])->name('clientes.edit');
-Route::put('clientes/{cliente}',[ClienteController::class, 'update'])->name('clientes.update');
-Route::get('clientes/{cliente}/show',[ClienteController::class, 'show'])->name('clientes.show');
-Route::get('clientes/datatable',[ClienteController::class, 'datatable'])->name('clientes.datatable');
-//Route::resource('clientes', ClienteController::class)->only(['index','create','store','edit','update','show'])->names('clientes');
-/***********/
-
-/**Datable**/
+/**Datatable**/
 Route::get('datatable/pacientes', [DatatableController::class, 'paciente'])->name('datatable.paciente');
 Route::get('datatable/historias', [DatatableController::class, 'historias'])->name('datatable.historias');
 /***********/
 
 /**Inyectables**/
 Route::get('inyectables',[InyectableController::class, 'index'])->name('inyectables.index');
-Route::get('inyectables/historial',[InyectableController::class, 'historial'])->name('inyectables.historial');
+//Route::get('inyectables/historial',[InyectableController::class, 'historial'])->name('inyectables.historial');
+Route::post('inyectables/historial',[InyectableController::class, 'historial'])->name('inyectables.historial');
 Route::get('inyectables/{paciente}/registrar',[InyectableController::class, 'registrar'])->name('inyectables.registrar');
 Route::post('inyectables',[InyectableController::class, 'store'])->name('inyectables.store');
 Route::get('inyectables/{inyectable}/show',[InyectableController::class, 'show'])->name('inyectables.show');
 /***********/
 
-/**Roles**/
+/**Servicios**/
 Route::resource('servicios', ServicioController::class)->names('servicios');
 /***********/
 

@@ -18,7 +18,7 @@
             <div class="form-group row">
                 <label for="numeroturno" class="col-sm-1 col-form-label">N° Turno:</label>
                 <div class="col-sm-1">
-                    <input type="number" class="form-control" name="numeroturno" value="{{ $numeroturno->numeroturno }}" readonly>
+                    <input type="number" class="form-control font-weight-bold" name="numeroturno" value="{{ $numeroturno->numeroturno }}" readonly>
                 </div>
             </div>
 

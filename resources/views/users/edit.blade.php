@@ -3,7 +3,7 @@
 @section('title', 'Usuarios')
 
 @section('content_header')
-    <h1>Asignar un rol</h1>
+
 @stop
 
 @section('content')
@@ -14,6 +14,9 @@
         </div>
     @endif
     <div class="card">
+        <div class="card-header">
+            <h3>Asignar un rol</h3>
+        </div>
         <div class="card-body">
             <p class="h5">Nombre</p>
             <p class="form-control">{{ $user->name }}</p>

@@ -13,7 +13,8 @@
             <h3>Venta de Inyectable</h3>
         </div>
         <div class="card-body">
-        <form action="{{ route('inyectables.historial') }}" method="GET">
+        <form action="{{ route('inyectables.historial') }}" method="POST">
+        @csrf
             <div class="form-group row">
                 <label for="paciente" class="col-sm-1 col-form-label">Paciente:</label>
                 <div class="col-sm-5">

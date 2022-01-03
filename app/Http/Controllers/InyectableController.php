@@ -8,7 +8,7 @@ use App\Models\InyectableMedicamento;
 use App\Models\Paciente;
 use App\Models\Medicamento;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Response;
 use Illuminate\Support\Collection;
@@ -29,7 +29,8 @@ class InyectableController extends Controller
             'paciente' => 'required'
         ]);
 
-        $id = $request->get('paciente');
+        //$id = $request->get('paciente');
+        $id = $request->paciente;
 
         $paciente = DB::table('paciente as p')
                     ->select('p.id','p.apaterno','p.amaterno','p.nombre','p.sexo','p.fechanacimiento')
@@ -41,6 +42,8 @@ class InyectableController extends Controller
                     ->where('i.paciente_id', $id)
                     ->orderBy('fecha', 'desc')
                     ->get();
+
+        //dd($paciente);
 
         return view('inyectables.historial', compact('paciente', 'historialinyectables'));
     }
